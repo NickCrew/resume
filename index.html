@@ -3,12 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nicholas Ferguson — Platform Engineer</title>
-<meta name="description" content="Platform engineer who builds infrastructure as a product. Self-taught from 13, shipping production platforms solo.">
+<title>Nicholas Ferguson | Platform Engineer</title>
+<meta name="description" content="Platform engineer who builds infrastructure as a product. Edge security sensors, fleet management, developer platforms, documentation systems.">
 <meta name="author" content="Nicholas Ferguson">
-<meta property="og:title" content="Nicholas Ferguson — Platform Engineer">
+<meta property="og:title" content="Nicholas Ferguson | Platform Engineer">
 <meta property="og:description" content="I build the infrastructure other engineers ship on. Deep dives into Rust WAF sensors, fleet management, and developer platforms.">
+<meta property="og:image" content="og-image.png">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nicholas Ferguson | Platform Engineer">
+<meta name="twitter:description" content="I build the infrastructure other engineers ship on. Deep dives into Rust WAF sensors, fleet management, and developer platforms.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23080b12'/><text x='6' y='23' font-family='monospace' font-size='20' font-weight='bold' fill='%2338a0ff'>NF</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -506,9 +510,9 @@ body {
     <h1 class="hero-name">Nicholas Ferguson</h1>
     <div class="hero-title">Platform Engineer</div>
     <p class="hero-intro">
-      I build the infrastructure other engineers ship on top of. I've done it from scratch at two companies — 
-      developer platforms, edge security sensors, fleet management systems — 
-      and I care as much about the people using what I build as the systems underneath.
+      I build the infrastructure other engineers ship on top of. I've done it from scratch at two companies: 
+      developer platforms, edge security sensors, fleet management systems. 
+      I care as much about the people using what I build as the systems underneath.
     </p>
     <div class="hero-links">
       <a href="https://github.com/NickCrew" class="hero-link" target="_blank" rel="noopener">
@@ -523,11 +527,14 @@ body {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
         nick@atlascrew.dev
       </a>
-      <a href="process.html" class="hero-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-        The Process
+      <a href="NicholasFerguson_Resume.pdf" class="hero-link" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+        Resume (PDF)
       </a>
-
+      <a href="process.html" class="hero-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        My Process
+      </a>
     </div>
   </div>
 </div>
@@ -535,32 +542,18 @@ body {
 <!-- ════════════ NAV ════════════ -->
 <div class="section-nav">
   <div class="section-nav-inner">
-    <a href="#background">Background</a>
+    <a href="#background">Experience</a>
     <a href="#projects">Deep Dives</a>
     <a href="#philosophy">How I Work</a>
   </div>
 </div>
 
-<!-- ════════════ BACKGROUND ════════════ -->
+<!-- ════════════ EXPERIENCE ════════════ -->
 <div class="page">
   <div class="section" id="background">
-    <div class="section-label">Background</div>
-    <div class="section-heading">The path wasn't straight</div>
-    <div class="section-subhead">Self-taught from 13, professional photographer and horse trainer at 18, hotel worker for six years, then engineering. The non-linear route is the point.</div>
-
-    <div class="prose-serif">
-      <p>I started on Linux when I was thirteen. Back then, a fresh install meant 800×600 resolution, no WiFi, no audio, and a lot of hours reading man pages. I worked my way up through Gentoo and Arch, compiled my first custom kernel to enable symmetric multiprocessing on a Pentium 4 — SMP wasn't in mainline yet — and eventually built out a full homelab on a ThinkStation S30 with 128GB of RAM and a Xeon 10-core. Foreman-Katello, PXE boot, Kickstart, Puppet, Ansible, FreeIPA — the whole stack. Unattended bare-metal provisioning where a new VM came up with DNS, SSH keys, and auto-mounted directories already configured.</p>
-
-      <p>I didn't really have anything to host. The infrastructure <em>was</em> the project.</p>
-
-      <p>Then I put it down. From 16 to 20 I made a living as a photographer and training horses. After that I worked at a hotel for six years. I always ran Linux and macOS personally, but I wasn't actively learning new things in that stretch. Around 26 I decided to make the jump for real, went back to school mostly for the networking, and spent a year ramping hard on everything that had changed.</p>
-
-      <p>When I interviewed at Vispero — a Microsoft shop — the release engineer who talked to me actually knew what I was talking about. They told me to come back in six months. Then they called me a month later. I found out much later that he'd been pushing for the hire since the day I walked out. I got the job because the foundation from those years as a kid was real, and the person across the table could tell.</p>
-    </div>
-
-    <div class="aside">
-      The photography stuck with me in unexpected ways. I think about user experience and visual design more than most infrastructure engineers do — and I think that's why the platforms I build actually get adopted instead of gathering dust.
-    </div>
+    <div class="section-label">Experience</div>
+    <div class="section-heading">Career Overview</div>
+    <div class="section-subhead">7+ years building internal developer platforms, security infrastructure, and cloud systems. Twice built engineering platforms from scratch as the first or sole platform hire.</div>
 
     <div class="timeline">
       <div class="timeline-item">
@@ -568,7 +561,7 @@ body {
         <div>
           <div class="timeline-title">Sr. Platform Engineer</div>
           <div class="timeline-org">A10 Networks (acquired ThreatX for $26M)</div>
-          <div class="timeline-body">Primary engineer rebuilding the platform post-acquisition. Shipped four major systems solo in eleven months — a pure-Rust WAF sensor, fleet management platform, 8-tool testing ecosystem, and Linux endpoint agent.</div>
+          <div class="timeline-body">Led platform rebuild post-acquisition. Architected and shipped four major systems: a pure-Rust WAF sensor, fleet management platform, 8-tool testing ecosystem, and cross-platform endpoint agent (5 OS targets, kernel-level).</div>
         </div>
       </div>
       <div class="timeline-item">
@@ -576,15 +569,15 @@ body {
         <div>
           <div class="timeline-title">Sr. Platform Engineer</div>
           <div class="timeline-org">ThreatX</div>
-          <div class="timeline-body">Sensor fleet management, AWS infrastructure ($60K/mo cost reduction), diagnosed kernel-level issue that saved a $1M contract, first professional services engineer, rewrote all documentation.</div>
+          <div class="timeline-body">Sensor fleet management, AWS infrastructure ($60K/mo cost reduction), diagnosed kernel-level issue that saved a $1M contract, first professional services engineer, built the documentation-as-code platform. Mentored SOC analysts into SRE roles and handed off the fleet platform entirely.</div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-date">2018 – 2021</div>
         <div>
-          <div class="timeline-title">Sr. Build Engineer</div>
+          <div class="timeline-title">Sr. Platform / Build Engineer</div>
           <div class="timeline-org">Vispero</div>
-          <div class="timeline-body">First platform developer — built the internal developer platform from scratch. Build framework shipping $50M/year across six target platforms. Developer tools, CI/CD, license management, hybrid cloud infrastructure.</div>
+          <div class="timeline-body">First platform developer. Built the internal developer platform from scratch. Build framework shipping $50M/year across six target platforms. Developer tools, CI/CD, license management, hybrid cloud infrastructure.</div>
         </div>
       </div>
     </div>
@@ -594,36 +587,36 @@ body {
   <div class="section" id="projects">
     <div class="section-label">Deep Dives</div>
     <div class="section-heading">What the resume can't show you</div>
-    <div class="section-subhead">Technical narratives behind the work — the decisions, trade-offs, and architecture details that matter.</div>
+    <div class="section-subhead">Technical narratives behind the work: the decisions, trade-offs, and architecture details that matter.</div>
 
     <div class="stats-strip">
-      <div class="strip-stat"><span class="strip-val">750K</span><span class="strip-label">lines shipped</span></div>
-      <div class="strip-stat"><span class="strip-val">4</span><span class="strip-label">platforms solo</span></div>
+      <div class="strip-stat"><span class="strip-val">4</span><span class="strip-label">platforms shipped</span></div>
       <div class="strip-stat"><span class="strip-val">9,775</span><span class="strip-label">test cases</span></div>
-      <div class="strip-stat"><span class="strip-val">11</span><span class="strip-label">months</span></div>
-      <div class="strip-stat"><span class="strip-val">$60K</span><span class="strip-label">/mo AWS saved</span></div>
+      <div class="strip-stat"><span class="strip-val">$1M</span><span class="strip-label">contract saved</span></div>
+      <div class="strip-stat"><span class="strip-val">$60K</span><span class="strip-label">/mo AWS reduced</span></div>
+      <div class="strip-stat"><span class="strip-val">$50M</span><span class="strip-label">/yr software shipped</span></div>
     </div>
 
     <!-- Synapse -->
     <div class="dive" id="synapse">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="dive-title-group">
-          <div class="dive-title">Synapse — Pure-Rust Edge WAF Sensor</div>
+          <div class="dive-title">Synapse: Pure-Rust Edge WAF Sensor</div>
           <div class="dive-subtitle">A10 Networks · Replaced an 8-hop cloud pipeline with a 25MB binary</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p>The legacy ThreatX architecture was an 8-hop cloud pipeline — sensor to Kafka to ETL to MongoDB to the HackerMind engine and back. Every detection decision took 1–10 seconds. Post-acquisition, I rebuilt it as a single Rust binary on Cloudflare's Pingora framework that makes all decisions at the edge in <strong>450μs</strong>.</p>
+          <p>The legacy ThreatX architecture was an 8-hop cloud pipeline: sensor to Kafka to ETL to MongoDB to the HackerMind engine and back. Every detection decision took 1–10 seconds. Post-acquisition, I rebuilt it as a single Rust binary on Cloudflare's Pingora framework that makes all decisions at the edge in <strong>450μs</strong>.</p>
 
-          <p><strong>Why Rust, not Go or C++?</strong> This is a network proxy sitting in the hot path of every HTTP request. Go's garbage collector introduces unpredictable latency spikes — unacceptable for a security sensor. C++ would work but doesn't give you memory safety guarantees at the development velocity we needed. Rust gives you both: zero-cost abstractions, no GC pauses, and the compiler catches entire categories of bugs before they reach production.</p>
+          <p><strong>Why Rust, not Go or C++?</strong> This is a network proxy sitting in the hot path of every HTTP request. Go's garbage collector introduces unpredictable latency spikes, which is unacceptable for a security sensor. C++ would work but doesn't give you memory safety guarantees at the development velocity we needed. Rust gives you both: zero-cost abstractions, no GC pauses, and the compiler catches entire categories of bugs before they reach production.</p>
 
           <p><strong>The detection pipeline runs in ~75μs.</strong> Context building (parse method, URI, headers, compute feature flags) → actor store lookup → credential stuffing check → profile anomaly check against endpoint baselines → candidate selection via bitmask index (filters 237 rules down to ~35 candidates) → rule evaluation with short-circuit on first false → entity tracking with time-decay risk scoring → verdict. The bitmask indexing alone skips 90%+ of rules. Candidate caching gives ~1μs hits on the LRU.</p>
 
-          <p><strong>Campaign correlation is the interesting part.</strong> Most WAFs evaluate requests in isolation. Synapse models attack infrastructure as a connected graph — node types for IPs, JA4 fingerprints, auth tokens, ASNs, user agents. Edge weights quantify relationships: shared token (0.95), shared fingerprint (0.8), same ASN (0.3). Multi-hop traversal discovers indirect relationships — two IPs sharing no direct attribute linked through a third. Campaign fires when 3+ connected nodes with combined weight ≥ 2.0.</p>
+          <p><strong>Campaign correlation is the interesting part.</strong> Most WAFs evaluate requests in isolation. Synapse models attack infrastructure as a connected graph with node types for IPs, JA4 fingerprints, auth tokens, ASNs, user agents. Edge weights quantify relationships: shared token (0.95), shared fingerprint (0.8), same ASN (0.3). Multi-hop traversal discovers indirect relationships: two IPs sharing no direct attribute linked through a third. Campaign fires when 3+ connected nodes with combined weight ≥ 2.0.</p>
 
-          <p><strong>DLP scanning uses Aho-Corasick</strong> multi-pattern matching — 30-50% faster than sequential regex. 22+ patterns covering credit cards (Luhn validation), SSNs, IBAN (mod-97), API keys, JWTs, private keys, crypto addresses. Content-Type short circuit skips binary. 8KB inspection cap. Benchmarks: ~21μs per 4KB, ~42μs per 8KB.</p>
+          <p><strong>DLP scanning uses Aho-Corasick</strong> multi-pattern matching, 30-50% faster than sequential regex. 22+ patterns covering credit cards (Luhn validation), SSNs, IBAN (mod-97), API keys, JWTs, private keys, crypto addresses. Content-Type short circuit skips binary. 8KB inspection cap. Benchmarks: ~21μs per 4KB, ~42μs per 8KB.</p>
 
           <p><strong>All worker threads share a single learning state</strong> via <code>Arc&lt;RwLock&lt;Synapse&gt;&gt;</code>. Before my rewrite, <code>thread_local!</code> storage meant each thread learned independently. Now all threads contribute to shared knowledge. Internal stores use <code>parking_lot::RwLock</code>, validated at 200 virtual users with zero lock contention. <code>DashMap</code> for lock-free concurrent HashMap where needed.</p>
 
@@ -646,24 +639,24 @@ body {
     <div class="dive" id="signal-horizon">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="dive-title-group">
-          <div class="dive-title">Signal Horizon — Fleet Management & Collective Intelligence</div>
+          <div class="dive-title">Signal Horizon: Fleet Management & Collective Intelligence</div>
           <div class="dive-subtitle">A10 Networks · Turning isolated sensors into a coordinated defense network</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p>Signal Horizon is the command plane for the Synapse sensor fleet. Its job is to make a distributed set of edge sensors behave as a single coordinated defense system — while keeping tenant data isolated.</p>
+          <p>Signal Horizon is the command plane for the Synapse sensor fleet. Its job is to make a distributed set of edge sensors behave as a single coordinated defense system while keeping tenant data isolated.</p>
 
-          <p><strong>Why ClickHouse?</strong> Purpose-built for real-time analytics on columnar data. Sub-second queries across high-volume sensor events at a fraction of the cost of Elasticsearch. Column-oriented storage compresses security event data exceptionally well — IPs, attack types, status codes have high cardinality but repeat patterns that compress down hard.</p>
+          <p><strong>Why ClickHouse?</strong> Purpose-built for real-time analytics on columnar data. Sub-second queries across high-volume sensor events at a fraction of the cost of Elasticsearch. Column-oriented storage compresses security event data exceptionally well. IPs, attack types, status codes have high cardinality but repeat patterns that compress down hard.</p>
 
-          <p><strong>Multi-tenant intelligence sharing</strong> without exposing raw data. Threat indicators get HMAC-SHA256 hashed with a tenant-specific key before leaving the boundary. The receiving side can correlate patterns — same hash means same indicator — without seeing the underlying data. "This IP is attacking 5 other tenants" without anyone knowing who.</p>
+          <p><strong>Multi-tenant intelligence sharing</strong> without exposing raw data. Threat indicators get HMAC-SHA256 hashed with a tenant-specific key before leaving the boundary. The receiving side can correlate patterns (same hash means same indicator) without seeing the underlying data. "This IP is attacking 5 other tenants" without anyone knowing who.</p>
 
-          <p><strong>Fleet management breaks into four components.</strong> FleetAggregator handles metrics and health scoring (0-100) with regional views. FleetCommander manages direct commands, broadcasts, and execution tracking through a full lifecycle (pending → sent → success/failed). ConfigManager maintains versioned templates across Prod/Staging/Dev with drift detection. RuleDistributor handles rollouts — immediate, canary (10→50→100%), or scheduled.</p>
+          <p><strong>Fleet management breaks into four components.</strong> FleetAggregator handles metrics and health scoring (0-100) with regional views. FleetCommander manages direct commands, broadcasts, and execution tracking through a full lifecycle (pending → sent → success/failed). ConfigManager maintains versioned templates across Prod/Staging/Dev with drift detection. RuleDistributor handles rollouts: immediate, canary (10→50→100%), or scheduled.</p>
 
-          <p><strong>War Room</strong> is the real-time incident response workspace. Collaboration timeline, Quick Block tool with auto-tagging, fleet-wide block push, campaign association. Horizon Bot auto-creates rooms when high-severity campaigns are detected. The workflow — escalate, investigate, contain, resolve with post-mortem — is designed for the 24/7 SOC team that actually lives in this tool.</p>
+          <p><strong>War Room</strong> is the real-time incident response workspace. Collaboration timeline, Quick Block tool with auto-tagging, fleet-wide block push, campaign association. Horizon Bot auto-creates rooms when high-severity campaigns are detected. The workflow (escalate, investigate, contain, resolve with post-mortem) is designed for the 24/7 SOC team that actually lives in this tool.</p>
 
-          <p><strong>Sensors communicate over persistent WebSocket.</strong> Bidirectional — commands, config, and rules push down; events and signals push up. Batched telemetry with circuit breaker, exponential backoff, and event queuing on failure. If Signal Horizon goes unreachable, every sensor operates fully autonomously.</p>
+          <p><strong>Sensors communicate over persistent WebSocket.</strong> Bidirectional: commands, config, and rules push down; events and signals push up. Batched telemetry with circuit breaker, exponential backoff, and event queuing on failure. If Signal Horizon goes unreachable, every sensor operates fully autonomously.</p>
 
           <div class="dive-tech">
             <span>TypeScript</span><span>React</span><span>ClickHouse</span><span>PostgreSQL</span><span>Redis</span><span>WebSockets</span>
@@ -676,23 +669,29 @@ body {
     <div class="dive" id="wayfair">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="dive-title-group">
-          <div class="dive-title">The $1M Contract Save — A Kernel-Level Detective Story</div>
-          <div class="dive-subtitle">ThreatX · Diagnosing what two years of troubleshooting couldn't</div>
+          <div class="dive-title">The $1M Contract Save</div>
+          <div class="dive-subtitle">ThreatX · Diagnosing what two weeks of planned NGINX optimizations couldn't</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p>A major customer had 400+ self-hosted sensors and one prior failed onboarding attempt. Their traffic was dropping intermittently and nobody could figure out why. Application monitoring showed healthy services. The sensor itself was fine. The problem was invisible to anything above the kernel.</p>
+          <p>A major customer ran 400+ self-hosted sensors and handled 150K requests per second on Tuesdays alone. The initial attempt to cut over their production traffic lasted <em>minutes</em> before catastrophic failure. The response from the team was two weeks of planned NGINX optimizations in the sensor.</p>
 
-          <p><strong>The root cause was conntrack table exhaustion.</strong> Linux's connection tracking subsystem has a finite table. When it fills, new connections get silently dropped — before traffic ever reaches the application layer. Symptoms look like a network problem. You only find it if you know to check <code>/proc/sys/net/netfilter/nf_conntrack_count</code> and correlate with drops. And you only reproduce it if you can generate enough traffic to fill the table.</p>
+          <p><strong>The problem wasn't NGINX.</strong> But nobody knew that yet. As I discovered, we had never actually validated the sensor at that traffic volume before attempting the cutover. So I built a test harness to find out. Stood up a Fargate cluster to generate load and pointed it at a sensor to reproduce the failure under controlled conditions.</p>
 
-          <p><strong>So I built a distributed load testing framework from scratch</strong> and generated 150K+ requests per second to reproduce the failure deterministically. Once confirmed, I built custom systemd services for dynamic conntrack table sizing based on current load — not static thresholds. Added sensor lifecycle management for graceful connection draining during restarts. Redesigned the scaling policy fleet-wide, improving efficiency by 40%.</p>
+          <p><strong>Logging wasn't in place for this.</strong> So I logged into a sensor and ran <code>dmesg</code>. Wall of text: <code>table full, dropping packet</code>. Got it.</p>
 
-          <p>The fix enabled the contract. The diagnostic methodology became reusable infrastructure. And the deeper lesson — that the most important debugging happens below the application layer — shaped how I built Synapse. Every decision at the edge, no cloud dependency, kernel-level awareness by default.</p>
+          <p>The connection tracking table, where the Linux kernel's stateful firewall (netfilter) tracks unique IP addresses, was exhausting. This isn't active connections. Every IP that touches the sensor gets an entry: blocks, drops, everything. At 150K RPS with the traffic diversity of a major retail site, the default table size fills fast. Disabling conntrack wasn't an option because we were running Docker, which depends on it.</p>
+
+          <p><strong>The fix was a systemd service</strong> that calculates the conntrack table size dynamically based on available memory and sets it before the network stack comes up. No NGINX tuning required. After the change, sensors handled 150K RPS without breaking a sweat.</p>
+
+          <p>The issue had survived one prior failed onboarding attempt. Nobody found it because the symptoms look like a network problem. Application monitoring shows healthy services, the sensor process is fine, and the drops happen at the kernel level before traffic ever reaches userspace. You only find it if you know to check <code>/proc/sys/net/netfilter/nf_conntrack_count</code>. And you only reproduce it if you actually generate enough traffic to fill the table, which requires a purpose-built load test that nobody had done.</p>
+
+          <p>The fix enabled the contract. That diagnostic methodology (build a harness, reproduce at scale, look below the application layer) became how I approach problems by default. It's a straight line from this to how Synapse was designed: every decision at the edge, kernel-level awareness built in.</p>
 
           <div class="dive-tech">
-            <span>Linux kernel</span><span>conntrack/netfilter</span><span>systemd</span><span>Load testing</span><span>TCP tuning</span>
+            <span>Linux kernel</span><span>conntrack/netfilter</span><span>systemd</span><span>Fargate</span><span>Load testing</span><span>dmesg</span>
           </div>
         </div>
       </div>
@@ -702,7 +701,7 @@ body {
     <div class="dive" id="vispero-platform">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="dive-title-group">
-          <div class="dive-title">Internal Developer Platform — Built from Nothing</div>
+          <div class="dive-title">Internal Developer Platform: Built from Nothing</div>
           <div class="dive-subtitle">Vispero · First platform hire, $50M/year in software shipping on it</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
@@ -711,51 +710,62 @@ body {
         <div class="dive-content">
           <p>When I arrived at Vispero, there was no developer platform. Fragile scripts. An end-of-life NAnt build system. If a developer needed a config changed, they filed a ticket and waited. When I left three years later they had a self-service portal, a CLI, Visual Studio plugins, and 600+ automated pipelines.</p>
 
-          <p><strong>The core challenge was six target platforms with one framework.</strong> Windows, macOS, iOS, Android, Linux, Embedded Linux — each with completely different toolchains. I built a task-based DSL that abstracted platform-specific compilation. A build file declares <em>what</em> to build. The framework resolves <em>how</em> based on target. Windows = MSBuild + EV code signing. macOS = Xcode + notarization. Embedded Linux = cross-compilation. Self-bootstrapping — you could reproduce any build from a clean machine.</p>
+          <p><strong>The core challenge was six target platforms with one framework.</strong> Windows, macOS, iOS, Android, Linux, Embedded Linux, each with completely different toolchains. I built a task-based DSL that abstracted platform-specific compilation. A build file declares <em>what</em> to build. The framework resolves <em>how</em> based on target. Windows = MSBuild + EV code signing. macOS = Xcode + notarization. Embedded Linux = cross-compilation. Self-bootstrapping: you could reproduce any build from a clean machine.</p>
 
-          <p><strong>The toil elimination was where it clicked for me.</strong> Release engineers managed 600+ pipelines configured in XML. They were constantly copy-pasting configuration and templates to create new pipelines for sandboxes, releases, new versions — and all the devs would need them at once. I built a tool using the GoCD API that let you pick two pipelines from a pre-populated list, compare them in the diff tool of your choice, and push changes back up. Simple tool, massive time savings.</p>
+          <p><strong>The toil elimination was where it clicked for me.</strong> Release engineers managed 600+ pipelines configured in XML. They were constantly copy-pasting configuration and templates to create new pipelines for sandboxes, releases, new versions, and all the devs would need them at once. I built a tool using the GoCD API that let you pick two pipelines from a pre-populated list, compare them in the diff tool of your choice, and push changes back up. Simple tool, massive time savings.</p>
 
           <p>Another one: the company was stuck on a heavily customized Bugzilla instance that didn't integrate with CI/CD. Managers were spending <em>hours every week</em> manually updating issues and compiling notifications for QA on every promoted build. No API, just CGI. I made the build pipelines detect all issues in each build, assemble the notifications, and send them automatically.</p>
 
-          <p><strong>I also built a static analysis tool</strong> that diagnosed build failures with 100% accuracy on compiler errors — instead of engineers digging through logs, the tool parsed the output, identified the root cause, and told them exactly what broke and why. And I rebuilt the legacy license management system — an XML-backed MFC desktop app with 3+ day turnaround — into a C#/ASP.NET web platform with SQL Server. Government deployments worth $2M+ needed audit trails, approval workflows, and compliance reporting that didn't exist. The new system gave authorized users immediate turnaround with auto-approval for pre-authorized renewals.</p>
+          <p><strong>The artifact repository and release management dashboards</strong> replaced the old process of promoting builds by moving them to different folders. Release managers could see all releases available in each channel (local and CDN), view value stream and dependency maps, and the same dependency data powered safe automated cleanup on the CDN. By this point the versioning database, build metrics database, and artifact database were all integrated into a single platform. Built in C#, SQL Server, and ASP.NET Core.</p>
 
-          <p><strong>The hybrid build infrastructure</strong> was its own project. AWS control plane scheduling jobs, on-prem VMware spinning up ephemeral agents on SSD arrays, Ansible provisioning them via Kerberos for credential-free WinRM auth into the Active Directory environment, build runs, agent destroyed. Every build got a clean environment — no drift, no "works on my machine." I replaced VMware golden images with Ansible playbooks because golden images are snapshots in time that diverge the moment you deploy them. At 600+ pipelines across six platforms, drift creates impossible-to-debug problems.</p>
+          <p><strong>I also rebuilt the legacy license management system</strong> (an XML-backed MFC desktop app with 3+ day turnaround) into a C#/ASP.NET web platform with SQL Server. Government deployments worth $2M+ needed audit trails, approval workflows, and compliance reporting that didn't exist. The new system gave authorized users immediate turnaround with auto-approval for pre-authorized renewals.</p>
 
-          <p><strong>Then ransomware validated everything.</strong> The corporate network got hit. Took down most of the org for a week. Because I'd migrated all dev services to AWS — source control, build infrastructure, artifact storage — engineering was completely unaffected. Kept shipping. It wasn't designed as disaster recovery. It was a side effect of breaking dependency on corporate IT.</p>
+          <p><strong>The hybrid build infrastructure</strong> was its own project. AWS control plane scheduling jobs, on-prem VMware spinning up ephemeral agents on SSD arrays, Ansible provisioning them via Kerberos for credential-free WinRM auth into the Active Directory environment, build runs, agent destroyed. Every build got a clean environment. No drift, no "works on my machine." I replaced VMware golden images with Ansible playbooks because golden images are snapshots in time that diverge the moment you deploy them. At 600+ pipelines across six platforms, drift creates impossible-to-debug problems.</p>
+
+          <p><strong>Observability came next.</strong> Bare-metal monitoring, custom build metrics tracking trends in build size, compile times, failure rates. SQL Server for structured data, InfluxDB and Grafana for time-series dashboards, Beats and Telegraf for collection, plus custom collectors in PowerShell for anything the off-the-shelf agents couldn't reach. This was the foundation for identifying bottlenecks and justifying infrastructure investments with data instead of anecdotes.</p>
+
+          <p><strong>The developer experience layer tied it all together.</strong> I introduced Jira with a knowledge base that resolved half of incoming requests before they were even submitted. I'm not a fan of intake forms with dozens of fields; it feels like asking users to organize my backlog for me. Most of my forms started with three inputs: a title, "what's the problem?", and "is this blocking your work or impacting customers?" If I needed more context, I'd ask in the comments. Backend automation handled the actual categorization, issue type assignment, and trend tracking. Service and support requests dropped by nearly half again when I introduced self-service pipeline configuration. I started a monthly newsletter and regular platform surveys. The surveys received a 75% response rate, and satisfaction with the platform averaged 4.5/5 in my final year.</p>
+
+          <p><strong>Then ransomware validated everything.</strong> The corporate network got hit. Took down most of the org for a week. Because I'd migrated all dev services to AWS (source control, build infrastructure, artifact storage), engineering was completely unaffected. Kept shipping. It wasn't designed as disaster recovery. It was a side effect of breaking dependency on corporate IT.</p>
 
           <div class="dive-stats">
             <div><div class="dive-stat-val">$50M</div><div class="dive-stat-label">/year shipped</div></div>
             <div><div class="dive-stat-val">6</div><div class="dive-stat-label">target platforms</div></div>
             <div><div class="dive-stat-val">600+</div><div class="dive-stat-label">pipelines</div></div>
-            <div><div class="dive-stat-val">50%</div><div class="dive-stat-label">support reduction</div></div>
+            <div><div class="dive-stat-val">75%</div><div class="dive-stat-label">survey response rate</div></div>
+            <div><div class="dive-stat-val">4.5/5</div><div class="dive-stat-label">platform satisfaction</div></div>
             <div><div class="dive-stat-val">$2M+</div><div class="dive-stat-label">licenses managed</div></div>
           </div>
           <div class="dive-tech">
-            <span>C# / .NET</span><span>C++</span><span>SQL Server</span><span>PowerShell</span><span>GoCD</span><span>AWS</span><span>VMware</span><span>Ansible</span><span>Kerberos</span><span>ASP.NET</span>
+            <span>C# / .NET</span><span>ASP.NET Core</span><span>SQL Server</span><span>PowerShell</span><span>GoCD</span><span>AWS</span><span>VMware</span><span>Ansible</span><span>Kerberos</span><span>InfluxDB</span><span>Grafana</span><span>Jira</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- eBPF Agent -->
-    <div class="dive" id="ebpf">
+    <!-- Endpoint Agent -->
+    <div class="dive" id="endpoint-agent">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="dive-title-group">
-          <div class="dive-title">Linux Endpoint Agent — eBPF + Rust</div>
-          <div class="dive-subtitle">A10 Networks · Kernel-level visibility without kernel modules</div>
+          <div class="dive-title">Endpoint Agent: Five Platforms, Kernel-Level on Each</div>
+          <div class="dive-subtitle">A10 Networks · Wrote v1 for Windows, Linux, macOS, Android, and iOS</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p>A10's firewall team needed endpoint visibility to complement their network products. Nobody was working on it. I built the first version and authored the v1/v2 roadmap covering four additional platforms.</p>
+          <p>A10's firewall team needed an endpoint agent that intercepts and routes traffic bound for AI model provider APIs to an AI firewall gateway for inspection. It needed to run privileged and be tamper-resistant against end users. It was a P1 priority, and there was nobody in the building who had shipped to all five target platforms with kernel-level drivers <em>and</em> could code the agent itself. I had. So I wrote the v1 for all five.</p>
 
-          <p><strong>Why eBPF over a kernel module?</strong> Three reasons. Safety: eBPF runs in a sandboxed VM with a verifier — it literally cannot crash the kernel. Portability: CO-RE (Compile Once, Run Everywhere) works across kernel versions without recompilation. Operations: you attach and detach programs without reboots. When you're deploying across diverse customer environments with different kernels, that matters enormously.</p>
+          <p><strong>Linux:</strong> eBPF for traffic interception, Rust userspace for event processing and control plane communication, systemd integration for deployment. Why eBPF over a kernel module? Safety: runs in a sandboxed VM with a verifier, can't crash the kernel. Portability: CO-RE (Compile Once, Run Everywhere) works across kernel versions without recompilation. Operations: attach and detach without reboots. When you're deploying across diverse customer environments with different kernels, those properties matter more than raw flexibility.</p>
 
-          <p>eBPF programs attach to kernel events to intercept and route traffic bound for AI model provider APIs to an AI firewall gateway for inspection. Rust userspace processes events and communicates with the control plane. Minimal performance overhead, designed for transparent deployment in production.</p>
+          <p><strong>Windows:</strong> v1 shipped with WinDivert for traffic interception using a third-party certificate, packaged as MSIs. Hardened v2 with our own EV code signing certificate, which means reputation management with Microsoft SmartScreen, a hardware FIPS device to store the key, and all the compliance that comes with it. Runs as a Windows protected service, deployed through standard MDM solutions.</p>
+
+          <p><strong>macOS:</strong> Requires an Apple developer account and approved network extension entitlements before you can even begin real development. If you've never navigated Apple's entitlement approval process for privileged network access, just know it's a gating factor that blocks most teams for weeks.</p>
+
+          <p>The number of people who have shipped privileged, tamper-resistant agents to all five major platforms and know where the landmines are on each is very small. I'd already released production software to every one of them. That's what made it possible to write MVPs fast enough to start shipping while defining the roadmap for hardened versions.</p>
 
           <div class="dive-tech">
-            <span>eBPF</span><span>Rust</span><span>Linux kernel</span><span>systemd</span>
+            <span>eBPF</span><span>Rust</span><span>WinDivert</span><span>EV code signing</span><span>MSI</span><span>macOS entitlements</span><span>systemd</span><span>MDM</span>
           </div>
         </div>
       </div>
@@ -765,20 +775,20 @@ body {
     <div class="dive" id="pro-services">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="dive-title-group">
-          <div class="dive-title">Professional Services — First Engineer in the Role</div>
+          <div class="dive-title">Professional Services: First Engineer in the Role</div>
           <div class="dive-subtitle">ThreatX · Created a new revenue capability by bridging engineering and enterprise sales</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p>I proposed the role and became ThreatX's first engineer to deliver formal professional services — solution architecture and post-sales integration support for enterprise customers. It wasn't a title change. It was identifying a gap where deals were stalling because nobody could bridge the distance between what the product did and what enterprise environments actually looked like.</p>
+          <p>I proposed the role and became ThreatX's first engineer to deliver formal professional services: solution architecture and post-sales integration support for enterprise customers. It wasn't a title change. It was identifying a gap where deals were stalling because nobody could bridge the distance between what the product did and what enterprise environments actually looked like.</p>
 
-          <p><strong>I personally delivered four enterprise engagements.</strong> The common thread was Microsoft-ecosystem customers that no other engineer on the team could support. That meant debugging IIS integrations, shipping a VMware appliance for a customer that wouldn't run Linux containers, and translating between enterprise IT terminology and product capabilities during pre-sales calls. These weren't support tickets — they were the difference between a closed deal and a lost one.</p>
+          <p><strong>I personally delivered four enterprise engagements.</strong> The common thread was Microsoft-ecosystem customers that no other engineer on the team could support. That meant debugging IIS integrations, shipping a VMware appliance for a customer that wouldn't run Linux containers, and translating between enterprise IT terminology and product capabilities during pre-sales calls. These weren't support tickets. They were the difference between a closed deal and a lost one.</p>
 
           <p><strong>The broader impact was opening a market segment.</strong> Before this, Microsoft-heavy enterprises were effectively off the table. After, sales had a repeatable path into those accounts with engineering support that could speak their language. It established professional services as a revenue-generating capability the company didn't have before.</p>
 
-          <p>For context — before joining ThreatX I'd nearly been hired by AWS Professional Services (hiring freeze) and VMware as a Solution Architect. The consulting muscle was already there. This was just the first time I got to apply it inside a product company.</p>
+          <p>For context: before joining ThreatX I'd nearly been hired by AWS Professional Services (hiring freeze) and VMware as a Solution Architect. The consulting muscle was already there. This was just the first time I got to apply it inside a product company.</p>
 
           <div class="dive-tech">
             <span>IIS</span><span>VMware</span><span>Windows Server</span><span>Solution Architecture</span><span>Pre-sales</span>
@@ -791,18 +801,18 @@ body {
     <div class="dive" id="opensource">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="dive-title-group">
-          <div class="dive-title">Open Source — Security Testing Tools</div>
+          <div class="dive-title">Open Source: Security Testing Tools</div>
           <div class="dive-subtitle">Apparatus · Crucible · Chimera</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p><strong>Apparatus</strong> — AI-augmented network simulation supporting 13 protocols with fault injection, honeypot deployment, and traffic analysis. Built for security testing and network resilience validation.</p>
+          <p><strong>Apparatus:</strong> AI-augmented network simulation supporting 13 protocols with fault injection, honeypot deployment, and traffic analysis. Built for security testing and network resilience validation.</p>
 
-          <p><strong>Crucible</strong> — Attack simulation framework with 119 pre-built scenarios covering OWASP Top 10, API abuse patterns, and advanced persistent threat chains. Used to validate that Synapse actually catches what it claims to catch.</p>
+          <p><strong>Crucible:</strong> Attack simulation framework with 119 pre-built scenarios covering OWASP Top 10, API abuse patterns, and advanced persistent threat chains. Used to validate that Synapse actually catches what it claims to catch.</p>
 
-          <p><strong>Chimera</strong> — Intentionally vulnerable API server spanning 450+ endpoints across 22 industry verticals. Purpose-built target environment for security tool validation and training. Includes an OWASP LLM teaching environment with guided hints and vulnerability code diffs.</p>
+          <p><strong>Chimera:</strong> Intentionally vulnerable API server spanning 450+ endpoints across 22 industry verticals. Purpose-built target environment for security tool validation and training. Includes an OWASP LLM teaching environment with guided hints and vulnerability code diffs.</p>
 
           <p>All publicly available on <a href="https://github.com/NickCrew" style="color:var(--accent)">GitHub</a>.</p>
 
@@ -817,29 +827,28 @@ body {
     <div class="dive" id="ai-methodology">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="dive-title-group">
-          <div class="dive-title">AI-Augmented Development — The Actual Methodology</div>
-          <div class="dive-subtitle">Multi-LLM review gates, behavioral test analysis, circuit breakers</div>
+          <div class="dive-title">AI-Augmented Development: The Actual Methodology</div>
+          <div class="dive-subtitle">Multi-perspective review gates, behavioral test analysis, circuit breakers</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p>"AI-augmented" gets used loosely. Here's what it actually means in practice — a structured engineering methodology with multiple feedback loops, quality gates, and circuit breakers that let one engineer operate at team-level velocity without sacrificing production quality.</p>
+          <p>"AI-augmented" gets used loosely. Here's what it actually means in practice: a structured engineering methodology where I lead a team of AI agents the same way a senior engineer leads junior developers. I set the architecture, define patterns, review every output, and make every design decision. The agents implement against my specs, write tests, generate documentation. The quality gates keep them honest.</p>
 
-          <p><strong>The outer loop is implementation.</strong> I define the architecture, write specs, and set patterns. LLM agents implement against those specs — code, tests, documentation. But nothing ships from this loop alone. Every output enters the inner review loops before it merges.</p>
+          <p><strong>The outer loop is implementation.</strong> I define the architecture, write specs, and set patterns. Agents implement against those specs (code, tests, documentation). Same as assigning work to junior developers: clear requirements, bounded scope, review everything before it merges.</p>
 
-          <p><strong>Multi-LLM, multi-perspective review.</strong> Multiple LLM instances review each change from different angles — one focused on security implications, another on performance characteristics, another on code quality and pattern consistency. These aren't the same model with different prompts running in sequence. They're separate review perspectives that catch different categories of issues, the same way a security engineer and a performance engineer would see different things in the same PR.</p>
+          <p><strong>Multi-perspective review gates.</strong> Every change gets reviewed from multiple angles: security implications, performance characteristics, code quality and pattern consistency. These are separate review perspectives that catch different categories of issues, the same way a security engineer and a performance engineer would see different things in the same PR.</p>
 
-          <p><strong>The test gap analysis loop is the interesting one.</strong> This isn't code coverage — it's behavioral coverage. A dedicated LLM reviews the test suite looking for gaps in <em>behavior</em> testing: are we testing the edge cases? Are there trivial assertions masking real gaps? Is the test actually validating the contract or just confirming the implementation? When agents write tests, those tests enter this loop where another LLM either approves or requests changes before they're accepted. The effect is that it checks the <em>quality</em> of tests, not just their existence — no rubber-stamp assertions, no tests that pass by coincidence.</p>
+          <p><strong>The test gap analysis loop is the interesting one.</strong> This isn't code coverage. It's behavioral coverage. A dedicated review agent examines the test suite looking for gaps in <em>behavior</em> testing: are we testing the edge cases? Are there trivial assertions masking real gaps? Is the test actually validating the contract or just confirming the implementation? When agents write tests, those tests go through this review where another agent either approves or requests changes. The effect is quality control on the tests themselves. No rubber-stamp assertions, no tests that pass by coincidence.</p>
 
-          <p><strong>Circuit breakers prevent compounding errors.</strong> If a review loop flags an issue, the pipeline stops. It doesn't try to self-heal or auto-fix and retry indefinitely. The failure gets surfaced to me with context — what was attempted, what failed, what the reviewers flagged. I make the architectural decision about how to proceed. The system is designed to fail fast and fail loudly rather than silently accumulate technical debt.</p>
+          <p><strong>Circuit breakers prevent compounding errors.</strong> If a review loop flags an issue, the pipeline stops. It doesn't try to self-heal or auto-fix and retry indefinitely. The failure gets surfaced to me with context: what was attempted, what failed, what the reviewers flagged. I make the architectural decision about how to proceed. The system is designed to fail fast and fail loudly rather than silently accumulate technical debt.</p>
 
-          <p><strong>The result is 9,775 test cases across four platforms.</strong> Not because I heroically wrote ten thousand tests. Because the methodology made comprehensive testing the path of least resistance — it's harder to skip validation than to do it. That's the point. The AI handles the volume. The gates handle the quality. I handle the decisions.</p>
+          <p><strong>The result is 9,775 test cases across four platforms.</strong> Not because I heroically wrote ten thousand tests. Because the methodology made comprehensive testing the path of least resistance. It's harder to skip validation than to do it. That's the point. The agents handle the volume. The gates handle the quality. I handle the architecture and decisions.</p>
 
           <div class="dive-stats">
             <div><div class="dive-stat-val">9,775</div><div class="dive-stat-label">test cases</div></div>
-            <div><div class="dive-stat-val">750K</div><div class="dive-stat-label">lines shipped</div></div>
-            <div><div class="dive-stat-val">4</div><div class="dive-stat-label">platforms in 11 months</div></div>
+            <div><div class="dive-stat-val">4</div><div class="dive-stat-label">platforms shipped</div></div>
           </div>
         </div>
       </div>
@@ -849,22 +858,22 @@ body {
     <div class="dive" id="docs-platform">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="dive-title-group">
-          <div class="dive-title">Documentation Platform — From Manual Editing to Automated Publishing</div>
+          <div class="dive-title">Documentation Platform: From Manual Editing to Automated Publishing</div>
           <div class="dive-subtitle">ThreatX / A10 Networks · Information architecture, style guide, docs-as-code pipeline</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p>I authored all of ThreatX's published documentation — before and after the A10 acquisition. But the more interesting story is how I scaled from doing it all manually to building a platform that made quality documentation a natural byproduct of the development process.</p>
+          <p>I authored all of ThreatX's published documentation, before and after the A10 acquisition. But the more interesting story is how I scaled from doing it all manually to building a platform that made quality documentation a natural byproduct of the development process.</p>
 
           <p><strong>The starting point was unsustainable.</strong> I was creating every AsciiDoc file myself and manually editing other people's contributions for quality and consistency. Content review was a bottleneck that scaled linearly with my time. That works when you're small. It doesn't work when every minor product version needs to ship with versioned documentation simultaneously.</p>
 
-          <p><strong>So I built the infrastructure to make it scale.</strong> Designed the information architecture from scratch — how content is organized, how topics relate to each other, how a user navigates from problem to solution. Developed a custom style guide that codified the voice, terminology, and structural patterns so contributions didn't need me as a quality filter.</p>
+          <p><strong>So I built the infrastructure to make it scale.</strong> Designed the information architecture from scratch: how content is organized, how topics relate to each other, how a user navigates from problem to solution. Developed a custom style guide that codified the voice, terminology, and structural patterns so contributions didn't need me as a quality filter.</p>
 
-          <p><strong>Then I automated the enforcement.</strong> Built a docs-as-code platform on Antora with automated quality checks using Vale and a custom style guide ruleset. Re-usable AsciiDoc components meant common patterns — admonitions, API references, configuration examples — were consistent by construction, not by review. Contribution templates lowered the barrier for other engineers to write docs that met the standard without my intervention.</p>
+          <p><strong>Then I automated the enforcement.</strong> Built a docs-as-code platform on Antora with automated quality checks using Vale and a custom style guide ruleset. Re-usable AsciiDoc components meant common patterns (admonitions, API references, configuration examples) were consistent by construction, not by review. Contribution templates lowered the barrier for other engineers to write docs that met the standard without my intervention.</p>
 
-          <p><strong>The outcome:</strong> every minor version of the product shipped with versioned documentation at the same time. Architecture decision records, operational runbooks, API references, onboarding guides — all maintained in the same pipeline as the code. This was critical for the on-prem product launch, which required customer self-service documentation that had to be complete and correct on day one.</p>
+          <p><strong>The outcome:</strong> every minor version of the product shipped with versioned documentation at the same time. Architecture decision records, operational runbooks, API references, onboarding guides, all maintained in the same pipeline as the code. This was critical for the on-prem product launch, which required customer self-service documentation that had to be complete and correct on day one.</p>
 
           <div class="dive-tech">
             <span>AsciiDoc</span><span>Antora</span><span>Vale</span><span>Git</span><span>CI/CD</span>
@@ -881,9 +890,13 @@ body {
     <div class="section-subhead">The best platform work happens when you treat internal tools with the same care you'd give a customer-facing product.</div>
 
     <div class="prose">
-      <p>I build for internal stakeholders. That means I spend time with the people who'll actually use what I'm building — understanding their workflows, their frustrations, the workarounds they've invented. The Vispero developer tools eliminated a day of engineering toil per week because I sat with release engineers and watched where they were losing time. The ThreatX Labs ecosystem exists because leadership needed repeatable demos and the sales team was blocked without them.</p>
+      <p>I don't just build tools. I build products. I can't help but see the endgame of any solution and the incremental steps to get there. I build robust pipelines early so I can iterate fast, respond to bugs in minutes instead of sprints, and ship with confidence. I spent six years managing hotels in South Florida before moving into engineering, and it made it impossible for me not to think about the people on the other end of everything I build.</p>
 
-      <p>The photography background shows up here more than you'd expect. I think about user experience, visual hierarchy, the way information flows on a screen. My dashboards and admin interfaces get adopted because they're designed, not just functional. Documentation gets the same treatment — if it isn't clear and well-structured, it might as well not exist.</p>
+      <p>I feed off of available problems and I'm usually the first to see many of them. I like the fast feedback loop of developing for internal stakeholders. Some people want to be involved in shaping the solution, so I get them in early and make them feel like co-builders. Others just want me to deliver something that works. I adapt. When a production-impacting bug comes in, I don't just add it to the backlog. I take five minutes to see if I can fix it in twenty, and if I can, I do. Sometimes the reality is your users are your testers, and you have to figure out how to manage that without burning goodwill.</p>
+
+      <p>I try to work myself out of every job I do. At ThreatX, I built the first fleet management platform and then identified SOC analysts who showed promise and interest in development. I mentored them from platform users into SRE practitioners, and eventually they took over the platform completely. That created a bridge team between engineering and the SOC that took significant operational work off engineering's plate while giving growth opportunities on the SOC side. It was the right people at the right time, but it only happened because I'd invested in collaborating across the org, learning people's problems, and building relationships outside my immediate team.</p>
+
+      <p>Design and user experience matter even for internal tools. I was a professional photographer and printmaker before I was an engineer, and I still shoot and print on the side. That background shows up in how I think about visual hierarchy, information architecture, and the way a user moves through an interface. My dashboards and admin interfaces get adopted because they're designed, not just functional. Documentation gets the same treatment. If it isn't clear and well-structured, it might as well not exist.</p>
     </div>
 
     <div class="phil-grid">
@@ -892,16 +905,16 @@ body {
         <p>Authored all published documentation for ThreatX (continuing after the A10 acquisition). Designed the information architecture, developed a custom style guide, and built the docs-as-code platform underneath it. Every minor product version shipped with versioned docs at the same time.</p>
       </div>
       <div class="phil-card">
-        <h4>AI-Augmented, Not AI-Generated</h4>
-        <p>I architect the systems, define the patterns, and review every output. AI handles volume — implementations against my specs, tests, docs. Same as leading a team of junior engineers. You don't write every line, but you own every decision. The methodology is how four platforms shipped solo in eleven months.</p>
+        <h4>AI-Augmented Engineering</h4>
+        <p>Created the methodology and framework my team uses to integrate AI agents into our development workflow. Multi-perspective review gates, behavioral test gap analysis, and circuit breakers that fail to a human. The approach 5x'd our engineering output that year.</p>
       </div>
       <div class="phil-card">
         <h4>Test-Driven Confidence</h4>
         <p>9,775 test cases across four platforms. Comprehensive coverage enables the velocity that AI-augmented development makes possible. There's no excuse to skip validation when you can move this fast.</p>
       </div>
       <div class="phil-card">
-        <h4>Solo Delivery, Team Impact</h4>
-        <p>Built platforms that eliminated operational overhead for entire teams and automated routine work to create capacity for higher-value projects. One engineer's output, org-level impact.</p>
+        <h4>End-to-End Ownership</h4>
+        <p>I build CI/CD and quality pipelines early so I can iterate fast and respond to production issues in minutes, not sprints. Comfortable owning the full lifecycle from architecture through deployment, documentation, and user support.</p>
       </div>
     </div>
   </div>
