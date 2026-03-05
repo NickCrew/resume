@@ -81,10 +81,10 @@ body {
 }
 
 .hero-intro {
-  font-family: var(--serif);
-  font-size: 20px;
-  font-weight: 350;
-  line-height: 1.65;
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
   color: var(--text);
   max-width: 620px;
   font-style: italic;
@@ -140,12 +140,13 @@ body {
 }
 
 .section-nav a {
-  font-family: var(--mono);
-  font-size: 11px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
   letter-spacing: 0.3px;
   color: var(--text-dim);
   text-decoration: none;
-  padding: 14px 16px;
+  padding: 16px 20px;
   white-space: nowrap;
   border-bottom: 2px solid transparent;
   transition: all 0.2s;
@@ -508,13 +509,14 @@ body {
 <div class="page">
   <div class="hero">
     <h1 class="hero-name">Nicholas Ferguson</h1>
-    <div class="hero-title">Platform Engineer</div>
+    <div class="hero-title">Engineer</div>
     <p class="hero-intro">
-      Teams with deep domain expertise get stuck at the last mile because they can't ship to production.
-      I'm the person who gets it out the door. At A10, a team of LLM researchers built an AI Firewall but 
-      couldn't ship it to enterprise customers. I wrote their v1 endpoint agents for five operating systems to unblock them, 
-      then built the edge sensor that absorbed their product entirely. Before that, I built the developer platform that shipped 
-      $50M/year in software. Four platforms built from scratch across three companies, always as the first infrastructure hire.
+      I solve business problems with computers.
+      Teams with deep domain expertise often need a different skillset to get from prototype to production
+      and I'm the person who bridges that gap. At A10, I wrote endpoint agents for five operating systems
+      and engineered the release to production to unblock their AI Firewall team, then rebuilt the legacy SaaS WAF
+      into a high-performance edge sensor and identified a market gap no competitor had addressed.
+      Four platforms built from scratch across three companies. The deep dives below tell the full story.
     </p>
     <div class="hero-links">
       <a href="https://github.com/NickCrew" class="hero-link" target="_blank" rel="noopener">
@@ -533,10 +535,7 @@ body {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
         Resume (PDF)
       </a>
-      <a href="process.html" class="hero-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        My Process
-      </a>
+
     </div>
   </div>
 </div>
@@ -555,15 +554,15 @@ body {
   <div class="section" id="background">
     <div class="section-label">Experience</div>
     <div class="section-heading">Career Overview</div>
-    <div class="section-subhead">The arc: raw engineering foundations → proactively identifying business problems and connecting across teams → shipping the full product stack solo, driven by business outcomes I identified myself.</div>
+    <div class="section-subhead">My first job at every company is helping the people around me ship. That's how I end up rebuilding the product.</div>
 
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-date">2025 – 2026</div>
         <div>
           <div class="timeline-title">Sr. Platform Engineer</div>
-          <div class="timeline-org">A10 Networks (acquired ThreatX for $26M)</div>
-          <div class="timeline-body">Delivered on a commitment to the German government, repositioned the product for A10's 7,700 existing customers. Shipped the full product stack solo in 11 months: edge protection platform (replacing a dozen networked services with a single binary), endpoint agents for 5 OS targets, sales and validation tooling. Identified a market gap competitors missed and built the MVP. Absorbed the AI Firewall team's product into my edge sensor.</div>
+          <div class="timeline-org">A10 Networks (acquired ThreatX)</div>
+          <div class="timeline-body">Shipped the full product stack solo in 11 months. Edge sensor, fleet management, endpoint agents for 5 OS targets, sales tooling, and a market gap nobody else had identified.</div>
         </div>
       </div>
       <div class="timeline-item">
@@ -571,7 +570,7 @@ body {
         <div>
           <div class="timeline-title">Sr. Platform Engineer</div>
           <div class="timeline-org">ThreatX</div>
-          <div class="timeline-body">Started seeing beyond the code. Created the professional services function from nothing — proposed the model, delivered 4 enterprise engagements, opened a new market segment. Mentored SOC analysts into SRE roles and handed off the fleet platform entirely. Diagnosed a kernel-level production failure that saved a $1M contract. Cut AWS spend ~50% ($60K/mo).</div>
+          <div class="timeline-body">Started looking outward. Created professional services from nothing, mentored SOC analysts into SRE roles, diagnosed a kernel-level failure that saved a $1M contract.</div>
         </div>
       </div>
       <div class="timeline-item">
@@ -579,7 +578,7 @@ body {
         <div>
           <div class="timeline-title">Sr. Platform / Build Engineer</div>
           <div class="timeline-org">Vispero</div>
-          <div class="timeline-body">Pure builder. First platform developer in a newly created role. Built the internal developer platform from scratch: a task-based build DSL abstracting compilation across 6 targets, 600+ automated pipelines, self-bootstrapping from a clean machine. Shipped $50M/year in software on this framework. Unified 4 acquired companies into one engineering organization.</div>
+          <div class="timeline-body">Pure builder. First platform hire. Built the developer platform from scratch that shipped $50M/year across 6 targets. Unified 4 acquired companies into one engineering org.</div>
         </div>
       </div>
     </div>
@@ -924,17 +923,19 @@ body {
   <!-- ════════════ PHILOSOPHY ════════════ -->
   <div class="section" id="philosophy">
     <div class="section-label">How I Work</div>
-    <div class="section-heading">I can build anything. I know what to build. I know why to build it.</div>
-    <div class="section-subhead">The career arc in one sentence. The engineering foundations came first, but the instinct for finding the right problem to solve is what makes the output matter.</div>
+    <div class="section-heading">There are no Jira tickets for what I do.</div>
+    <div class="section-subhead">I solve problems nobody knew to ask about. That's not a perk of the role. It is the role.</div>
 
     <div class="prose">
-      <p>I don't just build tools. I build products. I can't help but see the endgame of any solution and the incremental steps to get there. I build robust pipelines early so I can iterate fast, respond to bugs in minutes instead of sprints, and ship with confidence. I spent six years managing hotels in South Florida before moving into engineering, and it made it impossible for me not to think about the people on the other end of everything I build.</p>
+      <p>I drop into a new environment and start by understanding the problems of the people nearest to me. My first job is to help other people do their job better. Usually that means helping engineers ship — and that's more than building pipelines. It means gaining trust, re-educating people on what continuous integration actually means, and showing them why it's the prerequisite to faster delivery, not an obstacle to it.</p>
 
-      <p>I feed off of available problems and I'm usually the first to see many of them. I like the fast feedback loop of developing for internal stakeholders. Some people want to be involved in shaping the solution, so I get them in early and make them feel like co-builders. Others just want me to deliver something that works. I adapt. When a production-impacting bug comes in, I don't just add it to the backlog. I take five minutes to see if I can fix it in twenty, and if I can, I do. Sometimes the reality is your users are your testers, and you have to figure out how to manage that without burning goodwill.</p>
+      <p>By focusing on the people around me, I get an accelerated tour of the company. I learn what's broken, what's working despite itself, and where the real bottlenecks live. From there I work outward — connecting with customers, understanding the business, mapping the market context. That's how I end up identifying gaps like API Authorization Intelligence or creating a professional services function that didn't exist. Not because someone assigned it. Because the path from "help this person ship" leads you to the edges of the company if you follow it far enough.</p>
 
-      <p>I try to work myself out of every job I do. At ThreatX, I built the first fleet management platform and then identified SOC analysts who showed promise and interest in development. I mentored them from platform users into SRE practitioners, and eventually they took over the platform completely. That created a bridge team between engineering and the SOC that took significant operational work off engineering's plate while giving growth opportunities on the SOC side. It was the right people at the right time, but it only happened because I'd invested in collaborating across the org, learning people's problems, and building relationships outside my immediate team.</p>
+      <p>Everything I build is designed to be handed off from day one. I find people to support it. I teach those people how to do the same. At ThreatX, I built the fleet management platform, identified SOC analysts who showed aptitude, mentored them into SRE practitioners, and they took over completely. That created a permanent bridge team between engineering and the SOC. It only happened because I'd invested in learning people's problems and building relationships outside my immediate team. I try to work myself out of every job I do.</p>
 
-      <p>Design and user experience matter even for internal tools. I was a professional photographer and printmaker before I was an engineer, and I still shoot and print on the side. That background shows up in how I think about visual hierarchy, information architecture, and the way a user moves through an interface. My dashboards and admin interfaces get adopted because they're designed, not just functional. Documentation gets the same treatment. If it isn't clear and well-structured, it might as well not exist.</p>
+      <p>Ironically, I am a product engineer — my work is identifiable and known for the polish and small features that show someone really took the time to understand the user's problems. I just start from a different place. Instead of starting on the outside in traditional application development, I start on the inside and focus on people. I spent six years managing hotels in South Florida before moving into engineering, and that made it impossible for me not to think about the person on the other end of everything I build. I'm also a photographer and printmaker, and that shows up in how I think about visual hierarchy and information architecture. My dashboards get adopted because they're designed, not just functional.</p>
+
+      <p>It doesn't matter what level I enter a company. I can start as a DevOps Engineer and rebuild the entire product stack three years later. My superpower is building consensus and driving change without needing authority to do it.</p>
     </div>
 
     <div class="phil-grid">
@@ -967,6 +968,7 @@ body {
       <a href="https://github.com/NickCrew" target="_blank" rel="noopener">GitHub</a>
       <a href="https://linkedin.com/in/ncferguson" target="_blank" rel="noopener">LinkedIn</a>
       <a href="mailto:nick@atlascrew.dev">Email</a>
+      <a href="process.html">How I Job Search</a>
     </div>
   </div>
 </div>

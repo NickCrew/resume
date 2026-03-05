@@ -103,9 +103,9 @@ const doc = new Document({
       new Paragraph({
         spacing: spacer(0, 40),
         children: [
-          t("Teams with deep domain expertise get stuck at the last mile because they can't ship to production. I'm the person who gets it out the door. At A10, a team of LLM researchers had built an AI Firewall for protecting AI agents from abuse and data exfiltration, but needed 3\u20135 specialists to actually ship it to enterprise customers. I wrote their v1 endpoint agents for 5 operating systems to unblock them, then "),
-          tb("built the edge sensor that absorbed their product"),
-          t(" \u2014 embedding their detections alongside response scanning and sensitive data protection, moving everything from a central gateway to a single binary with sub-millisecond latency. Before that, I built the developer platform that shipped $50M/year in software across 6 targets. "),
+          t("I solve business problems with computers. Teams with deep domain expertise often need a different skillset to get from prototype to production, and I'm the person who bridges that gap. At A10, LLM researchers had built an AI Firewall for protecting AI agents from abuse and data exfiltration but needed networking, release engineering, and cross-platform deployment expertise to ship it to enterprise customers. I wrote their v1 endpoint agents for 5 operating systems and engineered the release to production, then "),
+          tb("rebuilt the legacy SaaS WAF into a high-performance edge sensor"),
+          t(" \u2014 integrating their detections alongside response scanning and sensitive data protection in a single binary with sub-millisecond latency. Before that, I built the developer platform that shipped $50M/year in software across 6 targets. "),
           tb("Four platforms built from scratch across three companies."),
           t(" I find the problem, ship the solution, and hand it off so others can own it."),
         ]
@@ -137,8 +137,8 @@ const doc = new Document({
       ]),
 
       bulletRich([
-        tb("Unblocked the AI Firewall team's last-mile problem, then built the platform that replaced it. "),
-        t("Their LLM researchers had built protections against AI agent abuse and data exfiltration but couldn't ship to enterprise customers without networking, release engineering, and cross-platform deployment expertise. Wrote v1 endpoint agents for Windows, Linux, macOS, iOS, and Android with kernel-level drivers, handling EV code signing, MSI packaging, macOS notarization, SmartScreen reputation, and MDM deployment. Then embedded their detections into the edge sensor alongside response scanning and sensitive data protection, moving everything to the edge and eliminating both the original agents and the central gateway.")
+        tb("Bridged the AI Firewall team's gap between prototype and production. "),
+        t("Their LLM researchers had built protections against AI agent abuse and data exfiltration but needed networking, release engineering, and cross-platform deployment expertise to ship to enterprise customers. Wrote v1 endpoint agents for Windows, Linux, macOS, iOS, and Android with kernel-level drivers, handling EV code signing, MSI packaging, macOS notarization, SmartScreen reputation, and MDM deployment. Then integrated their detections into the edge sensor alongside response scanning and sensitive data protection, consolidating everything at the edge.")
       ]),
 
       bulletRich([
