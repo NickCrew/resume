@@ -415,6 +415,31 @@ body {
   line-height: 1.6;
 }
 
+/* ── Dive Group Headers ── */
+.dive-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 32px 0 16px;
+  padding-bottom: 0;
+}
+
+.dive-group:first-child { margin-top: 0 }
+
+.dive-group-icon {
+  color: var(--accent);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.dive-group-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
 /* ── Stats Strip ── */
 .stats-strip {
   display: flex;
@@ -502,6 +527,7 @@ body {
   .section-nav-inner { padding: 0 20px }
 }
 </style>
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -554,31 +580,31 @@ body {
   <div class="section" id="background">
     <div class="section-label">Experience</div>
     <div class="section-heading">Career Overview</div>
-    <div class="section-subhead">My first job at every company is helping the people around me ship.  </div>
+    <div class="section-subhead">My goal is to work myself out of every job I get.</div>
 
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-date">2025 – 2026</div>
         <div>
-          <div class="timeline-title">Sr. Platform Engineer</div>
-          <div class="timeline-org">A10 Networks (acquired ThreatX)</div>
-          <div class="timeline-body">Shipped the full product stack solo in 11 months. Edge sensor, fleet management, endpoint agents for 5 OS targets, sales tooling, and a market gap nobody else had identified.</div>
+          <div class="timeline-title">A10 Networks</div>
+          <div class="timeline-org">Enterprise networking and security · Founded 2004 · acquired ThreatX</div>
+          <div class="timeline-body">Shipped the full product stack solo in 11 months: rebuilt the SaaS WAF as a standalone edge sensor for A10's 7,700 customers, wrote endpoint agents for 5 operating systems to bridge the AI Firewall team's gap to production, built fleet management and sales tooling, and identified a market gap in API authorization observability that no competitor had addressed.</div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-date">2022 – 2025</div>
         <div>
-          <div class="timeline-title">Sr. Platform Engineer</div>
-          <div class="timeline-org">ThreatX</div>
-          <div class="timeline-body">Started looking outward. Created professional services from nothing, mentored SOC analysts into SRE roles, diagnosed a kernel-level failure that saved a $1M contract.</div>
+          <div class="timeline-title">ThreatX</div>
+          <div class="timeline-org">API & application security SaaS · Founded 2014 · acquired by A10</div>
+          <div class="timeline-body">Started seeing beyond the code. Created the professional services function from nothing — proposed the model, delivered 4 enterprise engagements, opened a new market segment. Mentored SOC analysts into SRE practitioners who took over the fleet platform entirely. Diagnosed a kernel-level production failure that saved a $1M contract. Cut AWS spend ~50% ($60K/mo).</div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-date">2018 – 2021</div>
         <div>
-          <div class="timeline-title">Sr. Platform / Build Engineer</div>
-          <div class="timeline-org">Vispero</div>
-          <div class="timeline-body">Pure builder. First platform hire. Built the developer platform from scratch that shipped $50M/year on 6 architectures. Unified 4 acquired companies into one engineering org.</div>
+          <div class="timeline-title">Vispero</div>
+          <div class="timeline-org">Vispero / Freedom Scientific · Assistive technology · Founded 2000 · 4 companies consolidated under Vispero in 2018</div>
+          <div class="timeline-body">Pure builder. Came in as the first platform developer in a newly created role, left as the senior engineer who owned the platform. Built the internal developer platform from scratch: a task-based build DSL abstracting compilation across 6 targets, 600+ automated pipelines, self-bootstrapping from a clean machine. Shipped $50M/year in software on this framework. Unified the 4 acquired companies into one engineering organization.</div>
         </div>
       </div>
     </div>
@@ -598,12 +624,16 @@ body {
       <div class="strip-stat"><span class="strip-val">$50M</span><span class="strip-label">/yr software shipped</span></div>
     </div>
 
+    <div class="dive-group">
+      <i data-lucide="package" class="dive-group-icon" width="16" height="16"></i>
+      <span class="dive-group-label">Commercial Products</span>
+    </div>
     <!-- Synapse -->
     <div class="dive" id="synapse">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="dive-title-group">
-          <div class="dive-title">Synapse: From SaaS Dependency to Single Binary</div>
-          <div class="dive-subtitle">A10 Networks · Edge protection platform. Delivered a commitment to the German government and repositioned the product for 7,700 customers</div>
+          <div class="dive-title">Edge Protection Sensor: From SaaS Dependency to Single Binary</div>
+          <div class="dive-subtitle">A10 Networks · Replaced a dozen networked services with a single binary</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
@@ -644,7 +674,7 @@ body {
     <div class="dive" id="signal-horizon">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
         <div class="dive-title-group">
-          <div class="dive-title">Signal Horizon: The SaaS Upsell That Makes On-Prem Work</div>
+          <div class="dive-title">Fleet Management & Collective Defense: The SaaS Upsell That Makes On-Prem Work</div>
           <div class="dive-subtitle">A10 Networks · Fleet management + collective defense + incident response, self-hosted or SaaS</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
@@ -665,6 +695,132 @@ body {
 
           <div class="dive-tech">
             <span>TypeScript</span><span>React</span><span>ClickHouse</span><span>PostgreSQL</span><span>Redis</span><span>WebSockets</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Endpoint Agent -->
+    <div class="dive" id="endpoint-agent">
+      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="dive-title-group">
+          <div class="dive-title">AI Firewall: Bridging the Gap from Prototype to Production</div>
+          <div class="dive-subtitle">A10 Networks · Wrote v1 for five operating systems, then integrated everything into the edge sensor</div>
+        </div>
+        <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
+      </div>
+      <div class="dive-body">
+        <div class="dive-content">
+          <p><strong>The business problem:</strong> A10's AI Firewall team had built protections against AI agent abuse and data exfiltration. Their LLM researchers were domain experts, but shipping to enterprise customers required networking, release engineering, cross-platform deployment, and kernel-level driver expertise they didn't have. They would have needed 3–5 specialists. It was the company's P1 priority and it was stalled.</p>
+
+          <p><strong>The solution:</strong> I wrote v1 endpoint agents for all five target platforms — Windows, Linux, macOS, iOS, and Android — with kernel-level drivers and tamper resistance. I managed the full release lifecycle: EV code signing, MSI packaging, macOS notarization, SmartScreen reputation, MDM enterprise deployment for each target. This unblocked the team to start shipping.</p>
+
+          <p><strong>Then the story got more interesting.</strong> My edge sensor (Synapse) already had response scanning and sensitive data detection — capabilities the AI Firewall team needed. I embedded their LLM detections into Synapse, moving everything to the edge and eliminating both the endpoint agents I'd written and the need for a central gateway. Same pattern as the API security product: collapse complexity into the edge.</p>
+
+          <p><strong>Linux:</strong> eBPF for traffic interception, Rust userspace for event processing and control plane communication, systemd integration for deployment. Why eBPF over a kernel module? Safety: runs in a sandboxed VM with a verifier, can't crash the kernel. Portability: CO-RE (Compile Once, Run Everywhere) works across kernel versions without recompilation. Operations: attach and detach without reboots. When you're deploying across diverse customer environments with different kernels, those properties matter more than raw flexibility.</p>
+
+          <p><strong>Windows:</strong> v1 shipped with WinDivert for traffic interception using a third-party certificate, packaged as MSIs. Hardened v2 with our own EV code signing certificate, which means reputation management with Microsoft SmartScreen, a hardware FIPS device to store the key, and all the compliance that comes with it. Runs as a Windows protected service, deployed through standard MDM solutions.</p>
+
+          <p><strong>macOS:</strong> Requires an Apple developer account and approved network extension entitlements before you can even begin real development. If you've never navigated Apple's entitlement approval process for privileged network access, just know it's a gating factor that blocks most teams for weeks.</p>
+
+          <p>The number of people who have shipped privileged, tamper-resistant agents to all five major platforms and know where the landmines are on each is very small. I'd already released production software to every one of them at Vispero. That's what made it possible to write MVPs fast enough to start shipping while defining the roadmap for hardened versions.  The career arc matters here: the raw cross-platform build engineering I did at Vispero is what made the A10 work possible.</p>
+
+          <div class="dive-tech">
+            <span>eBPF</span><span>Rust</span><span>WinDivert</span><span>EV code signing</span><span>MSI</span><span>macOS entitlements</span><span>systemd</span><span>MDM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dive-group">
+      <i data-lucide="dollar-sign" class="dive-group-icon" width="16" height="16"></i>
+      <span class="dive-group-label">Direct Business Impact</span>
+    </div>
+    <!-- $1M Contract Save -->
+    <div class="dive" id="wayfair">
+      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="dive-title-group">
+          <div class="dive-title">The $1M Contract Save</div>
+          <div class="dive-subtitle">ThreatX · Diagnosing what two weeks of planned NGINX optimizations couldn't</div>
+        </div>
+        <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
+      </div>
+      <div class="dive-body">
+        <div class="dive-content">
+          <p>A major customer ran 400+ self-hosted sensors and handled 150K requests per second on Tuesdays alone. The initial attempt to cut over their production traffic lasted <em>minutes</em> before catastrophic failure. The response from the team was two weeks of planned NGINX optimizations in the sensor.</p>
+
+          <p><strong>The problem wasn't NGINX.</strong> But nobody knew that yet. We had never actually validated the sensor at that traffic volume before attempting the cutover. So I built a test harness: stood up a Fargate cluster to generate load and pointed it at a sensor to reproduce the failure under controlled conditions.</p>
+
+          <p><strong>Logging wasn't in place for this.</strong> So I logged into a sensor and ran <code>dmesg</code>. Wall of text: <code>table full, dropping packet</code>. Got it.</p>
+
+          <p>The connection tracking table, where the Linux kernel's stateful firewall (netfilter) tracks unique IP addresses, was exhausting. This isn't active connections. Every IP that touches the sensor gets an entry: blocks, drops, everything. At 150K RPS with the traffic diversity of a major retail site, the default table size fills fast. Disabling conntrack wasn't an option because we were running Docker, which depends on it.</p>
+
+          <p><strong>The fix was a systemd service</strong> that calculates the conntrack table size dynamically based on available memory and sets it before the network stack comes up. No NGINX tuning required. After the change, sensors handled 150K RPS without breaking a sweat.</p>
+
+        <p>The issue had survived one prior failed onboarding attempt. Nobody found it because the symptoms look like a network problem. Application monitoring shows healthy services, the sensor process is fine, and the drops happen at the kernel level before traffic ever reaches userspace. You only find it if you know to check <code>/proc/sys/net/netfilter/nf_conntrack_count</code>. And you only reproduce it if you actually generate enough traffic to fill the table, which requires a purpose-built load test that nobody had done.</p>
+
+          <p>The fix enabled the contract. That diagnostic methodology (build a harness, reproduce at scale, look below the application layer) became how I approach problems by default. It's a straight line from this to how Synapse was designed: every decision at the edge, kernel-level awareness built in.</p>
+
+          <div class="dive-tech">
+            <span>Linux kernel</span><span>conntrack/netfilter</span><span>systemd</span><span>Fargate</span><span>Load testing</span><span>dmesg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AWS Cost Reduction -->
+    <div class="dive" id="aws-savings">
+      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="dive-title-group">
+          <div class="dive-title">AWS Cost Reduction: $60K/Month by Replacing an Architecture Nobody Questioned</div>
+          <div class="dive-subtitle">ThreatX &middot; Cut the AWS bill in half by asking why every sensor needed its own VPC</div>
+        </div>
+        <div class="dive-toggle"><span class="dive-toggle-arrow">&#9656;</span></div>
+      </div>
+      <div class="dive-body">
+        <div class="dive-content">
+          <p><strong>What I walked into:</strong> Every customer sensor &mdash; and customers could have multiple &mdash; consisted of its own VPC. Yes, its own VPC. Inside each: an auto-scaling group of 2 EC2 instances (using credit-consuming instance types incorrectly), each running a single Docker container of the WAF. Because the instances were in a private subnet, every sensor got 2 NAT gateways and 4 Elastic IPs, plus a load balancer. Customers on-boarded by pointing their DNS at the ELB and whitelisting those 4 EIPs.</p>
+
+          <p><strong>It gets worse.</strong> The ASGs were set to scale on CPU utilization. A reverse proxy should scale on connections &mdash; CPU tells you almost nothing useful. But because spinning up new instances took so long, the threshold was set at 40% CPU. Any time a customer's sensors scaled, you got 2&ndash;3x wasted capacity costing anywhere from $70K&ndash;$300K a year depending on the customer. EBS volumes attached to EC2 instances were not being deleted when instances terminated. Elastic IPs were not being released when sensors were decommissioned. AWS service quotas were becoming a recurring problem because of the VPC-per-sensor model.</p>
+
+          <p><strong>The deployment story was equally painful.</strong> Sensors were deployed through a collection of Python scripts with no discernible expected input or output, CloudFormation templates that used both parameters AND Jinja templating, and required making a direct write into another service's database for URLs and IPs to appear in the customer dashboard. If you asked someone to design the most expensive, most fragile way to run a fleet of reverse proxies on AWS, this is roughly what you'd get.</p>
+
+          <p><strong>The fix:</strong> I replaced the entire architecture with slim Alpine-based containers on Fargate in shared infrastructure. Customers whitelisted a shared pool of IPs instead of per-sensor EIPs. Scaling moved from CPU-based to connection-based. No more VPC-per-sensor, no more orphaned disks, no more leaked EIPs, no more quota issues.</p>
+
+          <p><strong>Result:</strong> ~50% reduction in monthly AWS spend, roughly $60K/month in savings on a ~$120K/month bill. The bigger win was operational: the deployment process went from a multi-script ritual requiring database writes to a repeatable, automated workflow.</p>
+
+          <div class="dive-stats">
+            <div><div class="dive-stat-val">~50%</div><div class="dive-stat-label">cost reduction</div></div>
+            <div><div class="dive-stat-val">$60K</div><div class="dive-stat-label">/mo saved</div></div>
+          </div>
+          <div class="dive-tech">
+            <span>AWS</span><span>Fargate</span><span>VPC</span><span>CloudFormation</span><span>Auto Scaling</span><span>ELB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Professional Services -->
+    <div class="dive" id="pro-services">
+      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="dive-title-group">
+          <div class="dive-title">Professional Services: First Engineer in the Role</div>
+          <div class="dive-subtitle">ThreatX · Created a new revenue capability by bridging engineering and enterprise sales</div>
+        </div>
+        <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
+      </div>
+      <div class="dive-body">
+        <div class="dive-content">
+          <p>I proposed the role and became ThreatX's first engineer to deliver formal professional services: solution architecture and post-sales integration support for enterprise customers. It wasn't a title change. It was identifying a gap where deals were stalling because nobody could bridge the distance between what the product did and what enterprise environments actually looked like.</p>
+
+          <p><strong>I personally delivered four enterprise engagements.</strong> The common thread was Microsoft-ecosystem customers that no other engineer on the team could support. That meant debugging IIS integrations, shipping a VMware appliance for a customer that wouldn't run Linux containers, and translating between enterprise IT terminology and product capabilities during pre-sales calls. These weren't support tickets. They were the difference between a closed deal and a lost one.</p>
+
+          <p><strong>The broader impact was opening a market segment.</strong> Before this, Microsoft-heavy enterprises were effectively off the table. After, sales had a repeatable path into those accounts with engineering support that could speak their language. It established professional services as a revenue-generating capability the company didn't have before.</p>
+
+          <p>For context: before joining ThreatX I'd nearly been hired by AWS Professional Services (hiring freeze) and VMware as a Solution Architect. The consulting muscle was already there. This was just the first time I got to apply it inside a product company.</p>
+
+          <div class="dive-tech">
+            <span>IIS</span><span>VMware</span><span>Windows Server</span><span>Solution Architecture</span><span>Pre-sales</span>
           </div>
         </div>
       </div>
@@ -698,38 +854,10 @@ body {
       </div>
     </div>
 
-    <!-- $1M Contract Save -->
-    <div class="dive" id="wayfair">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
-        <div class="dive-title-group">
-          <div class="dive-title">The $1M Contract Save</div>
-          <div class="dive-subtitle">ThreatX · Diagnosing what two weeks of planned NGINX optimizations couldn't</div>
-        </div>
-        <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
-      </div>
-      <div class="dive-body">
-        <div class="dive-content">
-          <p>A major customer ran 400+ self-hosted sensors and handled 150K requests per second on Tuesdays alone. The initial attempt to cut over their production traffic lasted <em>minutes</em> before catastrophic failure. The response from the team was two weeks of planned NGINX optimizations in the sensor.</p>zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz ;::::zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
-
-          <p><strong>The problem wasn't NGINX.</strong> But nobody knew that yet. As I discovered, we had never actually validated the sensor at that traffic volume before attempting the cutover. So I built a test harness to find out. Stood up a Fargate cluster to generate load and pointed it at a sensor to reproduce the failure under controlled conditions.</p>dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddmxzzzxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxck,............>>>>>>>>>>>.>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.......>>>>>>>>>>>>>>>>>>>>>>>>>>>..............................>>>>>>>>>>....mnNNNNNNNNNNnnnnnnnnnnnnnnnnnnnnnnzx;ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKZZzkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzxzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz;ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZKKKKKKKKKKKKKKN
-
-          <p><strong>Logging wasn't in place for this.</strong> So I logged into a sensor and ran <code>dmesg</code>. Wall of text: <code>table full, dropping packet</code>. Got it.</p>
-
-          <p>The connection tracking table, where the Linux kernel's stateful firewall (netfilter) tracks unique IP addresses, was exhausting. This isn't active connections. Every IP that touches the sensor gets an entry: blocks, drops, everything. At 150K RPS with the traffic diversity of a major retail site, the default table size fills fast. Disabling conntrack wasn't an option because we were running Docker, which depends on it.</p>
-
-          <p><strong>The fix was a systemd service</strong> that calculates the conntrack table size dynamically based on available memory and sets it before the network stack comes up. No NGINX tuning required. After the change, sensors handled 150K RPS without breaking a sweat.</p>
-
-        <p>The issue had survived one prior failed onboarding attempt. Nobody found it because they were focused on layer 7. They forgot about layer 3. Theddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd;lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd;;;;;;;;ddd;;;;dddddmdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd . Application monitoring shows healthy services, the sensor process is fine, and the drops happen at the kernel level before traffic ever reaches userspace. You only find it if you know to check <code>/proc/sys/net/netfilter/nf_conntrack_count</code>. And you only reproduce it if you actually generate enough traffic to fill the table, which requires a purpose-built load test that nobody had done.</p>
-
-          <p>The fix enabled the contract. That diagnostic methodology (build a harness, reproduce at scale, look below the application layer) became how I approach problems by default. It's a straight line from this to how Synapse was designed: every decision at the edge, kernel-level awareness built in.</p>
-
-          <div class="dive-tech">
-            <span>Linux kernel</span><span>conntrack/netfilter</span><span>systemd</span><span>Fargate</span><span>Load testing</span><span>dmesg</span>
-          </div>
-        </div>
-      </div>
+    <div class="dive-group">
+      <i data-lucide="settings" class="dive-group-icon" width="16" height="16"></i>
+      <span class="dive-group-label">Developer Platforms</span>
     </div>
-
     <!-- Vispero IDP -->
     <div class="dive" id="vispero-platform">
       <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
@@ -771,90 +899,6 @@ body {
           </div>
           <div class="dive-tech">
             <span>C# / .NET</span><span>ASP.NET Core</span><span>SQL Server</span><span>PowerShell</span><span>GoCD</span><span>AWS</span><span>VMware</span><span>Ansible</span><span>Kerberos</span><span>InfluxDB</span><span>Grafana</span><span>Jira</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Endpoint Agent -->
-    <div class="dive" id="endpoint-agent">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
-        <div class="dive-title-group">
-          <div class="dive-title">AI Firewall: From Last-Mile Problem to Platform Absorption</div>
-          <div class="dive-subtitle">A10 Networks · Unblocked a stalled P1, then built the platform that replaced it</div>
-        </div>
-        <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
-      </div>
-      <div class="dive-body">
-        <div class="dive-content">
-          <p><strong>The business problem:</strong> A10's AI Firewall team had built protections against AI agent abuse and data exfiltration. Their LLM researchers were domain experts, but shipping to enterprise customers required networking, release engineering, cross-platform deployment, and kernel-level driver expertise they didn't have. They would have needed 3–5 specialists. It was the company's P1 priority and it was stalled.</p>
-
-          <p><strong>The solution:</strong> I wrote v1 endpoint agents for all five target platforms — Windows, Linux, macOS, iOS, and Android — with kernel-level drivers and tamper resistance. I managed the full release lifecycle: EV code signing, MSI packaging, macOS notarization, SmartScreen reputation, MDM enterprise deployment for each target. This unblocked the team to start shipping.</p>
-
-          <p><strong>Then the story got more interesting.</strong> My edge sensor (Synapse) already had response scanning and sensitive data detection — capabilities the AI Firewall team needed. I embedded their LLM detections into Synapse, moving everything to the edge and eliminating both the endpoint agents I'd written and the need for a central gateway. Same pattern as the API security product: collapse complexity into the edge.</p>
-
-          <p><strong>Linux:</strong> eBPF for traffic interception, Rust userspace for event processing and control plane communication, systemd integration for deployment. Why eBPF over a kernel module? Safety: runs in a sandboxed VM with a verifier, can't crash the kernel. Portability: CO-RE (Compile Once, Run Everywhere) works across kernel versions without recompilation. Operations: attach and detach without reboots. When you're deploying across diverse customer environments with different kernels, those properties matter more than raw flexibility.</p>
-
-          <p><strong>Windows:</strong> v1 shipped with WinDivert for traffic interception using a third-party certificate, packaged as MSIs. Hardened v2 with our own EV code signing certificate, which means reputation management with Microsoft SmartScreen, a hardware FIPS device to store the key, and all the compliance that comes with it. Runs as a Windows protected service, deployed through standard MDM solutions.</p>
-
-          <p><strong>macOS:</strong> Requires an Apple developer account and approved network extension entitlements before you can even begin real development. If you've never navigated Apple's entitlement approval process for privileged network access, just know it's a gating factor that blocks most teams for weeks.</p>
-
-          <p>The number of people who have shipped privileged, tamper-resistant agents to all five major platforms and know where the landmines are on each is very small. I'd already released production software to every one of them at Vispero. That's what made it possible to write MVPs fast enough to start shipping while defining the roadmap for hardened versions.  The career arc matters here: the raw cross-platform build engineering I did at Vispero is what made the A10 work possible.</p>
-
-          <div class="dive-tech">
-            <span>eBPF</span><span>Rust</span><span>WinDivert</span><span>EV code signing</span><span>MSI</span><span>macOS entitlements</span><span>systemd</span><span>MDM</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Professional Services -->
-    <div class="dive" id="pro-services">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
-        <div class="dive-title-group">
-          <div class="dive-title">Professional Services: First Engineer in the Role</div>
-          <div class="dive-subtitle">ThreatX · Created a new revenue capability by bridging engineering and enterprise sales</div>
-        </div>
-        <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
-      </div>
-      <div class="dive-body">
-        <div class="dive-content">
-          <p>I proposed the role and became ThreatX's first engineer to deliver formal professional services: solution architecture and post-sales integration support for enterprise customers. It wasn't a title change. It was identifying a gap where deals were stalling because nobody could bridge the distance between what the product did and what enterprise environments actually looked like.</p>
-
-          <p><strong>I personally delivered four enterprise engagements.</strong> The common thread was Microsoft-ecosystem customers that no other engineer on the team could support. That meant debugging IIS integrations, shipping a VMware appliance for a customer that wouldn't run Linux containers, and translating between enterprise IT terminology and product capabilities during pre-sales calls. These weren't support tickets. They were the difference between a closed deal and a lost one.</p>
-
-          <p><strong>The broader impact was opening a market segment.</strong> Before this, Microsoft-heavy enterprises were effectively off the table. After, sales had a repeatable path into those accounts with engineering support that could speak their language. It established professional services as a revenue-generating capability the company didn't have before.</p>
-
-          <p>For context: before joining ThreatX I'd nearly been hired by AWS Professional Services (hiring freeze) and VMware as a Solution Architect. The consulting muscle was already there. This was just the first time I got to apply it inside a product company.</p>
-
-          <div class="dive-tech">
-            <span>IIS</span><span>VMware</span><span>Windows Server</span><span>Solution Architecture</span><span>Pre-sales</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Open Source -->
-    <div class="dive" id="opensource">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
-        <div class="dive-title-group">
-          <div class="dive-title">Open Source: Security Testing Tools</div>
-          <div class="dive-subtitle">Apparatus · Crucible · Chimera</div>
-        </div>
-        <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
-      </div>
-      <div class="dive-body">
-        <div class="dive-content">
-          <p><strong>Apparatus:</strong> AI-augmented network simulation supporting 13 protocols with fault injection, honeypot deployment, and traffic analysis. Built for security testing and network resilience validation.</p>
-
-          <p><strong>Crucible:</strong> Attack simulation framework with 119 pre-built scenarios covering OWASP Top 10, API abuse patterns, and advanced persistent threat chains. Used to validate that Synapse actually catches what it claims to catch.</p>
-
-          <p><strong>Chimera:</strong> Intentionally vulnerable API server spanning 450+ endpoints across 22 industry verticals. Purpose-built target environment for security tool validation and training. Includes an OWASP LLM teaching environment with guided hints and vulnerability code diffs.</p>
-
-          <p>All publicly available on <a href="https://github.com/NickCrew" style="color:var(--accent)">GitHub</a>.</p>
-
-          <div class="dive-tech">
-            <span>TypeScript</span><span>Python</span><span>Flask</span><span>React</span><span>Docker</span><span>OWASP</span>
           </div>
         </div>
       </div>
@@ -918,6 +962,44 @@ body {
         </div>
       </div>
     </div>
+
+    <div class="dive-group">
+      <i data-lucide="git-merge" class="dive-group-icon" width="16" height="16"></i>
+      <span class="dive-group-label">Open Source</span>
+    </div>
+    <!-- Open Source -->
+    <div class="dive" id="opensource">
+      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="dive-title-group">
+          <div class="dive-title">Open Source Projects</div>
+          <div class="dive-subtitle">Developer tools and security testing frameworks</div>
+        </div>
+        <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
+      </div>
+      <div class="dive-body">
+        <div class="dive-content">
+          <p style="font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:0.5px;margin-top:20px;margin-bottom:12px">DEVELOPER TOOLS</p>
+
+          <p><strong>Cortex:</strong> Context orchestration plugin for Claude Code. 29 agents, 49 slash commands, and 100+ skills with an automated recommendation engine that suggests the right skill or agent based on your current task. Features contextual RAG for codebase-aware retrieval, doc-claim-validator (audits documentation claims against actual code), agent-loops (structured implementation with verification gates), and a Python CLI for the full lifecycle. The system behind the AI-augmented development methodology. <a href="https://cortex.atlascrew.dev" style="color:var(--accent)">Docs</a> · <a href="https://github.com/NickCrew/claude-cortex" style="color:var(--accent)">GitHub</a></p>
+
+          <p><strong>Facet:</strong> AI-powered job search and interview preparation platform. Structured methodology for candidate profiling, market research, study guide generation, and per-listing analysis. Built the system I used for my own search. <a href="https://nickcrew.github.io/Facet" style="color:var(--accent)">Try it</a> · <a href="https://github.com/NickCrew/Facet" style="color:var(--accent)">GitHub</a></p>
+
+          <p style="font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:0.5px;margin-top:24px;margin-bottom:12px">SECURITY TOOLS</p>
+
+          <p><strong>Apparatus:</strong> AI-augmented network simulation supporting 13 protocols with fault injection, honeypot deployment, and traffic analysis. Built for security testing and network resilience validation.</p>
+
+          <p><strong>Crucible:</strong> Attack simulation framework with 119 pre-built scenarios covering OWASP Top 10, API abuse patterns, and advanced persistent threat chains. Used to validate that Synapse actually catches what it claims to catch.</p>
+
+          <p><strong>Chimera:</strong> Intentionally vulnerable API server spanning 450+ endpoints across 22 industry verticals. Purpose-built target environment for security tool validation and training. Includes an OWASP LLM teaching environment with guided hints and vulnerability code diffs.</p>
+
+          <p>All publicly available on <a href="https://github.com/NickCrew" style="color:var(--accent)">GitHub</a>.</p>
+
+          <div class="dive-tech">
+            <span>Python</span><span>TypeScript</span><span>React</span><span>Claude Code</span><span>MCP</span><span>Flask</span><span>Docker</span><span>OWASP</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ════════════ PHILOSOPHY ════════════ -->
@@ -938,23 +1020,6 @@ body {
       <p>It doesn't matter what level I enter a company. I can start as a DevOps Engineer and rebuild the entire product stack three years later. My superpower is building consensus and driving change without needing authority to do it.</p>
     </div>
 
-    <div class="phil-grid">
-      <div class="phil-card">
-        <h4>Documentation-First</h4>
-        <p>Authored all published documentation for ThreatX (continuing after the A10 acquisition). Designed the information architecture, developed a custom style guide, and built the docs-as-code platform underneath it. Every minor product version shipped with versioned docs at the same time.</p>
-      </div>
-      <div class="phil-card">
-        <h4>AI-Augmented Engineering</h4>
-        <p>Created the methodology and framework my team uses to integrate AI agents into our development workflow. Multi-perspective review gates, behavioral test gap analysis, and circuit breakers that fail to a human. The approach 5x'd our engineering output that year.</p>
-      </div>
-      <div class="phil-card">
-        <h4>Test-Driven Confidence</h4>
-        <p>9,775 test cases across the full product stack. Comprehensive coverage enables the velocity that AI-augmented development makes possible. There's no excuse to skip validation when you can move this fast.</p>
-      </div>
-      <div class="phil-card">
-        <h4>End-to-End Ownership</h4>
-        <p>I build CI/CD and quality pipelines early so I can iterate fast and respond to production issues in minutes, not sprints. Comfortable owning the full lifecycle from architecture through deployment, documentation, and user support.</p>
-      </div>
     </div>
   </div>
 </div>
@@ -962,8 +1027,8 @@ body {
 <!-- ════════════ FOOTER ════════════ -->
 <div class="page">
   <div class="footer">
-    <p class="tech-line"><strong>Day-to-day with:</strong> Python, Rust, TypeScript, C#/.NET, SQL, Bash · Linux, AWS, Kubernetes, Docker, Terraform, Ansible · PostgreSQL, ClickHouse, Kafka, Redis, Elasticsearch · Nginx, Pingora, eBPF, systemd · GitHub Actions, CI/CD pipelines, observability stacks</p>
-    <p>This site supplements a standard resume with the context and depth a PDF can't provide.</p>
+    <p class="tech-line"><strong>What I do:</strong> Internal Developer Platforms · CI/CD & Build/Release Engineering · Linux Engineering · Cloud Infrastructure (AWS) · API & Web Security · Application Development · Developer Experience · Networking (L1–L7) · Bare-Metal to Cloud</p>
+    <p class="tech-line"><strong>Primary tools:</strong> Python, C#/.NET, TypeScript, Rust, SQL · Linux, AWS, Ansible, Terraform, Docker, Kubernetes</p>
     <div class="footer-links">
       <a href="https://github.com/NickCrew" target="_blank" rel="noopener">GitHub</a>
       <a href="https://linkedin.com/in/ncferguson" target="_blank" rel="noopener">LinkedIn</a>
@@ -987,6 +1052,7 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { rootMargin: '-30% 0px -70% 0px' });
 sections.forEach(s => observer.observe(s));
+lucide.createIcons();
 </script>
 
 </body>
