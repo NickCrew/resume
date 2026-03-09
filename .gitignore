@@ -1,2 +1,6 @@
 *.docx
 node_modules/
+.claude/
+*.pdf
+!NicholasFerguson_Resume.pdf
+!archive/*.pdf
