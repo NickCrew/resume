@@ -29,6 +29,8 @@
   --accent: #5ba4d9;
   --accent-dim: rgba(91,164,217,0.1);
   --accent-ghost: rgba(91,164,217,0.04);
+  --warm: #f28d21;
+  --warm-dim: rgba(242,141,33,0.12);
   --text: #c8d2dc;
   --text-bright: #e4eaf0;
   --text-muted: #7a8fa6;
@@ -338,7 +340,7 @@ body {
 }
 
 .dive-content p:first-child { margin-top: 20px }
-.dive-content strong { color: var(--text-bright); font-weight: 500 }
+.dive-content strong { color: var(--accent); font-weight: 700 }
 .dive-content code {
   font-family: var(--mono);
   font-size: 12px;
@@ -530,7 +532,7 @@ body {
 /* ── Image Gallery ── */
 .dive-gallery-toggle {
   margin: 20px 0;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(91,164,217,0.35);
   border-radius: 8px;
   background: var(--surface);
 }
@@ -538,8 +540,9 @@ body {
 .dive-gallery-toggle summary {
   cursor: pointer;
   font-family: var(--mono);
-  font-size: 12px;
-  color: var(--accent);
+  font-size: 14px;
+  color: var(--warm);
+  font-weight: 500;
   padding: 12px 16px;
   list-style: none;
   user-select: none;
@@ -562,7 +565,8 @@ body {
 
 .gallery-count {
   color: var(--text-dim);
-  font-size: 11px;
+  font-size: 12px;
+  margin-left: 10px;
 }
 
 .dive-gallery-toggle[open] .dive-gallery {
@@ -683,8 +687,160 @@ body {
 @media (max-width: 600px) {
   .dive-gallery { grid-template-columns: 1fr; padding: 10px }
 }
+
+/* ── Hero Detail ── */
+.hero-detail {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  max-width: 620px;
+  margin-top: 16px;
+}
+
+/* ── Dive Sub-Nav ── */
+.dive-subnav {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.dive-subnav.visible { max-height: 40px; opacity: 1 }
+
+.dive-subnav-inner {
+  display: flex;
+  gap: 0;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 28px;
+  border-top: 1px solid var(--border);
+}
+
+.dive-subnav a {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 10px 14px;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.dive-subnav a:hover,
+.dive-subnav a.active { color: var(--warm) }
+
+/* ── Back to Top ── */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 99;
+  padding: 0;
+}
+
+.back-to-top.visible { opacity: 1; visibility: visible }
+.back-to-top:hover { border-color: var(--accent-dim); color: var(--accent); background: var(--accent-ghost) }
+
+/* ── Expand/Collapse ── */
+.dive-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.dive-expand-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dive-expand-btn:hover { color: var(--accent); border-color: var(--accent-dim) }
+
+/* ── Dive Header Accessibility ── */
+.dive-header:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* ── Dive Content Visual Rhythm ── */
+.dive-content p:has(> strong:first-child) {
+  margin-top: 28px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(91,164,217,0.26);
+}
+.dive-content p:first-child:has(> strong:first-child) {
+  margin-top: 20px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(91,164,217,0.26);
+}
+
+/* ── Mobile Additions ── */
+@media (max-width: 640px) {
+  .stats-strip { display: grid; grid-template-columns: repeat(2, 1fr) }
+  .strip-stat { min-width: 0 }
+  .back-to-top { bottom: 20px; right: 20px }
+  .dive-subnav-inner { padding: 0 12px }
+  .dive-subnav a { padding: 8px 10px; font-size: 10px }
+  .hero-detail { font-size: 15px }
+}
+
+/* ── Print ── */
+@media print {
+  body { background: #fff; color: #1a1a1a; font-size: 12px; -webkit-print-color-adjust: exact }
+  .section-nav, .dive-subnav, .back-to-top, .hero-links, .footer-links, .dive-controls { display: none }
+  .page { max-width: 100%; padding: 0 20px }
+  .hero { padding: 20px 0 }
+  .hero-name { color: #1a1a1a }
+  .hero-title { color: #2563eb }
+  .hero-intro { color: #333; font-style: normal; font-size: 14px }
+  .hero-detail { color: #333 }
+  .section { padding: 16px 0; border-color: #ddd }
+  .section-heading { color: #1a1a1a }
+  .section-label { color: #666 }
+  .section-subhead { color: #555 }
+  .dive { border-color: #ddd; break-inside: avoid }
+  .dive-body { max-height: none !important; overflow: visible !important }
+  .dive-content { border-color: #eee }
+  .dive-toggle { display: none }
+  .dive-title { color: #1a1a1a }
+  .dive-subtitle { color: #666 }
+  .dive-tech span { border-color: #ccc; color: #2563eb; background: #f0f4ff }
+  .dive-stats { border-color: #ddd }
+  .dive-stat-val { color: #2563eb }
+  .dive-stat-label { color: #666 }
+  .timeline-title { color: #1a1a1a }
+  .timeline-date { color: #666 }
+  .timeline-org { color: #2563eb }
+  .timeline-body, .prose, .dive-content p { color: #333 }
+  .prose strong, .dive-content strong { color: #1a1a1a }
+  .stats-strip, .strip-stat { border-color: #ddd }
+  .strip-val { color: #2563eb }
+  .strip-label { color: #666 }
+  .footer p, .tech-line { color: #666 }
+  .tech-line strong { color: #333 }
+  .dive-gallery-toggle, .lightbox, .dive-inline-img { display: none }
+  .dive-group-icon { color: #2563eb }
+}
 </style>
-<script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -693,8 +849,8 @@ body {
   <div class="hero">
     <h1 class="hero-name">Nicholas Ferguson</h1>
     <div class="hero-title">Engineer</div>
-    <p class="hero-intro">
-      I solve business problems with computers.
+    <p class="hero-intro">I solve business problems with computers.</p>
+    <p class="hero-detail">
       Teams with deep domain expertise often need a different skillset to get from prototype to production
       and I'm the person who bridges that gap. At A10, I wrote endpoint agents for five operating systems
       and engineered the release to production to unblock their AI Firewall team, then rebuilt the legacy SaaS WAF
@@ -710,15 +866,18 @@ body {
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
-      <a href="mailto:nick@atlascrew.dev" class="hero-link">
+      <a href="/cdn-cgi/l/email-protection#0d63646e664d6c79616c7e6e7f687a2369687b" class="hero-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-        nick@atlascrew.dev
+        <span class="__cf_email__" data-cfemail="a3cdcac0c8e3c2d7cfc2d0c0d1c6d48dc7c6d5">[email&#160;protected]</span>
       </a>
       <a href="NicholasFerguson_Resume.pdf" class="hero-link" target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
         Resume (PDF)
       </a>
-
+      <a href="process.html" class="hero-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        How I Job Search
+      </a>
     </div>
   </div>
 </div>
@@ -729,6 +888,14 @@ body {
     <a href="#background">Experience</a>
     <a href="#projects">Deep Dives</a>
     <a href="#philosophy">How I Work</a>
+  </div>
+  <div class="dive-subnav" id="dive-subnav">
+    <div class="dive-subnav-inner">
+      <a href="#group-products">Products</a>
+      <a href="#group-impact">Impact</a>
+      <a href="#group-platforms">Platforms</a>
+      <a href="#group-opensource">Open Source</a>
+    </div>
   </div>
 </div>
 
@@ -753,7 +920,7 @@ body {
         <div>
           <div class="timeline-title">ThreatX</div>
           <div class="timeline-org">API & application security SaaS · Founded 2014 · acquired by A10</div>
-          <div class="timeline-body">Started seeing beyond the code. Created the professional services function from nothing — proposed the model, delivered 4 enterprise engagements, opened a new market segment. Mentored SOC analysts into SRE practitioners who took over the fleet platform entirely. Diagnosed a kernel-level production failure that saved a $1M contract. Cut AWS spend ~50% ($60K/mo).</div>
+          <div class="timeline-body">Started seeing beyond the code. Created the professional services function from nothing. I proposed the model, delivered 4 enterprise engagements, opened a new market segment. Mentored SOC analysts into SRE practitioners who took over the fleet platform entirely. Diagnosed a kernel-level production failure that saved a $1M contract. Cut AWS spend ~50% ($60K/mo).</div>
         </div>
       </div>
       <div class="timeline-item">
@@ -781,13 +948,17 @@ body {
       <div class="strip-stat"><span class="strip-val">$50M</span><span class="strip-label">/yr software shipped</span></div>
     </div>
 
-    <div class="dive-group">
-      <i data-lucide="package" class="dive-group-icon" width="16" height="16"></i>
+    <div class="dive-controls">
+      <button class="dive-expand-btn" id="dive-expand-all" aria-label="Expand all deep dives">Expand all</button>
+    </div>
+
+    <div class="dive-group" id="group-products">
+      <svg class="dive-group-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16.5 9.4-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
       <span class="dive-group-label">Commercial Products</span>
     </div>
     <!-- Synapse -->
     <div class="dive" id="synapse">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">Edge Protection Sensor: From SaaS Dependency to Single Binary</div>
           <div class="dive-subtitle">A10 Networks · Replaced a dozen networked services with a single binary</div>
@@ -796,24 +967,24 @@ body {
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p><strong>The business problem:</strong> A10 had told the German government they'd have GDPR-compliant on-prem deployment by end of year. The legacy ThreatX architecture was an 8-hop cloud pipeline that couldn't do it — every detection decision required a round trip to a SaaS backend. Meanwhile, A10's 7,700 existing customers needed on-prem to get a complete security solution on a single device. Two problems, same root cause: the product was dependent on cloud infrastructure that not everyone could or would use.</p>
+          <p><strong>The business problem:</strong> A10 had told the German government they'd have GDPR-compliant on-prem deployment by end of year. The legacy ThreatX architecture was an 8-hop cloud pipeline that couldn't do it. Every detection decision required a round trip to a SaaS backend. Meanwhile, A10's 7,700 existing customers needed on-prem to get a complete security solution on a single device. Two problems, same root cause: the product was dependent on cloud infrastructure that not everyone could or would use.</p>
 
-          <p><strong>The result:</strong> I replaced a dozen networked services with a single Rust binary on Cloudflare's Pingora framework. All decisions at the edge in <strong>450μs</strong> (4,400× faster than the cloud-based model). Then I built a fleet management and collective defense command plane that works self-hosted or as a SaaS upsell. The product went from cloud-only to deployable anywhere — on-prem, air-gapped, or SaaS — from the same codebase. Later, I embedded the AI Firewall team's LLM detections into Synapse alongside response scanning and sensitive data protection, absorbing their product and eliminating the need for separate endpoint agents and a central gateway.</p>
+          <p><strong>The result:</strong> I replaced a dozen networked services with a single Rust binary on Cloudflare's Pingora framework. All decisions at the edge in <strong>450μs</strong> (4,400× faster than the cloud-based model). Then I built a fleet management and collective defense command plane that works self-hosted or as a SaaS upsell. The product went from cloud-only to deployable anywhere (on-prem, air-gapped, or SaaS) from the same codebase. Later, I embedded the AI Firewall team's LLM detections into Synapse alongside response scanning and sensitive data protection, absorbing their product and eliminating the need for separate endpoint agents and a central gateway.</p>
 
           <details class="dive-gallery-toggle">
             <summary>Screenshots & architecture <span class="gallery-count">4 images</span></summary>
             <div class="dive-gallery">
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/synapse-dashboard.png" alt="Synapse Status Dashboard" loading="lazy">
-                <div class="gallery-caption">Embedded TUI — status, metrics, and live request flow</div>
+                <div class="gallery-caption">Embedded TUI: status, metrics, and live request flow</div>
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/synapse-lifecycle.png" alt="Synapse Request Processing Lifecycle" loading="lazy">
-                <div class="gallery-caption">Request processing — complete lifecycle</div>
+                <div class="gallery-caption">Request processing: complete lifecycle</div>
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/synapse-campaign.png" alt="Synapse Campaign Correlation" loading="lazy">
-                <div class="gallery-caption">Campaign correlation — 7 detection signals</div>
+                <div class="gallery-caption">Campaign correlation: 7 detection signals</div>
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/synapse-benchmarks.png" alt="Synapse Benchmarks" loading="lazy">
@@ -851,7 +1022,7 @@ body {
 
     <!-- Signal Horizon -->
     <div class="dive" id="signal-horizon">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">Fleet Management & Collective Defense: The SaaS Upsell That Makes On-Prem Work</div>
           <div class="dive-subtitle">A10 Networks · Fleet management + collective defense + incident response, self-hosted or SaaS</div>
@@ -860,22 +1031,22 @@ body {
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p><strong>The business problem:</strong> The edge sensor runs standalone, which is the whole point for air-gapped and on-prem customers. But customers with multiple deployments need centralized management, and the real revenue opportunity is cross-customer threat intelligence — "this IP is attacking 5 of our other customers" — offered as a SaaS layer on top of the on-prem sensor. Signal Horizon needed to work self-hosted (for customers who won't touch SaaS) and as a managed service (for the upsell). Same codebase, both delivery models.</p>
+          <p><strong>The business problem:</strong> The edge sensor runs standalone, which is the whole point for air-gapped and on-prem customers. But customers with multiple deployments need centralized management, and the real revenue opportunity is cross-customer threat intelligence ("this IP is attacking 5 of our other customers") offered as a SaaS layer on top of the on-prem sensor. Signal Horizon needed to work self-hosted (for customers who won't touch SaaS) and as a managed service (for the upsell). Same codebase, both delivery models.</p>
 
           <details class="dive-gallery-toggle">
             <summary>Dashboards & architecture <span class="gallery-count">3 images</span></summary>
             <div class="dive-gallery">
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/horizon-overview.png" alt="Signal Horizon Threat Overview" loading="lazy">
-                <div class="gallery-caption">Threat overview — fleet-wide security posture</div>
+                <div class="gallery-caption">Threat overview: fleet-wide security posture</div>
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/horizon-warroom.png" alt="Signal Horizon War Room" loading="lazy">
-                <div class="gallery-caption">War Room — real-time incident response</div>
+                <div class="gallery-caption">War Room: real-time incident response</div>
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/horizon-intel.png" alt="Signal Horizon Global Intelligence" loading="lazy">
-                <div class="gallery-caption">Global intelligence — cross-fleet threat correlation</div>
+                <div class="gallery-caption">Global intelligence: cross-fleet threat correlation</div>
               </div>
             </div>
           </details>
@@ -899,7 +1070,7 @@ body {
 
     <!-- Endpoint Agent -->
     <div class="dive" id="endpoint-agent">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">AI Firewall: Bridging the Gap from Prototype to Production</div>
           <div class="dive-subtitle">A10 Networks · Wrote v1 for five operating systems, then integrated everything into the edge sensor</div>
@@ -910,9 +1081,9 @@ body {
         <div class="dive-content">
           <p><strong>The business problem:</strong> A10's AI Firewall team had built protections against AI agent abuse and data exfiltration. Their LLM researchers were domain experts, but shipping to enterprise customers required networking, release engineering, cross-platform deployment, and kernel-level driver expertise they didn't have. They would have needed 3–5 specialists. It was the company's P1 priority and it was stalled.</p>
 
-          <p><strong>The solution:</strong> I wrote v1 endpoint agents for all five target platforms — Windows, Linux, macOS, iOS, and Android — with kernel-level drivers and tamper resistance. I managed the full release lifecycle: EV code signing, MSI packaging, macOS notarization, SmartScreen reputation, MDM enterprise deployment for each target. This unblocked the team to start shipping.</p>
+          <p><strong>The solution:</strong> I wrote v1 endpoint agents for all five target platforms (Windows, Linux, macOS, iOS, and Android) with kernel-level drivers and tamper resistance. I managed the full release lifecycle: EV code signing, MSI packaging, macOS notarization, SmartScreen reputation, MDM enterprise deployment for each target. This unblocked the team to start shipping.</p>
 
-          <p><strong>Then the story got more interesting.</strong> My edge sensor (Synapse) already had response scanning and sensitive data detection — capabilities the AI Firewall team needed. I embedded their LLM detections into Synapse, moving everything to the edge and eliminating both the endpoint agents I'd written and the need for a central gateway. Same pattern as the API security product: collapse complexity into the edge.</p>
+          <p><strong>Then the story got more interesting.</strong> My edge sensor (Synapse) already had response scanning and sensitive data detection, exactly the capabilities the AI Firewall team needed. I embedded their LLM detections into Synapse, moving everything to the edge and eliminating both the endpoint agents I'd written and the need for a central gateway. Same pattern as the API security product: collapse complexity into the edge.</p>
 
           <p><strong>Linux:</strong> eBPF for traffic interception, Rust userspace for event processing and control plane communication, systemd integration for deployment. Why eBPF over a kernel module? Safety: runs in a sandboxed VM with a verifier, can't crash the kernel. Portability: CO-RE (Compile Once, Run Everywhere) works across kernel versions without recompilation. Operations: attach and detach without reboots. When you're deploying across diverse customer environments with different kernels, those properties matter more than raw flexibility.</p>
 
@@ -929,13 +1100,13 @@ body {
       </div>
     </div>
 
-    <div class="dive-group">
-      <i data-lucide="dollar-sign" class="dive-group-icon" width="16" height="16"></i>
+    <div class="dive-group" id="group-impact">
+      <svg class="dive-group-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
       <span class="dive-group-label">Direct Business Impact</span>
     </div>
     <!-- $1M Contract Save -->
     <div class="dive" id="wayfair">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">The $1M Contract Save</div>
           <div class="dive-subtitle">ThreatX · Diagnosing what two weeks of planned NGINX optimizations couldn't</div>
@@ -967,23 +1138,23 @@ body {
 
     <!-- AWS Cost Reduction -->
     <div class="dive" id="aws-savings">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">AWS Cost Reduction: $60K/Month by Replacing an Architecture Nobody Questioned</div>
-          <div class="dive-subtitle">ThreatX &middot; Cut the AWS bill in half by asking why every sensor needed its own VPC</div>
+          <div class="dive-subtitle">ThreatX · Cut the AWS bill in half by asking why every sensor needed its own VPC</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">&#9656;</span></div>
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p><strong>What I walked into:</strong> Every customer sensor &mdash; and customers could have multiple &mdash; consisted of its own VPC. Yes, its own VPC. Inside each: an auto-scaling group of 2 EC2 instances (using credit-consuming instance types incorrectly), each running a single Docker container of the WAF. Because the instances were in a private subnet, every sensor got 2 NAT gateways and 4 Elastic IPs, plus a load balancer. Customers on-boarded by pointing their DNS at the ELB and whitelisting those 4 EIPs.</p>
+          <p><strong>What I walked into:</strong> Every customer sensor (and customers could have multiple) consisted of its own VPC. Yes, its own VPC. Inside each: an auto-scaling group of 2 EC2 instances (using credit-consuming instance types incorrectly), each running a single Docker container of the WAF. Because the instances were in a private subnet, every sensor got 2 NAT gateways and 4 Elastic IPs, plus a load balancer. Customers on-boarded by pointing their DNS at the ELB and whitelisting those 4 EIPs.</p>
 
           <div class="dive-inline-img" onclick="openLightbox(this)">
             <img src="img/txprotect-sensor.png" alt="Original per-customer VPC architecture" loading="lazy">
-            <div class="gallery-caption">The original architecture &mdash; one of these per customer sensor</div>
+            <div class="gallery-caption">The original architecture: one of these per customer sensor</div>
           </div>
 
-          <p><strong>It gets worse.</strong> The ASGs were set to scale on CPU utilization. A reverse proxy should scale on connections &mdash; CPU tells you almost nothing useful. But because spinning up new instances took so long, the threshold was set at 40% CPU. Any time a customer's sensors scaled, you got 2&ndash;3x wasted capacity costing anywhere from $70K&ndash;$300K a year depending on the customer. EBS volumes attached to EC2 instances were not being deleted when instances terminated. Elastic IPs were not being released when sensors were decommissioned. AWS service quotas were becoming a recurring problem because of the VPC-per-sensor model.</p>
+          <p><strong>It gets worse.</strong> The ASGs were set to scale on CPU utilization. A reverse proxy should scale on connections. CPU tells you almost nothing useful. But because spinning up new instances took so long, the threshold was set at 40% CPU. Any time a customer's sensors scaled, you got 2–3x wasted capacity costing anywhere from $70K–$300K a year depending on the customer. EBS volumes attached to EC2 instances were not being deleted when instances terminated. Elastic IPs were not being released when sensors were decommissioned. AWS service quotas were becoming a recurring problem because of the VPC-per-sensor model.</p>
 
           <p><strong>The deployment story was equally painful.</strong> Sensors were deployed through a collection of Python scripts with no discernible expected input or output, CloudFormation templates that used both parameters AND Jinja templating, and required making a direct write into another service's database for URLs and IPs to appear in the customer dashboard. If you asked someone to design the most expensive, most fragile way to run a fleet of reverse proxies on AWS, this is roughly what you'd get.</p>
 
@@ -1004,7 +1175,7 @@ body {
 
     <!-- Professional Services -->
     <div class="dive" id="pro-services">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">Professional Services: First Engineer in the Role</div>
           <div class="dive-subtitle">ThreatX · Created a new revenue capability by bridging engineering and enterprise sales</div>
@@ -1030,7 +1201,7 @@ body {
 
     <!-- API Authorization Intelligence -->
     <div class="dive" id="api-auth">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">API Authorization Intelligence: The Gap Every Competitor Missed</div>
           <div class="dive-subtitle">A10 Networks · From market gap identification to working MVP to product roadmap</div>
@@ -1039,11 +1210,11 @@ body {
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p><strong>The insight:</strong> Every WAF vendor detects authorization attacks — brute force, credential stuffing, token replay. But none of them answer the question: "which of my API endpoints actually enforce authorization, and how is that changing over time?" That's a fundamentally different capability. Detection tells you someone tried to break in. Authorization intelligence tells you which doors are unlocked.</p>
+          <p><strong>The insight:</strong> Every WAF vendor detects authorization attacks: brute force, credential stuffing, token replay. But none of them answer the question: "which of my API endpoints actually enforce authorization, and how is that changing over time?" That's a fundamentally different capability. Detection tells you someone tried to break in. Authorization intelligence tells you which doors are unlocked.</p>
 
           <div class="dive-inline-img" onclick="openLightbox(this)">
-            <img src="img/api-auth-thesis.png" alt="API Authorization Intelligence — Market Thesis" loading="lazy">
-            <div class="gallery-caption">Market thesis — the gap every WAF vendor missed</div>
+            <img src="img/api-auth-thesis.png" alt="API Authorization Intelligence: Market Thesis" loading="lazy">
+            <div class="gallery-caption">Market thesis: the gap every WAF vendor missed</div>
           </div>
 
           <p><strong>I built the MVP.</strong> An authorization coverage map that auto-discovers endpoint auth posture from live traffic with zero configuration. The sensor observes request/response pairs and infers which endpoints require authentication, what auth mechanisms they use, and whether enforcement is consistent. No agents to install, no API specs to import, no manual inventory.</p>
@@ -1061,13 +1232,13 @@ body {
       </div>
     </div>
 
-    <div class="dive-group">
-      <i data-lucide="settings" class="dive-group-icon" width="16" height="16"></i>
+    <div class="dive-group" id="group-platforms">
+      <svg class="dive-group-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
       <span class="dive-group-label">Developer Platforms</span>
     </div>
     <!-- Vispero IDP -->
     <div class="dive" id="vispero-platform">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">Internal Developer Platform: Built from Nothing</div>
           <div class="dive-subtitle">Vispero · First platform hire, $50M/year in software shipping on it</div>
@@ -1113,23 +1284,23 @@ body {
 
     <!-- AI Methodology -->
     <div class="dive" id="ai-methodology">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">AI-Augmented Development: How One Person Ships a Full Product Stack</div>
-          <div class="dive-subtitle">The methodology behind "11 months, solo" — not magic, engineering discipline</div>
+          <div class="dive-subtitle">The methodology behind "11 months, solo": not magic, engineering discipline</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p><strong>The business context:</strong> A10 needed the full product stack — edge sensor, fleet management, endpoint agents, sales tooling — shipped in under a year by one engineer. That's not a workload problem you solve with long hours. It's a methodology problem. Here's what "AI-augmented" actually means in practice: a structured engineering methodology where I lead a team of AI agents the same way a senior engineer leads junior developers. I set the architecture, define patterns, review every output, and make every design decision. The agents implement against my specs, write tests, generate documentation. The quality gates keep them honest.</p>
+          <p><strong>The business context:</strong> A10 needed the full product stack (edge sensor, fleet management, endpoint agents, sales tooling) shipped in under a year by one engineer. That's not a workload problem you solve with long hours. It's a methodology problem. Here's what "AI-augmented" actually means in practice: a structured engineering methodology where I lead a team of AI agents the same way a senior engineer leads junior developers. I set the architecture, define patterns, review every output, and make every design decision. The agents implement against my specs, write tests, generate documentation. The quality gates keep them honest.</p>
 
           <details class="dive-gallery-toggle">
-            <summary>Cortex &mdash; the system behind the methodology <span class="gallery-count">3 images</span></summary>
+            <summary>Cortex: the system behind the methodology <span class="gallery-count">3 images</span></summary>
             <div class="dive-gallery">
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/cortex-overview.png" alt="Cortex Overview" loading="lazy">
-                <div class="gallery-caption">Cortex architecture &mdash; agents, skills, and orchestration</div>
+                <div class="gallery-caption">Cortex architecture: agents, skills, and orchestration</div>
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/cortex-ai.png" alt="Cortex AI Methodology" loading="lazy">
@@ -1137,7 +1308,7 @@ body {
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/cortex-hooks.png" alt="Cortex Hooks" loading="lazy">
-                <div class="gallery-caption">Quality gates &mdash; review hooks and coverage gating</div>
+                <div class="gallery-caption">Quality gates: review hooks and coverage gating</div>
               </div>
             </div>
           </details>
@@ -1162,7 +1333,7 @@ body {
 
     <!-- Docs-as-Code -->
     <div class="dive" id="docs-platform">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">Documentation Platform: From Manual Editing to Automated Publishing</div>
           <div class="dive-subtitle">ThreatX / A10 Networks · Information architecture, style guide, docs-as-code pipeline</div>
@@ -1181,7 +1352,7 @@ body {
 
           <div class="dive-inline-img" onclick="openLightbox(this)">
             <img src="img/threatx-docs-1.png" alt="Documentation Platform" loading="lazy">
-            <div class="gallery-caption">Docs-as-code platform — versioned, branded, automated</div>
+            <div class="gallery-caption">Docs-as-code platform: versioned, branded, automated</div>
           </div>
 
           <p><strong>The outcome:</strong> every minor version of the product shipped with versioned documentation at the same time. Architecture decision records, operational runbooks, API references, onboarding guides, all maintained in the same pipeline as the code. This was critical for the on-prem product launch, which required customer self-service documentation that had to be complete and correct on day one.</p>
@@ -1195,49 +1366,49 @@ body {
 
     <!-- Weekly Security Report -->
     <div class="dive" id="security-report">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">Weekly Security Report: Redesigning What Executives Actually Read</div>
-          <div class="dive-subtitle">ThreatX / A10 Networks &middot; From &ldquo;11 pie charts with a lookup table&rdquo; to boardroom-ready automated reporting</div>
+          <div class="dive-subtitle">ThreatX / A10 Networks · From "11 pie charts with a lookup table" to boardroom-ready automated reporting</div>
         </div>
         <div class="dive-toggle"><span class="dive-toggle-arrow">&#9656;</span></div>
       </div>
       <div class="dive-body">
         <div class="dive-content">
-          <p><strong>The business problem:</strong> A major customer put it bluntly: <em>&ldquo;We can&rsquo;t show this to our execs.&rdquo;</em> The existing weekly security report was version two of a product that had already failed once. Version one crashed the production database with inefficient queries against a data model that couldn&rsquo;t be queried efficiently to begin with. Version two replaced it with 11 pie charts labeled with numbers that required a separate lookup table to interpret. Customers revolted. Several enterprise accounts demanded the reports be fixed as a condition of renewal.</p>
+          <p><strong>The business problem:</strong> A major customer put it bluntly: <em>"We can't show this to our execs."</em> The existing weekly security report was version two of a product that had already failed once. Version one crashed the production database with inefficient queries against a data model that couldn't be queried efficiently to begin with. Version two replaced it with 11 pie charts labeled with numbers that required a separate lookup table to interpret. Customers revolted. Several enterprise accounts demanded the reports be fixed as a condition of renewal.</p>
 
-          <p><strong>The rescue.</strong> A PM had been managing the redesign with an offshore team but was a month from the end-of-year deadline with nothing shippable. I got asked to take it over. I&rsquo;d had my eye on these reports for years, waiting for the opportunity. An earlier attempt to rebuild them had been blocked &mdash; they thought I just wanted to use Lambda for my own amusement, and not because it was literally designed for this kind of job.</p>
+          <p><strong>The rescue.</strong> A PM had been managing the redesign with an offshore team but was a month from the end-of-year deadline with nothing shippable. I got asked to take it over. I'd had my eye on these reports for years, waiting for the opportunity. An earlier attempt to rebuild them had been blocked. They thought I just wanted to use Lambda for my own amusement, and not because it was literally designed for this kind of job.</p>
 
-          <p><strong>The insight nobody else had:</strong> this was an executive report, and nobody had designed it for executives. The people using the WAF every day don&rsquo;t need a weekly summary of what they already saw. They need a document to hand to the people footing the bill that says <em>&ldquo;this is working&rdquo;</em> and <em>&ldquo;here&rsquo;s what happened this week.&rdquo;</em> An executive will read one page if you&rsquo;re lucky. Everything after that is receipts.</p>
+          <p><strong>The insight nobody else had:</strong> this was an executive report, and nobody had designed it for executives. The people using the WAF every day don't need a weekly summary of what they already saw. They need a document to hand to the people footing the bill that says <em>"this is working"</em> and <em>"here's what happened this week."</em> An executive will read one page if you're lucky. Everything after that is receipts.</p>
 
           <details class="dive-gallery-toggle">
             <summary>The finished report <span class="gallery-count">5 pages</span></summary>
             <div class="dive-gallery">
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/sec-report-cover.png" alt="Security Report Cover" loading="lazy">
-                <div class="gallery-caption">Branded cover &mdash; this is THEIR report, not a generic template</div>
+                <div class="gallery-caption">Branded cover: this is THEIR report, not a generic template</div>
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/sec-report-exec.png" alt="Executive Summary" loading="lazy">
-                <div class="gallery-caption">Executive summary &mdash; KPIs, automated insights, weekly trends</div>
+                <div class="gallery-caption">Executive summary: KPIs, automated insights, weekly trends</div>
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/sec-report-traffic.png" alt="Traffic Summary" loading="lazy">
-                <div class="gallery-caption">Traffic summary &mdash; the RPS page they were begging for</div>
+                <div class="gallery-caption">Traffic summary: the RPS page they were begging for</div>
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/sec-report-geo.png" alt="Top Countries" loading="lazy">
-                <div class="gallery-caption">Threat geography &mdash; map for context, bars for comparison</div>
+                <div class="gallery-caption">Threat geography: map for context, bars for comparison</div>
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/sec-report-sites.png" alt="Protected Sites" loading="lazy">
-                <div class="gallery-caption">Protected sites &mdash; configuration gaps visible at a glance</div>
+                <div class="gallery-caption">Protected sites: configuration gaps visible at a glance</div>
               </div>
             </div>
           </details>
 
           <details class="dive-gallery-toggle">
-            <summary>Supporting research &mdash; Data Visualization &amp; Accessibility Guide excerpts <span class="gallery-count">4 pages</span></summary>
+            <summary>Supporting research: Data Visualization &amp; Accessibility Guide excerpts <span class="gallery-count">4 pages</span></summary>
             <div class="dive-gallery">
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/data-viz-colors.png" alt="Brand-compliant color system" loading="lazy">
@@ -1249,26 +1420,26 @@ body {
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/data-viz-no-log-scale.png" alt="Why not log scale" loading="lazy">
-                <div class="gallery-caption">The case against logarithmic scale &mdash; the witch, slain</div>
+                <div class="gallery-caption">The case against logarithmic scale: the witch, slain</div>
               </div>
               <div class="dive-gallery-item" onclick="openLightbox(this)">
                 <img src="img/data-viz-kpis.png" alt="KPI card design" loading="lazy">
-                <div class="gallery-caption">KPI card anatomy &mdash; label, value, context</div>
+                <div class="gallery-caption">KPI card anatomy: label, value, context</div>
               </div>
             </div>
           </details>
 
           <p><strong>Design principles.</strong> The previous reports showed absolute values with no context. A number means nothing without a baseline. I added week-over-week deltas, 4-week averages, and 4-week peaks to every applicable metric. Trending data tells a story; a standalone number is trivia.</p>
 
-          <p><strong>The executive summary page</strong> was not in the requirements. I added it because nobody had realized that an executive report needs to be readable in 60 seconds. I built 18 possible automated insights &mdash; actionable interpretations drawn from each section&rsquo;s data &mdash; that dynamically build a prioritized list for each customer each week. Configuration gaps, anomalous trends, whitelisted entities triggering alerts, sites running without blocking protection. If something needs attention, it&rsquo;s on page one. I added a status column to the 4-week trend table &mdash; green means go. Sometimes you only need to read half a page.</p>
+          <p><strong>The executive summary page</strong> was not in the requirements. I added it because nobody had realized that an executive report needs to be readable in 60 seconds. I built 18 possible automated insights: actionable interpretations drawn from each section's data, that dynamically build a prioritized list for each customer each week. Configuration gaps, anomalous trends, whitelisted entities triggering alerts, sites running without blocking protection. If something needs attention, it's on page one. I added a status column to the 4-week trend table. Green means go. Sometimes you only need to read half a page.</p>
 
-          <p><strong>Then the non-designers arrived.</strong> The words <em>&ldquo;I&rsquo;m not a designer, but&hellip;&rdquo;</em> preceded every challenge. The choropleth map became a decorative element supporting a trend-focused table, because an unlabeled choropleth is one of the worst data visualizations you can use &mdash; it fails WCAG 1.4.1 by encoding information through color alone, and it&rsquo;s perceptually inaccurate for comparing values. I kept it for geographic context and added horizontal bars for actual comparison.</p>
+          <p><strong>Then the non-designers arrived.</strong> The words <em>"I'm not a designer, but..."</em> preceded every challenge. The choropleth map became a decorative element supporting a trend-focused table, because an unlabeled choropleth is one of the worst data visualizations you can use. It fails WCAG 1.4.1 by encoding information through color alone, and it's perceptually inaccurate for comparing values. I kept it for geographic context and added horizontal bars for actual comparison.</p>
 
-          <p><strong>The logarithmic scale fight</strong> was the hardest. Log scales compress large differences, violating Tufte&rsquo;s Principle of Proportional Ink. A bar representing 18,000 events looks 78% as long as one representing 2,100 &mdash; an 8.5&times; difference hidden by the scale. The counterargument was that log scales had already shipped elsewhere in the product. I cited Stephen Few, Cleveland &amp; McGill&rsquo;s 1984 perceptual accuracy research, and the fact that Romano et al. (2020) found only 40% correct interpretation on log scales vs. 84% on linear. The log scale did not ship.</p>
+          <p><strong>The logarithmic scale fight</strong> was the hardest. Log scales compress large differences, violating Tufte's Principle of Proportional Ink. A bar representing 18,000 events looks 78% as long as one representing 2,100, an 8.5× difference hidden by the scale. The counterargument was that log scales had already shipped elsewhere in the product. I cited Stephen Few, Cleveland &amp; McGill's 1984 perceptual accuracy research, and the fact that Romano et al. (2020) found only 40% correct interpretation on log scales vs. 84% on linear. The log scale did not ship.</p>
 
-          <p><strong>WCAG 2.1 Level AA compliance</strong> was dismissed as unnecessary because &ldquo;we&rsquo;ve never done that before.&rdquo; The customer&rsquo;s requirements listed &ldquo;Accessible&rdquo; in red. Compliance was already built into the design &mdash; status badges use text labels alongside color, all contrast ratios meet 3:1 for graphical objects and 4.5:1 for text, and every chart provides redundant encoding. It cost nothing to maintain because it was architected from the start, not bolted on after.</p>
+          <p><strong>WCAG 2.1 Level AA compliance</strong> was dismissed as unnecessary because "we've never done that before." The customer's requirements listed "Accessible" in red. Compliance was already built into the design: status badges use text labels alongside color, all contrast ratios meet 3:1 for graphical objects and 4.5:1 for text, and every chart provides redundant encoding. It cost nothing to maintain because it was architected from the start, not bolted on after.</p>
 
-          <p><strong>I wrote the documentation to make these decisions defensible.</strong> A 46-page Data Visualization &amp; Accessibility Guide covering color systems, chart selection, WCAG requirements, and redundant encoding patterns, all backed by research citations (Tufte, Few, Cleveland &amp; McGill, Nussbaumer Knaflic, Wilke, Ware). A separate Design Decisions document explaining the rationale for every page of the report, structured as &ldquo;the story this page tells&rdquo; with key decisions and references. And a brand-compliant color options analysis showing WCAG contrast ratios and colorblind simulations for every proposed palette.</p>
+          <p><strong>I wrote the documentation to make these decisions defensible.</strong> A 46-page Data Visualization &amp; Accessibility Guide covering color systems, chart selection, WCAG requirements, and redundant encoding patterns, all backed by research citations (Tufte, Few, Cleveland &amp; McGill, Nussbaumer Knaflic, Wilke, Ware). A separate Design Decisions document explaining the rationale for every page of the report, structured as "the story this page tells" with key decisions and references. And a brand-compliant color options analysis showing WCAG contrast ratios and colorblind simulations for every proposed palette.</p>
 
           <p><strong>The result:</strong> 14-page automated weekly report. Per-customer, branded, generated entirely from sensor telemetry. Executive summary with automated insights. Trend-focused throughout. WCAG 2.1 AA compliant. Replaced both the database-crashing v1 and the pie-chart v2 that caused the customer revolt. Shipped by end of year.</p>
 
@@ -1279,13 +1450,13 @@ body {
       </div>
     </div>
 
-    <div class="dive-group">
-      <i data-lucide="git-merge" class="dive-group-icon" width="16" height="16"></i>
+    <div class="dive-group" id="group-opensource">
+      <svg class="dive-group-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
       <span class="dive-group-label">Open Source</span>
     </div>
     <!-- Open Source -->
     <div class="dive" id="opensource">
-      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+      <div class="dive-header">
         <div class="dive-title-group">
           <div class="dive-title">Open Source Projects</div>
           <div class="dive-subtitle">Developer tools and security testing frameworks</div>
@@ -1325,13 +1496,13 @@ body {
     <div class="section-subhead">I solve problems nobody knew to ask about. That's not a perk of the role. It is the role.</div>
 
     <div class="prose">
-      <p>I drop into a new environment and start by understanding the problems of the people nearest to me. My first job is to help other people do their job better. Usually that means helping engineers ship — and that's more than building pipelines. It means gaining trust, re-educating people on what continuous integration actually means, and showing them why it's the prerequisite to faster delivery, not an obstacle to it.</p>
+      <p>I drop into a new environment and start by understanding the problems of the people nearest to me. My first job is to help other people do their job better. Usually that means helping engineers ship, and that's more than building pipelines. It means gaining trust, re-educating people on what continuous integration actually means, and showing them why it's the prerequisite to faster delivery, not an obstacle to it.</p>
 
-      <p>By focusing on the people around me, I get an accelerated tour of the company. I learn what's broken, what's working despite itself, and where the real bottlenecks live. From there I work outward — connecting with customers, understanding the business, mapping the market context. That's how I end up identifying gaps like API Authorization Intelligence or creating a professional services function that didn't exist. Not because someone assigned it. Because the path from "help this person ship" leads you to the edges of the company if you follow it far enough.</p>
+      <p>By focusing on the people around me, I get an accelerated tour of the company. I learn what's broken, what's working despite itself, and where the real bottlenecks live. From there I work outward, connecting with customers, understanding the business, mapping the market context. That's how I end up identifying gaps like API Authorization Intelligence or creating a professional services function that didn't exist. Not because someone assigned it. Because the path from "help this person ship" leads you to the edges of the company if you follow it far enough.</p>
 
       <p>Everything I build is designed to be handed off from day one. I find people to support it. I teach those people how to do the same. At ThreatX, I built the fleet management platform, identified SOC analysts who showed aptitude, mentored them into SRE practitioners, and they took over completely. That created a permanent bridge team between engineering and the SOC. It only happened because I'd invested in learning people's problems and building relationships outside my immediate team. I try to work myself out of every job I do.</p>
 
-      <p>Ironically, I am a product engineer — my work is identifiable and known for the polish and small features that show someone really took the time to understand the user's problems. I just start from a different place. Instead of starting on the outside in traditional application development, I start on the inside and focus on people. I spent six years managing hotels in South Florida before moving into engineering, and that made it impossible for me not to think about the person on the other end of everything I build. I'm also a photographer and printmaker, and that shows up in how I think about visual hierarchy and information architecture. My dashboards get adopted because they're designed, not just functional.</p>
+      <p>Ironically, I am a product engineer. My work is identifiable and known for the polish and small features that show someone really took the time to understand the user's problems. I just start from a different place. Instead of starting on the outside in traditional application development, I start on the inside and focus on people. I spent six years managing hotels in South Florida before moving into engineering, and that made it impossible for me not to think about the person on the other end of everything I build. I'm also a photographer and printmaker, and that shows up in how I think about visual hierarchy and information architecture. My dashboards get adopted because they're designed, not just functional.</p>
 
       <p>It doesn't matter what level I enter a company. I can start as a DevOps Engineer and rebuild the entire product stack three years later. My superpower is building consensus and driving change without needing authority to do it.</p>
     </div>
@@ -1348,11 +1519,16 @@ body {
     <div class="footer-links">
       <a href="https://github.com/NickCrew" target="_blank" rel="noopener">GitHub</a>
       <a href="https://linkedin.com/in/ncferguson" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:nick@atlascrew.dev">Email</a>
+      <a href="/cdn-cgi/l/email-protection#432d2a20280322372f2230203126346d272635">Email</a>
       <a href="process.html">How I Job Search</a>
     </div>
   </div>
 </div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
@@ -1360,38 +1536,125 @@ body {
   <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
 
-<script>
-// Lightbox
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ── Dive Accessibility Setup ──
+document.querySelectorAll('.dive').forEach((dive, i) => {
+  const header = dive.querySelector('.dive-header');
+  const body = dive.querySelector('.dive-body');
+  body.id = 'dive-body-' + i;
+  header.setAttribute('role', 'button');
+  header.setAttribute('tabindex', '0');
+  header.setAttribute('aria-expanded', 'false');
+  header.setAttribute('aria-controls', body.id);
+});
+
+// ── Dive Toggle (event delegation) ──
+document.addEventListener('click', e => {
+  const header = e.target.closest('.dive-header');
+  if (!header) return;
+  const dive = header.closest('.dive');
+  dive.classList.toggle('open');
+  header.setAttribute('aria-expanded', String(dive.classList.contains('open')));
+  updateExpandBtn();
+});
+
+// ── Expand All / Collapse All ──
+const expandBtn = document.getElementById('dive-expand-all');
+function updateExpandBtn() {
+  if (!expandBtn) return;
+  const allOpen = [...document.querySelectorAll('.dive')].every(d => d.classList.contains('open'));
+  expandBtn.textContent = allOpen ? 'Collapse all' : 'Expand all';
+}
+if (expandBtn) {
+  expandBtn.addEventListener('click', () => {
+    const dives = document.querySelectorAll('.dive');
+    const allOpen = [...dives].every(d => d.classList.contains('open'));
+    dives.forEach(d => {
+      d.classList.toggle('open', !allOpen);
+      d.querySelector('.dive-header')?.setAttribute('aria-expanded', String(!allOpen));
+    });
+    updateExpandBtn();
+  });
+}
+
+// ── Section Nav Active State + Sub-Nav Visibility ──
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.section-nav-inner > a');
+const diveSubnav = document.getElementById('dive-subnav');
+const sectionObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector(`.section-nav-inner > a[href="#${entry.target.id}"]`);
+      if (a) a.classList.add('active');
+      if (diveSubnav) diveSubnav.classList.toggle('visible', entry.target.id === 'projects');
+    }
+  });
+}, { rootMargin: '-30% 0px -70% 0px' });
+sections.forEach(s => sectionObs.observe(s));
+
+// ── Dive Group Sub-Nav Active State ──
+const groupEls = document.querySelectorAll('.dive-group[id]');
+const subLinks = document.querySelectorAll('#dive-subnav a');
+const groupObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      subLinks.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector(`#dive-subnav a[href="#${entry.target.id}"]`);
+      if (a) a.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -80% 0px' });
+groupEls.forEach(g => groupObs.observe(g));
+
+// ── Back to Top ──
+const btt = document.getElementById('back-to-top');
+if (btt) {
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+// ── Lightbox ──
+let lbImages = [];
+let lbIndex = 0;
 function openLightbox(el) {
   const img = el.querySelector('img');
   const caption = el.querySelector('.gallery-caption');
   const lb = document.getElementById('lightbox');
   document.getElementById('lightbox-img').src = img.src;
   document.getElementById('lightbox-caption').textContent = caption ? caption.textContent : '';
+  const gallery = el.closest('.dive-gallery');
+  if (gallery) {
+    lbImages = [...gallery.querySelectorAll('.dive-gallery-item')];
+    lbIndex = lbImages.indexOf(el);
+  } else {
+    lbImages = [el];
+    lbIndex = 0;
+  }
   lb.classList.add('active');
   document.body.style.overflow = 'hidden';
+}
+function showLbImage() {
+  const el = lbImages[lbIndex];
+  if (!el) return;
+  document.getElementById('lightbox-img').src = el.querySelector('img').src;
+  const cap = el.querySelector('.gallery-caption');
+  document.getElementById('lightbox-caption').textContent = cap ? cap.textContent : '';
 }
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('active');
   document.body.style.overflow = '';
+  lbImages = [];
 }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-// Sticky nav active state
-const sections = document.querySelectorAll('.section[id]');
-const navLinks = document.querySelectorAll('.section-nav a');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navLinks.forEach(l => l.classList.remove('active'));
-      const active = document.querySelector(`.section-nav a[href="#${entry.target.id}"]`);
-      if (active) active.classList.add('active');
-    }
-  });
-}, { rootMargin: '-30% 0px -70% 0px' });
-sections.forEach(s => observer.observe(s));
-lucide.createIcons();
-</script>
-
-</body>
-</html>
+// ── Keyboard ──
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lightbox');
+  if (lb.classList.contains('active')) {
+    if (e.key === 'Escape') closeLightbox();
+    else if ((e.key === 'ArrowRight' || e.key === 'ArrowDown') && lbIndex < lbImages.length - 1) {
+      e.preventDefault(); lbIndex++; showLbImage();
+    } else if ((e.key === 'ArrowLeft' || e.key === 'ArrowUp') && lbIndex > 0) {
+      e.preventDefault();
