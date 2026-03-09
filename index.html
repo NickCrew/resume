@@ -526,6 +526,163 @@ body {
   .page { padding: 0 20px }
   .section-nav-inner { padding: 0 20px }
 }
+
+/* ── Image Gallery ── */
+.dive-gallery-toggle {
+  margin: 20px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.dive-gallery-toggle summary {
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  padding: 12px 16px;
+  list-style: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dive-gallery-toggle summary::-webkit-details-marker { display: none }
+
+.dive-gallery-toggle summary::before {
+  content: '\25B8';
+  font-size: 11px;
+  transition: transform 0.15s;
+}
+
+.dive-gallery-toggle[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.gallery-count {
+  color: var(--text-dim);
+  font-size: 11px;
+}
+
+.dive-gallery-toggle[open] .dive-gallery {
+  border-top: 1px solid var(--border);
+}
+
+.dive-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  padding: 16px;
+}
+
+.dive-gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.dive-gallery-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.dive-gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.dive-gallery-item .gallery-caption {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 8px 10px;
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+}
+
+.dive-gallery-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.92);
+  justify-content: center;
+  align-items: center;
+  cursor: zoom-out;
+  padding: 40px;
+}
+
+.lightbox.active { display: flex }
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+.lightbox-caption {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--surface);
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.dive-inline-img {
+  margin: 20px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  background: var(--surface);
+}
+
+.dive-inline-img:hover {
+  border-color: var(--accent);
+}
+
+.dive-inline-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.dive-inline-img .gallery-caption {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 8px 10px;
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 600px) {
+  .dive-gallery { grid-template-columns: 1fr; padding: 10px }
+}
 </style>
 <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -643,6 +800,28 @@ body {
 
           <p><strong>The result:</strong> I replaced a dozen networked services with a single Rust binary on Cloudflare's Pingora framework. All decisions at the edge in <strong>450μs</strong> (4,400× faster than the cloud-based model). Then I built a fleet management and collective defense command plane that works self-hosted or as a SaaS upsell. The product went from cloud-only to deployable anywhere — on-prem, air-gapped, or SaaS — from the same codebase. Later, I embedded the AI Firewall team's LLM detections into Synapse alongside response scanning and sensitive data protection, absorbing their product and eliminating the need for separate endpoint agents and a central gateway.</p>
 
+          <details class="dive-gallery-toggle">
+            <summary>Screenshots & architecture <span class="gallery-count">4 images</span></summary>
+            <div class="dive-gallery">
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/synapse-dashboard.png" alt="Synapse Status Dashboard" loading="lazy">
+                <div class="gallery-caption">Embedded TUI — status, metrics, and live request flow</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/synapse-lifecycle.png" alt="Synapse Request Processing Lifecycle" loading="lazy">
+                <div class="gallery-caption">Request processing — complete lifecycle</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/synapse-campaign.png" alt="Synapse Campaign Correlation" loading="lazy">
+                <div class="gallery-caption">Campaign correlation — 7 detection signals</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/synapse-benchmarks.png" alt="Synapse Benchmarks" loading="lazy">
+                <div class="gallery-caption">Performance benchmarks</div>
+              </div>
+            </div>
+          </details>
+
           <p><strong>The legacy architecture it replaced:</strong> sensor to Kafka to ETL to MongoDB to the HackerMind engine and back. Every detection decision took 1–10 seconds.</p>
 
           <p><strong>Why Rust, not Go or C++?</strong> This is a network proxy sitting in the hot path of every HTTP request. Go's garbage collector introduces unpredictable latency spikes, which is unacceptable for a security sensor. C++ would work but doesn't give you memory safety guarantees at the development velocity we needed. Rust gives you both: zero-cost abstractions, no GC pauses, and the compiler catches entire categories of bugs before they reach production.</p>
@@ -682,6 +861,24 @@ body {
       <div class="dive-body">
         <div class="dive-content">
           <p><strong>The business problem:</strong> The edge sensor runs standalone, which is the whole point for air-gapped and on-prem customers. But customers with multiple deployments need centralized management, and the real revenue opportunity is cross-customer threat intelligence — "this IP is attacking 5 of our other customers" — offered as a SaaS layer on top of the on-prem sensor. Signal Horizon needed to work self-hosted (for customers who won't touch SaaS) and as a managed service (for the upsell). Same codebase, both delivery models.</p>
+
+          <details class="dive-gallery-toggle">
+            <summary>Dashboards & architecture <span class="gallery-count">3 images</span></summary>
+            <div class="dive-gallery">
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/horizon-overview.png" alt="Signal Horizon Threat Overview" loading="lazy">
+                <div class="gallery-caption">Threat overview — fleet-wide security posture</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/horizon-warroom.png" alt="Signal Horizon War Room" loading="lazy">
+                <div class="gallery-caption">War Room — real-time incident response</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/horizon-intel.png" alt="Signal Horizon Global Intelligence" loading="lazy">
+                <div class="gallery-caption">Global intelligence — cross-fleet threat correlation</div>
+              </div>
+            </div>
+          </details>
 
           <p><strong>Why ClickHouse?</strong> Purpose-built for real-time analytics on columnar data. Sub-second queries across high-volume sensor events at a fraction of the cost of Elasticsearch. Column-oriented storage compresses security event data exceptionally well. IPs, attack types, status codes have high cardinality but repeat patterns that compress down hard.</p>
 
@@ -781,6 +978,11 @@ body {
         <div class="dive-content">
           <p><strong>What I walked into:</strong> Every customer sensor &mdash; and customers could have multiple &mdash; consisted of its own VPC. Yes, its own VPC. Inside each: an auto-scaling group of 2 EC2 instances (using credit-consuming instance types incorrectly), each running a single Docker container of the WAF. Because the instances were in a private subnet, every sensor got 2 NAT gateways and 4 Elastic IPs, plus a load balancer. Customers on-boarded by pointing their DNS at the ELB and whitelisting those 4 EIPs.</p>
 
+          <div class="dive-inline-img" onclick="openLightbox(this)">
+            <img src="img/txprotect-sensor.png" alt="Original per-customer VPC architecture" loading="lazy">
+            <div class="gallery-caption">The original architecture &mdash; one of these per customer sensor</div>
+          </div>
+
           <p><strong>It gets worse.</strong> The ASGs were set to scale on CPU utilization. A reverse proxy should scale on connections &mdash; CPU tells you almost nothing useful. But because spinning up new instances took so long, the threshold was set at 40% CPU. Any time a customer's sensors scaled, you got 2&ndash;3x wasted capacity costing anywhere from $70K&ndash;$300K a year depending on the customer. EBS volumes attached to EC2 instances were not being deleted when instances terminated. Elastic IPs were not being released when sensors were decommissioned. AWS service quotas were becoming a recurring problem because of the VPC-per-sensor model.</p>
 
           <p><strong>The deployment story was equally painful.</strong> Sensors were deployed through a collection of Python scripts with no discernible expected input or output, CloudFormation templates that used both parameters AND Jinja templating, and required making a direct write into another service's database for URLs and IPs to appear in the customer dashboard. If you asked someone to design the most expensive, most fragile way to run a fleet of reverse proxies on AWS, this is roughly what you'd get.</p>
@@ -838,6 +1040,11 @@ body {
       <div class="dive-body">
         <div class="dive-content">
           <p><strong>The insight:</strong> Every WAF vendor detects authorization attacks — brute force, credential stuffing, token replay. But none of them answer the question: "which of my API endpoints actually enforce authorization, and how is that changing over time?" That's a fundamentally different capability. Detection tells you someone tried to break in. Authorization intelligence tells you which doors are unlocked.</p>
+
+          <div class="dive-inline-img" onclick="openLightbox(this)">
+            <img src="img/api-auth-thesis.png" alt="API Authorization Intelligence — Market Thesis" loading="lazy">
+            <div class="gallery-caption">Market thesis — the gap every WAF vendor missed</div>
+          </div>
 
           <p><strong>I built the MVP.</strong> An authorization coverage map that auto-discovers endpoint auth posture from live traffic with zero configuration. The sensor observes request/response pairs and infers which endpoints require authentication, what auth mechanisms they use, and whether enforcement is consistent. No agents to install, no API specs to import, no manual inventory.</p>
 
@@ -917,6 +1124,24 @@ body {
         <div class="dive-content">
           <p><strong>The business context:</strong> A10 needed the full product stack — edge sensor, fleet management, endpoint agents, sales tooling — shipped in under a year by one engineer. That's not a workload problem you solve with long hours. It's a methodology problem. Here's what "AI-augmented" actually means in practice: a structured engineering methodology where I lead a team of AI agents the same way a senior engineer leads junior developers. I set the architecture, define patterns, review every output, and make every design decision. The agents implement against my specs, write tests, generate documentation. The quality gates keep them honest.</p>
 
+          <details class="dive-gallery-toggle">
+            <summary>Cortex &mdash; the system behind the methodology <span class="gallery-count">3 images</span></summary>
+            <div class="dive-gallery">
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/cortex-overview.png" alt="Cortex Overview" loading="lazy">
+                <div class="gallery-caption">Cortex architecture &mdash; agents, skills, and orchestration</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/cortex-ai.png" alt="Cortex AI Methodology" loading="lazy">
+                <div class="gallery-caption">AI-augmented development workflow</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/cortex-hooks.png" alt="Cortex Hooks" loading="lazy">
+                <div class="gallery-caption">Quality gates &mdash; review hooks and coverage gating</div>
+              </div>
+            </div>
+          </details>
+
           <p><strong>The outer loop is implementation.</strong> I define the architecture, write specs, and set patterns. Agents implement against those specs (code, tests, documentation). Same as assigning work to junior developers: clear requirements, bounded scope, review everything before it merges.</p>
 
           <p><strong>Multi-perspective review gates.</strong> Every change gets reviewed from multiple angles: security implications, performance characteristics, code quality and pattern consistency. These are separate review perspectives that catch different categories of issues, the same way a security engineer and a performance engineer would see different things in the same PR.</p>
@@ -954,10 +1179,101 @@ body {
 
           <p><strong>Then I automated the enforcement.</strong> Built a docs-as-code platform on Antora with automated quality checks using Vale and a custom style guide ruleset. Re-usable AsciiDoc components meant common patterns (admonitions, API references, configuration examples) were consistent by construction, not by review. Contribution templates lowered the barrier for other engineers to write docs that met the standard without my intervention.</p>
 
+          <div class="dive-inline-img" onclick="openLightbox(this)">
+            <img src="img/threatx-docs-1.png" alt="Documentation Platform" loading="lazy">
+            <div class="gallery-caption">Docs-as-code platform — versioned, branded, automated</div>
+          </div>
+
           <p><strong>The outcome:</strong> every minor version of the product shipped with versioned documentation at the same time. Architecture decision records, operational runbooks, API references, onboarding guides, all maintained in the same pipeline as the code. This was critical for the on-prem product launch, which required customer self-service documentation that had to be complete and correct on day one.</p>
 
           <div class="dive-tech">
             <span>AsciiDoc</span><span>Antora</span><span>Vale</span><span>Git</span><span>CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weekly Security Report -->
+    <div class="dive" id="security-report">
+      <div class="dive-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="dive-title-group">
+          <div class="dive-title">Weekly Security Report: Redesigning What Executives Actually Read</div>
+          <div class="dive-subtitle">ThreatX / A10 Networks &middot; From &ldquo;11 pie charts with a lookup table&rdquo; to boardroom-ready automated reporting</div>
+        </div>
+        <div class="dive-toggle"><span class="dive-toggle-arrow">&#9656;</span></div>
+      </div>
+      <div class="dive-body">
+        <div class="dive-content">
+          <p><strong>The business problem:</strong> A major customer put it bluntly: <em>&ldquo;We can&rsquo;t show this to our execs.&rdquo;</em> The existing weekly security report was version two of a product that had already failed once. Version one crashed the production database with inefficient queries against a data model that couldn&rsquo;t be queried efficiently to begin with. Version two replaced it with 11 pie charts labeled with numbers that required a separate lookup table to interpret. Customers revolted. Several enterprise accounts demanded the reports be fixed as a condition of renewal.</p>
+
+          <p><strong>The rescue.</strong> A PM had been managing the redesign with an offshore team but was a month from the end-of-year deadline with nothing shippable. I got asked to take it over. I&rsquo;d had my eye on these reports for years, waiting for the opportunity. An earlier attempt to rebuild them had been blocked &mdash; they thought I just wanted to use Lambda for my own amusement, and not because it was literally designed for this kind of job.</p>
+
+          <p><strong>The insight nobody else had:</strong> this was an executive report, and nobody had designed it for executives. The people using the WAF every day don&rsquo;t need a weekly summary of what they already saw. They need a document to hand to the people footing the bill that says <em>&ldquo;this is working&rdquo;</em> and <em>&ldquo;here&rsquo;s what happened this week.&rdquo;</em> An executive will read one page if you&rsquo;re lucky. Everything after that is receipts.</p>
+
+          <details class="dive-gallery-toggle">
+            <summary>The finished report <span class="gallery-count">5 pages</span></summary>
+            <div class="dive-gallery">
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/sec-report-cover.png" alt="Security Report Cover" loading="lazy">
+                <div class="gallery-caption">Branded cover &mdash; this is THEIR report, not a generic template</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/sec-report-exec.png" alt="Executive Summary" loading="lazy">
+                <div class="gallery-caption">Executive summary &mdash; KPIs, automated insights, weekly trends</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/sec-report-traffic.png" alt="Traffic Summary" loading="lazy">
+                <div class="gallery-caption">Traffic summary &mdash; the RPS page they were begging for</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/sec-report-geo.png" alt="Top Countries" loading="lazy">
+                <div class="gallery-caption">Threat geography &mdash; map for context, bars for comparison</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/sec-report-sites.png" alt="Protected Sites" loading="lazy">
+                <div class="gallery-caption">Protected sites &mdash; configuration gaps visible at a glance</div>
+              </div>
+            </div>
+          </details>
+
+          <details class="dive-gallery-toggle">
+            <summary>Supporting research &mdash; Data Visualization &amp; Accessibility Guide excerpts <span class="gallery-count">4 pages</span></summary>
+            <div class="dive-gallery">
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/data-viz-colors.png" alt="Brand-compliant color system" loading="lazy">
+                <div class="gallery-caption">WCAG-compliant color system with contrast ratios</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/data-viz-bar-chart.png" alt="Bar chart color options" loading="lazy">
+                <div class="gallery-caption">Brand-compliant bar chart palettes with colorblind simulation</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/data-viz-no-log-scale.png" alt="Why not log scale" loading="lazy">
+                <div class="gallery-caption">The case against logarithmic scale &mdash; the witch, slain</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/data-viz-kpis.png" alt="KPI card design" loading="lazy">
+                <div class="gallery-caption">KPI card anatomy &mdash; label, value, context</div>
+              </div>
+            </div>
+          </details>
+
+          <p><strong>Design principles.</strong> The previous reports showed absolute values with no context. A number means nothing without a baseline. I added week-over-week deltas, 4-week averages, and 4-week peaks to every applicable metric. Trending data tells a story; a standalone number is trivia.</p>
+
+          <p><strong>The executive summary page</strong> was not in the requirements. I added it because nobody had realized that an executive report needs to be readable in 60 seconds. I built 18 possible automated insights &mdash; actionable interpretations drawn from each section&rsquo;s data &mdash; that dynamically build a prioritized list for each customer each week. Configuration gaps, anomalous trends, whitelisted entities triggering alerts, sites running without blocking protection. If something needs attention, it&rsquo;s on page one. I added a status column to the 4-week trend table &mdash; green means go. Sometimes you only need to read half a page.</p>
+
+          <p><strong>Then the non-designers arrived.</strong> The words <em>&ldquo;I&rsquo;m not a designer, but&hellip;&rdquo;</em> preceded every challenge. The choropleth map became a decorative element supporting a trend-focused table, because an unlabeled choropleth is one of the worst data visualizations you can use &mdash; it fails WCAG 1.4.1 by encoding information through color alone, and it&rsquo;s perceptually inaccurate for comparing values. I kept it for geographic context and added horizontal bars for actual comparison.</p>
+
+          <p><strong>The logarithmic scale fight</strong> was the hardest. Log scales compress large differences, violating Tufte&rsquo;s Principle of Proportional Ink. A bar representing 18,000 events looks 78% as long as one representing 2,100 &mdash; an 8.5&times; difference hidden by the scale. The counterargument was that log scales had already shipped elsewhere in the product. I cited Stephen Few, Cleveland &amp; McGill&rsquo;s 1984 perceptual accuracy research, and the fact that Romano et al. (2020) found only 40% correct interpretation on log scales vs. 84% on linear. The log scale did not ship.</p>
+
+          <p><strong>WCAG 2.1 Level AA compliance</strong> was dismissed as unnecessary because &ldquo;we&rsquo;ve never done that before.&rdquo; The customer&rsquo;s requirements listed &ldquo;Accessible&rdquo; in red. Compliance was already built into the design &mdash; status badges use text labels alongside color, all contrast ratios meet 3:1 for graphical objects and 4.5:1 for text, and every chart provides redundant encoding. It cost nothing to maintain because it was architected from the start, not bolted on after.</p>
+
+          <p><strong>I wrote the documentation to make these decisions defensible.</strong> A 46-page Data Visualization &amp; Accessibility Guide covering color systems, chart selection, WCAG requirements, and redundant encoding patterns, all backed by research citations (Tufte, Few, Cleveland &amp; McGill, Nussbaumer Knaflic, Wilke, Ware). A separate Design Decisions document explaining the rationale for every page of the report, structured as &ldquo;the story this page tells&rdquo; with key decisions and references. And a brand-compliant color options analysis showing WCAG contrast ratios and colorblind simulations for every proposed palette.</p>
+
+          <p><strong>The result:</strong> 14-page automated weekly report. Per-customer, branded, generated entirely from sensor telemetry. Executive summary with automated insights. Trend-focused throughout. WCAG 2.1 AA compliant. Replaced both the database-crashing v1 and the pie-chart v2 that caused the customer revolt. Shipped by end of year.</p>
+
+          <div class="dive-tech">
+            <span>Python</span><span>Data Visualization</span><span>WCAG 2.1 AA</span><span>A10 Brand</span><span>Automated PDF</span><span>MongoDB</span><span>Executive Reports</span>
           </div>
         </div>
       </div>
@@ -1038,7 +1354,29 @@ body {
   </div>
 </div>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
 <script>
+// Lightbox
+function openLightbox(el) {
+  const img = el.querySelector('img');
+  const caption = el.querySelector('.gallery-caption');
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox-caption').textContent = caption ? caption.textContent : '';
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
 // Sticky nav active state
 const sections = document.querySelectorAll('.section[id]');
 const navLinks = document.querySelectorAll('.section-nav a');

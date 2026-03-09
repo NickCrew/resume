@@ -8,7 +8,7 @@
 #   just clean              — remove generated files
 #   just install            — install deps
 
-variants := "base founding"
+variants := "base founding aws-security"
 
 # Default: build everything
 build variant="all":
@@ -34,9 +34,10 @@ pdf variant:
     #!/usr/bin/env bash
     set -euo pipefail
     case {{variant}} in
-        base)     file="NicholasFerguson_Resume" ;;
-        founding) file="NicholasFerguson_Resume_Founding" ;;
-        *)        echo "Unknown variant: {{variant}}"; exit 1 ;;
+        base)         file="NicholasFerguson_Resume" ;;
+        founding)     file="NicholasFerguson_Resume_Founding" ;;
+        aws-security) file="NicholasFerguson_Resume_AWS_Security" ;;
+        *)            echo "Unknown variant: {{variant}}"; exit 1 ;;
     esac
     if command -v soffice &> /dev/null; then
         soffice --headless --convert-to pdf "${file}.docx"

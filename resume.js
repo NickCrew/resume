@@ -6,7 +6,7 @@ const {
 
 // --- CLI ---
 const variant = process.argv[2] || "base";
-const VARIANTS = ["base", "founding"];
+const VARIANTS = ["base", "founding", "aws-security"];
 if (!VARIANTS.includes(variant)) {
   console.error(`Unknown variant: ${variant}. Options: ${VARIANTS.join(", ")}`);
   process.exit(1);
@@ -87,16 +87,25 @@ const profiles = {
     tb("one engineer, full product stack, under a year."),
     t(" Before engineering, I spent 6 years in hotel operations, which gave me something most engineers don\u2019t have: an instinct for how businesses actually run. I find the problem, ship the solution, and build the team to own it."),
   ],
+  "aws-security": [
+    t("I build and operate AWS security infrastructure at scale. At A10 Networks, I "),
+    tb("redesigned the entire AWS deployment architecture"),
+    t(" \u2014 consolidating per-customer VPCs into shared infrastructure, replacing manual deployment scripts with automated pipelines, and cutting AWS spend 50% ($60K/mo). I built self-service platforms that let application teams and SOC analysts configure and deploy securely without bottlenecking on engineering. At Vispero, I designed hybrid CI/CD with an AWS control plane and on-prem ephemeral agents, built self-service pipeline tooling across 600+ pipelines with template guardrails, and "),
+    tb("migrated all development services to AWS \u2014 isolating engineering from a ransomware attack"),
+    t(" that incapacitated the rest of the organization. I work across security, infrastructure, and DevOps to embed security controls into pipelines that teams actually use."),
+  ],
 };
 
 const skillsAlso = {
   base: "Cross-platform build systems (Windows/macOS/Linux/Android/iOS), CI/CD pipeline design, EV code signing, release engineering, LLM-augmented development workflows, technical writing, customer-facing delivery",
   founding: "Customer-facing delivery, technical writing, cross-platform build systems (Windows/macOS/Linux/Android/iOS), CI/CD pipeline design, EV code signing, release engineering, LLM-augmented development workflows",
+  "aws-security": "Security group design, VPC architecture, CI/CD pipeline design, CloudFormation, cross-platform build systems, EV code signing, release engineering, technical writing, customer-facing delivery",
 };
 
 const projectsIntro = {
   base: "Open source and internal tools. Technical deep dives at ",
   founding: "Tools I built because they needed to exist. Technical deep dives at ",
+  "aws-security": "Security and infrastructure tools. Technical deep dives at ",
 };
 
 // --- A10 BULLETS ---
@@ -155,6 +164,28 @@ const a10Bullets = {
       t("Made this possible by building AI into the development process: LLM agents in CI/CD for auto-fix and test generation, multi-agent orchestration for coverage gating, and automated analysis gates on every change.")
     ]),
   ],
+  "aws-security": [
+    // German govt / security compliance
+    bulletRich([
+      tb("Rebuilt the product's deployment architecture to meet GDPR compliance requirements for the German government. "),
+      t("The legacy SaaS architecture couldn't support on-prem deployment. Redesigned as a standalone edge sensor with fleet management and centralized policy distribution. Result: deployable on-prem, air-gapped, or SaaS from the same codebase, with security controls embedded at every layer.")
+    ]),
+    // Self-service platforms
+    bulletRich([
+      tb("Built self-service security validation and demo platforms. "),
+      t("Sales engineers configure attack scenarios per customer vertical and spin up isolated environments with one click. Customers verify compliance posture without tying up the SOC team. Replaced manual proof-of-concept workflows that were stalling enterprise evaluations.")
+    ]),
+    // Endpoint security
+    bulletRich([
+      tb("Shipped cross-platform endpoint agents with enterprise security controls. "),
+      t("Wrote v1 for Windows, Linux, macOS, iOS, and Android \u2014 kernel-level drivers, EV code signing, notarization, MDM deployment. Managed the full release lifecycle including SmartScreen reputation and certificate compliance.")
+    ]),
+    // AI in pipeline
+    bulletRich([
+      tb("Embedded automated security analysis into the CI/CD pipeline. "),
+      t("Multi-perspective review gates (security, performance, code quality) on every change. Automated test generation and coverage gating to prevent regressions from reaching production.")
+    ]),
+  ],
 };
 
 // --- THREATX BULLETS ---
@@ -203,6 +234,33 @@ const threatxBullets = {
       t("ThreatX Labs \u2014 a serverless attack traffic platform (Lambda, Step Functions) used in the keynote demo.")
     ]),
   ],
+  "aws-security": [
+    // AWS cost reduction — lead bullet
+    bulletRich([
+      tb("Cut AWS spend ~50% (~$60K/mo) by redesigning the VPC architecture. "),
+      t("Inherited a model where every customer sensor had its own VPC with dedicated NAT gateways, EIPs, load balancers, and auto-scaling groups. Consolidated into shared Fargate infrastructure with VPC Peering and PrivateLink for tenant isolation. Replaced CPU-based scaling with connection-based policies. Eliminated orphaned EBS volumes, leaked EIPs, and recurring service quota issues.")
+    ]),
+    // Self-service onboarding
+    bulletRich([
+      tb("Built self-service sensor management platform for the 24/7 SOC team. "),
+      t("Replaced scattered scripts and manual deployment steps with a unified CLI and plugin architecture. Diagnostics reduced troubleshooting from hours to minutes. Mentored SOC analysts into SRE practitioners who took over the platform entirely.")
+    ]),
+    // Pro services / cross-team
+    bulletRich([
+      tb("Created the professional services function and delivered 4 enterprise engagements. "),
+      t("Microsoft-ecosystem integrations, a VMware appliance for a customer who wouldn\u2019t run Linux containers, and pre-sales technical translation bridging security requirements with product capabilities.")
+    ]),
+    // Linux kernel / network security
+    bulletRich([
+      tb("Diagnosed a network-layer production failure at 150K RPS. "),
+      t("Built a distributed load testing framework, identified Linux conntrack table exhaustion at the kernel level, built dynamic conntrack sizing as a systemd service. Saved a $1M contract.")
+    ]),
+    // Kafka / infrastructure
+    bulletRich([
+      tb("Deployed Kafka (AWS MSK) to protect the production database under load. "),
+      t("Event-sourcing pipeline processing millions of security events daily. Built ThreatX Labs, a serverless platform (Lambda, Step Functions) for attack simulation and customer demos.")
+    ]),
+  ],
 };
 
 // --- VISPERO BULLETS ---
@@ -249,6 +307,33 @@ const visperoBullets = {
     bulletRich([
       tb("Isolated engineering from a ransomware attack. "),
       t("Designed hybrid CI/CD architecture (AWS control plane, on-prem ephemeral agents). Had already migrated all dev services to AWS before ransomware incapacitated the rest of the organization.")
+    ]),
+  ],
+  "aws-security": [
+    // Hybrid CI/CD with AWS
+    bulletRich([
+      tb("Designed hybrid CI/CD architecture with AWS control plane and on-prem ephemeral agents. "),
+      t("AWS orchestration scheduling jobs, VMware spinning up ephemeral build agents on SSD arrays, Ansible provisioning via Kerberos for credential-free WinRM auth. Every build got a clean, isolated environment. Migrated all dev services to AWS \u2014 isolating engineering from a ransomware attack that incapacitated the rest of the organization.")
+    ]),
+    // Self-service pipelines
+    bulletRich([
+      tb("Built self-service pipeline platform with template guardrails across 600+ pipelines. "),
+      t("Developers got sandbox environments with policy-compliant defaults. Automated the release candidate process with built-in security checks. Cut routine engineering support requests by 50%.")
+    ]),
+    // First platform hire
+    bulletRich([
+      tb("First platform developer in a newly created role. "),
+      t("Built the internal developer platform from scratch: a build DSL abstracting compilation across 6 targets (Windows, macOS, iOS, Android, Linux, Embedded Linux). Shipped $50M/year in software on this framework.")
+    ]),
+    // License management / compliance
+    bulletRich([
+      tb("Rebuilt license management for $2M+ in government contracts. "),
+      t("Reverse-engineered an ancient C++ application backed by XML flat files into a database-driven platform with audit trails and compliance reporting. Reduced turnaround from 3+ days to immediate.")
+    ]),
+    // Post-acquisition unification
+    bulletRich([
+      tb("Unified 4 acquired companies into one engineering organization. "),
+      t("Each acquisition brought different architectures, toolchains, and security postures. Built the cross-platform framework and standardized build and release processes across all targets.")
     ]),
   ],
 };
@@ -371,6 +456,7 @@ const doc = new Document({
 const filenames = {
   base: "NicholasFerguson_Resume",
   founding: "NicholasFerguson_Resume_Founding",
+  "aws-security": "NicholasFerguson_Resume_AWS_Security",
 };
 const outName = filenames[variant];
 
