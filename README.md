@@ -17,29 +17,9 @@ PDF conversion requires [LibreOffice](https://www.libreoffice.org/) (`brew insta
 ```bash
 just build              # Build all variants (docx + pdf)
 just build base         # Build base resume only
-just build founding     # Build founding engineer variant only
-just docx founding      # Docx only, skip pdf
+just docx base      # Docx only, skip pdf
 just clean              # Remove generated files
 ```
-
-## Variants
-
-| Variant    | Output File                              | Audience |
-|------------|------------------------------------------|----------|
-| `base`     | `NicholasFerguson_Resume.docx`           | General — platform eng, DevEx, build/release roles |
-| `founding` | `NicholasFerguson_Resume_Founding.docx`  | Founding engineer roles at seed-stage companies with non-technical founders |
-
-### What changes between variants
-
-- **Profile section** — base leads with the A10 story; founding leads with "first infrastructure hire, built from scratch, twice" and includes the hospitality→engineering transition
-- **Bullet emphasis** — founding trims technical detail (kernel drivers, EV signing specifics) in favor of business-outcome framing
-- **Skills ordering** — founding moves "customer-facing delivery" to the front of the "Also" line
-- **Projects intro** — founding uses "Tools I built because they needed to exist"
-- **ThreatX/Vispero** — founding compresses lower-priority bullets for space
-
-### What stays the same
-
-Header, contact info, skills (Languages/Infrastructure/Data), education, projects, and all layout/design tokens are shared. Content accuracy rules (platform counts, AI Firewall story, tone) apply to all variants.
 
 ## Adding a new variant
 
