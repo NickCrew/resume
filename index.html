@@ -302,6 +302,46 @@ body {
 
 .dive.open .dive-toggle { color: var(--accent) }
 
+.dive-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+.dive-link-btn:hover { border-color: var(--border-hover); color: var(--accent) }
+.dive-link-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round }
+.dive-link-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px }
+
+.dive-link-btn .link-tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface-2);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.dive-link-btn .link-tooltip.show { opacity: 1 }
+
 .dive-toggle-arrow {
   display: inline-flex;
   align-items: center;
@@ -820,7 +860,7 @@ body {
   .dive { border-color: #ddd; break-inside: avoid }
   .dive-body { max-height: none !important; overflow: visible !important }
   .dive-content { border-color: #eee }
-  .dive-toggle { display: none }
+  .dive-toggle, .dive-link-btn { display: none }
   .dive-title { color: #1a1a1a }
   .dive-subtitle { color: #666 }
   .dive-tech span { border-color: #ccc; color: #2563eb; background: #f0f4ff }
@@ -963,6 +1003,7 @@ body {
           <div class="dive-title">Edge Protection Sensor: From SaaS Dependency to Single Binary</div>
           <div class="dive-subtitle">A10 Networks · Replaced a dozen networked services with a single binary</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
@@ -1027,6 +1068,7 @@ body {
           <div class="dive-title">Fleet Management & Collective Defense: The SaaS Upsell That Makes On-Prem Work</div>
           <div class="dive-subtitle">A10 Networks · Fleet management + collective defense + incident response, self-hosted or SaaS</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
@@ -1075,6 +1117,7 @@ body {
           <div class="dive-title">AI Firewall: Bridging the Gap from Prototype to Production</div>
           <div class="dive-subtitle">A10 Networks · Wrote v1 for five operating systems, then integrated everything into the edge sensor</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
@@ -1111,6 +1154,7 @@ body {
           <div class="dive-title">The $1M Contract Save</div>
           <div class="dive-subtitle">ThreatX · Diagnosing what two weeks of planned NGINX optimizations couldn't</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
@@ -1143,6 +1187,7 @@ body {
           <div class="dive-title">AWS Cost Reduction: $60K/Month by Replacing an Architecture Nobody Questioned</div>
           <div class="dive-subtitle">ThreatX · Cut the AWS bill in half by asking why every sensor needed its own VPC</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">&#9656;</span></div>
       </div>
       <div class="dive-body">
@@ -1180,6 +1225,7 @@ body {
           <div class="dive-title">Professional Services: First Engineer in the Role</div>
           <div class="dive-subtitle">ThreatX · Created a new revenue capability by bridging engineering and enterprise sales</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
@@ -1206,6 +1252,7 @@ body {
           <div class="dive-title">API Authorization Intelligence: The Gap Every Competitor Missed</div>
           <div class="dive-subtitle">A10 Networks · From market gap identification to working MVP to product roadmap</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
@@ -1243,6 +1290,7 @@ body {
           <div class="dive-title">Internal Developer Platform: Built from Nothing</div>
           <div class="dive-subtitle">Vispero · First platform hire, $50M/year in software shipping on it</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
@@ -1289,6 +1337,7 @@ body {
           <div class="dive-title">AI-Augmented Development: How One Person Ships a Full Product Stack</div>
           <div class="dive-subtitle">The methodology behind "11 months, solo": not magic, engineering discipline</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
@@ -1338,6 +1387,7 @@ body {
           <div class="dive-title">Documentation Platform: From Manual Editing to Automated Publishing</div>
           <div class="dive-subtitle">ThreatX / A10 Networks · Information architecture, style guide, docs-as-code pipeline</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
@@ -1371,6 +1421,7 @@ body {
           <div class="dive-title">Weekly Security Report: Redesigning What Executives Actually Read</div>
           <div class="dive-subtitle">ThreatX / A10 Networks · From "11 pie charts with a lookup table" to boardroom-ready automated reporting</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">&#9656;</span></div>
       </div>
       <div class="dive-body">
@@ -1461,6 +1512,7 @@ body {
           <div class="dive-title">Open Source Projects</div>
           <div class="dive-subtitle">Developer tools and security testing frameworks</div>
         </div>
+        <button class="dive-link-btn" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span class="link-tooltip">Copied!</span></button>
         <div class="dive-toggle"><span class="dive-toggle-arrow">▸</span></div>
       </div>
       <div class="dive-body">
@@ -1550,6 +1602,7 @@ document.querySelectorAll('.dive').forEach((dive, i) => {
 
 // ── Dive Toggle (event delegation) ──
 document.addEventListener('click', e => {
+  if (e.target.closest('.dive-link-btn')) return; // handled separately
   const header = e.target.closest('.dive-header');
   if (!header) return;
   const dive = header.closest('.dive');
@@ -1557,6 +1610,35 @@ document.addEventListener('click', e => {
   header.setAttribute('aria-expanded', String(dive.classList.contains('open')));
   updateExpandBtn();
 });
+
+// ── Copy Deep-Dive Link ──
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.dive-link-btn');
+  if (!btn) return;
+  e.stopPropagation();
+  const dive = btn.closest('.dive');
+  if (!dive?.id) return;
+  const url = location.origin + location.pathname + '#' + dive.id;
+  navigator.clipboard.writeText(url).then(() => {
+    const tip = btn.querySelector('.link-tooltip');
+    tip.classList.add('show');
+    setTimeout(() => tip.classList.remove('show'), 1500);
+  });
+});
+
+// ── Hash-Based Auto-Expand ──
+function openDiveFromHash() {
+  const hash = location.hash.slice(1);
+  if (!hash) return;
+  const dive = document.querySelector('.dive#' + CSS.escape(hash));
+  if (!dive) return;
+  dive.classList.add('open');
+  dive.querySelector('.dive-header')?.setAttribute('aria-expanded', 'true');
+  updateExpandBtn();
+  setTimeout(() => dive.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+}
+openDiveFromHash();
+window.addEventListener('hashchange', openDiveFromHash);
 
 // ── Expand All / Collapse All ──
 const expandBtn = document.getElementById('dive-expand-all');
@@ -1657,4 +1739,16 @@ document.addEventListener('keydown', e => {
     else if ((e.key === 'ArrowRight' || e.key === 'ArrowDown') && lbIndex < lbImages.length - 1) {
       e.preventDefault(); lbIndex++; showLbImage();
     } else if ((e.key === 'ArrowLeft' || e.key === 'ArrowUp') && lbIndex > 0) {
-      e.preventDefault();
+      e.preventDefault(); lbIndex--; showLbImage();
+    }
+  } else {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const header = document.activeElement?.closest('.dive-header');
+      if (header) { e.preventDefault(); header.click(); }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
