@@ -891,11 +891,12 @@ body {
     <div class="hero-title">Engineer</div>
     <p class="hero-intro">I solve business problems with computers.</p>
     <p class="hero-detail">
-      Teams with deep domain expertise often need a different skillset to get from prototype to production
-      and I'm the person who bridges that gap. At A10, I wrote endpoint agents for five operating systems
-      and engineered the release to production to unblock their AI Firewall team, then rebuilt the legacy SaaS WAF
-      into a high-performance edge sensor and identified a market gap no competitor had addressed.
-      Four platforms built from scratch across three companies. The deep dives below tell the full story.
+      I drop into unfamiliar environments and pick up whatever is needed to ship. At Vispero I built
+      the internal developer platform from scratch, shipping $50M/year in software on a framework I designed.
+      At A10 I learned Rust and rebuilt the entire product stack solo in under a year: a high-performance
+      edge sensor, fleet management, endpoint agents for five operating systems, and a new product category
+      no competitor had identified. Before any of it, I managed hotels and shot photographs, which is where
+      I learned how businesses actually work and why design matters. The deep dives below tell the full story.
     </p>
     <div class="hero-links">
       <a href="https://github.com/NickCrew" class="hero-link" target="_blank" rel="noopener">
@@ -906,17 +907,13 @@ body {
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
-      <a href="/cdn-cgi/l/email-protection#0d63646e664d6c79616c7e6e7f687a2369687b" class="hero-link">
+      <a href="mailto:nick@atlascrew.dev" class="hero-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-        <span class="__cf_email__" data-cfemail="a3cdcac0c8e3c2d7cfc2d0c0d1c6d48dc7c6d5">[email&#160;protected]</span>
+        <span class="__cf_email__" data-cfemail="a3cdcac0c8e3c2d7cfc2d0c0d1c6d48dc7c6d5">nick@atlascrew.dev</span>
       </a>
       <a href="NicholasFerguson_Resume.pdf" class="hero-link" target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
         Resume (PDF)
-      </a>
-      <a href="process.html" class="hero-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        How I Job Search
       </a>
     </div>
   </div>
@@ -1370,7 +1367,7 @@ body {
 
           <p><strong>Circuit breakers prevent compounding errors.</strong> If a review loop flags an issue, the pipeline stops. It doesn't try to self-heal or auto-fix and retry indefinitely. The failure gets surfaced to me with context: what was attempted, what failed, what the reviewers flagged. I make the architectural decision about how to proceed. The system is designed to fail fast and fail loudly rather than silently accumulate technical debt.</p>
 
-          <p><strong>The result is 9,775 test cases across the full product stack.</strong> Not because I heroically wrote ten thousand tests. Because the methodology made comprehensive testing the path of least resistance. It's harder to skip validation than to do it. That's the point. The agents handle the volume. The gates handle the quality. I handle the architecture and decisions.</p>
+          <p><strong>The result is 9,775 test cases across the full product stack.</strong> Not because I heroically wrote ten thousand tests. Because the methodology made thorough testing the path of least resistance. It's harder to skip validation than to do it. That's the point. The agents handle the volume. The gates handle the quality. I handle the architecture and decisions.</p>
 
           <div class="dive-stats">
             <div><div class="dive-stat-val">9,775</div><div class="dive-stat-label">test cases</div></div>
@@ -1523,9 +1520,49 @@ body {
 
           <p><strong>Facet:</strong> AI-powered job search and interview preparation platform. Structured methodology for candidate profiling, market research, study guide generation, and per-listing analysis. Built the system I used for my own search. <a href="https://nickcrew.github.io/Facet" style="color:var(--accent)">Try it</a> · <a href="https://github.com/NickCrew/Facet" style="color:var(--accent)">GitHub</a></p>
 
+          <details class="dive-gallery-toggle">
+            <summary>Facet screenshots <span class="gallery-count">4 images</span></summary>
+            <div class="dive-gallery">
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/facet-main.png" alt="Facet main view" loading="lazy">
+                <div class="gallery-caption">Main dashboard</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/facet-pipeline.png" alt="Facet pipeline" loading="lazy">
+                <div class="gallery-caption">Application pipeline</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/facet-analytics.png" alt="Facet analytics" loading="lazy">
+                <div class="gallery-caption">Analytics</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/facet-prep-2.png" alt="Facet interview prep" loading="lazy">
+                <div class="gallery-caption">Interview prep</div>
+              </div>
+            </div>
+          </details>
+
           <p style="font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:0.5px;margin-top:24px;margin-bottom:12px">SECURITY TOOLS</p>
 
           <p><strong>Apparatus:</strong> AI-augmented network simulation supporting 13 protocols with fault injection, honeypot deployment, and traffic analysis. Built for security testing and network resilience validation.</p>
+
+          <details class="dive-gallery-toggle">
+            <summary>Apparatus screenshots <span class="gallery-count">3 images</span></summary>
+            <div class="dive-gallery">
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/apparatus-overview.png" alt="Apparatus overview" loading="lazy">
+                <div class="gallery-caption">Network overview</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/apparatus-scenarios.png" alt="Apparatus scenarios" loading="lazy">
+                <div class="gallery-caption">Scenario library</div>
+              </div>
+              <div class="dive-gallery-item" onclick="openLightbox(this)">
+                <img src="img/apparatus-autopilot.png" alt="Apparatus autopilot" loading="lazy">
+                <div class="gallery-caption">Autopilot mode</div>
+              </div>
+            </div>
+          </details>
 
           <p><strong>Crucible:</strong> Attack simulation framework with 119 pre-built scenarios covering OWASP Top 10, API abuse patterns, and advanced persistent threat chains. Used to validate that Synapse actually catches what it claims to catch.</p>
 
@@ -1548,15 +1585,14 @@ body {
     <div class="section-subhead">I solve problems nobody knew to ask about. That's not a perk of the role. It is the role.</div>
 
     <div class="prose">
-      <p>I drop into a new environment and start by understanding the problems of the people nearest to me. My first job is to help other people do their job better. Usually that means helping engineers ship, and that's more than building pipelines. It means gaining trust, re-educating people on what continuous integration actually means, and showing them why it's the prerequisite to faster delivery, not an obstacle to it.</p>
+      <p>The most valuable thing about me is the ability to drop into an unfamiliar environment and pick up whatever is needed to ship. Almost every accomplishment on this page started that way. At Vispero, I hadn't seen a Windows system since 2005; I reverse-engineered an 11-year-old build framework and became the person who knew where everything was. At A10, I learned Rust and rewrote a WAF because there was nobody else to do it. The pattern repeats because the skill isn't any particular technology. It's the willingness to sit with something you don't understand yet and refuse to stop until you do.</p>
 
-      <p>By focusing on the people around me, I get an accelerated tour of the company. I learn what's broken, what's working despite itself, and where the real bottlenecks live. From there I work outward, connecting with customers, understanding the business, mapping the market context. That's how I end up identifying gaps like API Authorization Intelligence or creating a professional services function that didn't exist. Not because someone assigned it. Because the path from "help this person ship" leads you to the edges of the company if you follow it far enough.</p>
+      <p>I design, build, and ship products end to end: architecture, implementation, testing, documentation, branding, pre-sales support, customer integration. But the part that matters most is what comes before the first line of code. I start by learning the problems of the people around me, which gives me an accelerated tour of the company. I work outward from there: customers, business model, competitive landscape. That's how I end up identifying entirely new product categories or creating functions that didn't exist before. Not because someone assigned it. Because the path from "help this person ship" leads you to the edges of the company if you follow it far enough.</p>
 
-      <p>Everything I build is designed to be handed off from day one. I find people to support it. I teach those people how to do the same. At ThreatX, I built the fleet management platform, identified SOC analysts who showed aptitude, mentored them into SRE practitioners, and they took over completely. That created a permanent bridge team between engineering and the SOC. It only happened because I'd invested in learning people's problems and building relationships outside my immediate team. I try to work myself out of every job I do.</p>
+      <p>I compulsively build products. My job search resulted in a job search platform within days. I always see the endgame, but I don't build ahead of the need. I work incrementally and design things so they're easy to grow later because I've already thought about where they could go. I also constantly mitigate myself as a single point of failure: everything is built to hand off from the beginning, developer experience is a priority from day one, and I find and mentor the people who eventually take over. At ThreatX, I identified SOC analysts who showed aptitude, mentored them into SRE practitioners, and they took over my platform completely. I try to work myself out of every job I do.</p>
 
-      <p>Ironically, I am a product engineer. My work is identifiable and known for the polish and small features that show someone really took the time to understand the user's problems. I just start from a different place. Instead of starting on the outside in traditional application development, I start on the inside and focus on people. I spent six years managing hotels in South Florida before moving into engineering, and that made it impossible for me not to think about the person on the other end of everything I build. I'm also a photographer and printmaker, and that shows up in how I think about visual hierarchy and information architecture. My dashboards get adopted because they're designed, not just functional.</p>
+      <p>I initially avoided engineering as a career because I thought I'd ruin it for myself. Turns out you run out of interesting problems pretty quickly without other people and businesses around you. Before tech, I was a photographer and managed hotels on the west coast of Florida, and that's where I learned what it actually means to be customer-focused, how businesses operate, and how things get sold. It honed my sense of design and style, and it made it impossible for me not to think about the person on the other end of everything I build. My dashboards get adopted because they're designed, not just functional. My documentation gets read because it's written for the person who needs it, not the person who wrote it.</p>
 
-      <p>It doesn't matter what level I enter a company. I can start as a DevOps Engineer and rebuild the entire product stack three years later. My superpower is building consensus and driving change without needing authority to do it.</p>
     </div>
 
     </div>
@@ -1571,7 +1607,7 @@ body {
     <div class="footer-links">
       <a href="https://github.com/NickCrew" target="_blank" rel="noopener">GitHub</a>
       <a href="https://linkedin.com/in/ncferguson" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="/cdn-cgi/l/email-protection#432d2a20280322372f2230203126346d272635">Email</a>
+      <a href="mailto:nick@atlascrew.dev">Email</a>
       <a href="process.html">How I Job Search</a>
     </div>
   </div>

@@ -3,3 +3,4 @@ node_modules/
 .claude/
 !NicholasFerguson_Resume.pdf
 !archive/*.pdf
+.playwright-mcp/
