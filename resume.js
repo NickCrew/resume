@@ -6,7 +6,7 @@ const {
 
 // --- CLI ---
 const variant = process.argv[2] || "base";
-const VARIANTS = ["base", "founding", "aws-security"];
+const VARIANTS = ["base", "recruiter", "founding", "aws-security"];
 if (!VARIANTS.includes(variant)) {
   console.error(`Unknown variant: ${variant}. Options: ${VARIANTS.join(", ")}`);
   process.exit(1);
@@ -56,7 +56,7 @@ const jobHeader = (company, subtitle, title, dates) => {
     parts.push(new TextRun({ text: " " + subtitle, font: FONT, size: BODY_SIZE, italics: true, color: LIGHT }));
   }
   return [
-    new Paragraph({ spacing: spacer(140, 2), children: parts }),
+    new Paragraph({ spacing: spacer(200, 2), children: parts }),
     new Paragraph({
       spacing: spacer(0, 40),
       tabStops: [{ type: TabStopType.RIGHT, position: 10440 }],
@@ -75,7 +75,10 @@ const jobHeader = (company, subtitle, title, dates) => {
 
 const profiles = {
   base: [
-    t("I drop into unfamiliar environments and pick up whatever is needed to ship. I start by learning the problems of the people around me, which gives me an accelerated tour of the company. I work outward from there: customers, business model, competitive landscape. That's how I end up identifying new product categories or creating functions that didn't exist before. Four platforms built from scratch across three companies. Everything is built to hand off from the beginning."),
+    t("I drop into unfamiliar environments and pick up whatever is needed to ship. I start by learning the problems of the people around me, which gives me an accelerated tour of the company. I work outward from there: customers, business model, competitive landscape. That's how I end up identifying new product categories or creating functions that didn't exist before. Four platforms built from scratch across three companies. I've led distributed engineering teams and I build systems that run without me."),
+  ],
+  recruiter: [
+    t("I drop into unfamiliar environments and pick up whatever is needed to ship. I start by learning the problems of the people around me, which gives me an accelerated tour of the company. I work outward from there: customers, business model, competitive landscape. That's how I end up identifying new product categories or creating functions that didn't exist before. Four platforms built from scratch across three companies. I've led distributed engineering teams and I build systems that run without me."),
   ],
   founding: [
     t("I drop into unfamiliar environments and build from scratch. I start by learning the problems of the people around me, then work outward: customers, business model, competitive landscape. Four platforms across three companies, each starting from zero in a new domain. Before engineering, I managed hotels and shot photographs, which is where I learned how businesses actually work and why design matters. Everything is built to hand off from the beginning."),
@@ -85,9 +88,10 @@ const profiles = {
   ],
 };
 
-// --- PROOF POINTS ---
+// --- PROOF POINTS (recruiter variant only) ---
 const proofPoints = {
-  base: [
+  base: [],
+  recruiter: [
     bulletRich([
       tb("Learned Rust to replace an 8-hop cloud pipeline with a single binary. "),
       t("A10 told the German government they'd have GDPR-compliant on-prem by year-end. The legacy architecture required a SaaS round trip for every detection. Rebuilt the entire detection pipeline on Cloudflare's Pingora framework: 450\u00b5s end-to-end, 4,400\u00d7 faster.")
@@ -172,13 +176,15 @@ const proofPoints = {
 };
 
 const skillsAlso = {
-  base: "Cross-platform build systems (Windows/macOS/Linux/Android/iOS), CI/CD pipeline design, EV code signing, release engineering, LLM-augmented development workflows, technical writing, customer-facing delivery",
+  base: "Distributed team leadership, cross-platform build systems (Windows/macOS/Linux/Android/iOS), CI/CD pipeline design, EV code signing, release engineering, LLM-augmented development workflows, technical writing, customer-facing delivery",
+  recruiter: "Distributed team leadership, cross-platform build systems (Windows/macOS/Linux/Android/iOS), CI/CD pipeline design, EV code signing, release engineering, LLM-augmented development workflows, technical writing, customer-facing delivery",
   founding: "Customer-facing delivery, technical writing, cross-platform build systems (Windows/macOS/Linux/Android/iOS), CI/CD pipeline design, EV code signing, release engineering, LLM-augmented development workflows",
   "aws-security": "Security group design, VPC architecture, CI/CD pipeline design, CloudFormation, cross-platform build systems, EV code signing, release engineering, technical writing, customer-facing delivery",
 };
 
 const projectsIntro = {
-  base: "Open source and internal tools. Technical deep dives at ",
+  base: "Open source tools and platforms. Technical deep dives at ",
+  recruiter: "Open source tools and platforms. Technical deep dives at ",
   founding: "Tools I built because they needed to exist. Technical deep dives at ",
   "aws-security": "Security and infrastructure tools. Technical deep dives at ",
 };
@@ -201,32 +207,47 @@ const a10Bullets = {
       tb("Identified a product gap competitors missed. "),
       t("Every WAF vendor detects authorization attacks, but none provide continuous visibility into which endpoints actually enforce auth. Built an authorization coverage map that auto-discovers from live traffic with zero configuration, plus a local LLM feedback loop for per-customer behavioral learning. Market gap identification to working MVP to product roadmap.")
     ]),
-    // Sales
+    // Sales + offshore team
     bulletRich([
       tb("Gave sales the ability to close deals they were losing. "),
-      t("Live proof-of-concept deployments couldn't guarantee attacks on-demand, stalling evaluations. Built a demo platform where sales engineers tailor attack scenarios per vertical and spin up environments with one click, plus a self-service validation platform so customers verify compliance without tying up the SOC.")
+      t("Live proof-of-concept deployments couldn't guarantee attacks on-demand, stalling evaluations. Built a demo platform where sales engineers tailor attack scenarios per vertical and spin up environments with one click, plus a self-service validation platform so customers verify compliance without tying up the SOC. Led a team of 4 offshore frontend engineers on the platform UIs, owning task assignment, code review, and delivery.")
     ]),
   ],
-  founding: [
-    // German govt
+  recruiter: [
+    // Same as base
     bulletRich([
       tb("Delivered on a commitment to the German government and repositioned the product for A10's 7,700 existing customers. "),
       t("The legacy SaaS architecture couldn't meet GDPR-compliant on-prem deployment. Rebuilt it as a standalone edge sensor with sub-millisecond detection (4,400\u00d7 faster than the cloud model), then built a fleet management and collective defense command plane. Result: on-prem or air-gapped deployment, replacing a dozen networked services with a single binary.")
     ]),
-    // AI Firewall
+    bulletRich([
+      tb("Bridged the AI Firewall team's gap between prototype and production. "),
+      t("Their LLM researchers had built protections against AI agent abuse and data exfiltration but needed networking, release engineering, and cross-platform deployment expertise to ship. Wrote v1 endpoint agents for Windows, Linux, macOS, iOS, and Android (kernel-level drivers, EV code signing, notarization, MDM deployment), then integrated their detections into the edge sensor, consolidating everything at the edge.")
+    ]),
+    bulletRich([
+      tb("Identified a product gap competitors missed. "),
+      t("Every WAF vendor detects authorization attacks, but none provide continuous visibility into which endpoints actually enforce auth. Built an authorization coverage map that auto-discovers from live traffic with zero configuration, plus a local LLM feedback loop for per-customer behavioral learning. Market gap identification to working MVP to product roadmap.")
+    ]),
+    bulletRich([
+      tb("Gave sales the ability to close deals they were losing. "),
+      t("Live proof-of-concept deployments couldn't guarantee attacks on-demand, stalling evaluations. Built a demo platform where sales engineers tailor attack scenarios per vertical and spin up environments with one click, plus a self-service validation platform so customers verify compliance without tying up the SOC. Led a team of 4 offshore frontend engineers on the platform UIs, owning task assignment, code review, and delivery.")
+    ]),
+  ],
+  founding: [
+    bulletRich([
+      tb("Delivered on a commitment to the German government and repositioned the product for A10's 7,700 existing customers. "),
+      t("The legacy SaaS architecture couldn't meet GDPR-compliant on-prem deployment. Rebuilt it as a standalone edge sensor with sub-millisecond detection (4,400\u00d7 faster than the cloud model), then built a fleet management and collective defense command plane. Result: on-prem or air-gapped deployment, replacing a dozen networked services with a single binary.")
+    ]),
     bulletRich([
       tb("Bridged the AI Firewall team's gap between prototype and production. "),
       t("Their LLM researchers had built the protections but needed release engineering and cross-platform deployment expertise to ship. Wrote v1 endpoint agents for Windows, Linux, macOS, iOS, and Android, then integrated their detections into the edge sensor, consolidating everything at the edge.")
     ]),
-    // Product gap
     bulletRich([
       tb("Identified a product gap competitors missed and built the MVP. "),
       t("No WAF vendor provided visibility into which API endpoints actually enforce auth. Built an authorization coverage map that auto-discovers from live traffic with zero configuration, plus a local LLM feedback loop for per-customer behavioral learning. Market gap identification to working MVP to product roadmap.")
     ]),
-    // Sales
     bulletRich([
       tb("Gave sales the ability to close deals they were losing. "),
-      t("Built a demo platform where sales engineers tailor attack scenarios per vertical and spin up environments with one click, plus a self-service validation platform so customers verify compliance without tying up the SOC.")
+      t("Built a demo platform where sales engineers tailor attack scenarios per vertical and spin up environments with one click, plus a self-service validation platform so customers verify compliance without tying up the SOC. Led a team of 4 offshore frontend engineers on the platform UIs, owning task assignment, code review, and delivery.")
     ]),
   ],
   "aws-security": [
@@ -234,17 +255,14 @@ const a10Bullets = {
       tb("Rebuilt the product's deployment architecture to meet GDPR compliance requirements for the German government. "),
       t("The legacy SaaS architecture couldn't support on-prem deployment. Redesigned as a standalone edge sensor with fleet management and centralized policy distribution. Result: deployable on-prem, air-gapped, or SaaS from the same codebase, with security controls embedded at every layer.")
     ]),
-    // Self-service platforms
     bulletRich([
       tb("Built self-service security validation and demo platforms. "),
       t("Sales engineers configure attack scenarios per customer vertical and spin up isolated environments with one click. Customers verify compliance posture without tying up the SOC team. Replaced manual proof-of-concept workflows that were stalling enterprise evaluations.")
     ]),
-    // Endpoint security
     bulletRich([
       tb("Shipped cross-platform endpoint agents with enterprise security controls. "),
       t("Wrote v1 for Windows, Linux, macOS, iOS, and Android. Kernel-level drivers, EV code signing, notarization, MDM deployment. Managed the full release lifecycle including SmartScreen reputation and certificate compliance.")
     ]),
-    // AI in pipeline
     bulletRich([
       tb("Embedded automated security analysis into the CI/CD pipeline. "),
       t("Multi-perspective review gates (security, performance, code quality) on every change. Automated test generation and coverage gating to prevent regressions from reaching production.")
@@ -255,6 +273,28 @@ const a10Bullets = {
 // --- THREATX BULLETS ---
 const threatxBullets = {
   base: [
+    bulletRich([
+      tb("Created the professional services function. "),
+      t("Recognized the company had no way to deliver custom integrations. Proposed the service model, organized delivery, and personally ran 4 enterprise engagements: Microsoft-ecosystem integrations, a VMware appliance for a customer who wouldn't run Linux containers, and pre-sales technical translation that opened new market segments.")
+    ]),
+    bulletRich([
+      tb("Fixed customer onboarding, then built the team to run it without me. "),
+      t("Identified that scattered scripts and manual steps were frustrating both engineering and the SOC. Built a unified sensor management CLI with hot-reloading plugin architecture, then mentored SOC analysts into SRE practitioners who took over the platform entirely.")
+    ]),
+    bulletRich([
+      tb("Diagnosed a production failure that two weeks of planned optimizations couldn't fix. "),
+      t("Built a distributed load testing framework from scratch, identified Linux conntrack table exhaustion at the kernel level at 150K RPS, built dynamic conntrack sizing. Saved a $1M contract.")
+    ]),
+    bulletRich([
+      tb("Cut AWS spend ~50% (~$60K/mo). "),
+      t("Consolidated per-customer VPCs into shared infrastructure, redesigned scaling from CPU-based to connection-based after identifying the fleet was scaling on the wrong metric.")
+    ]),
+    bulletRich([
+      tb("Stabilized production database under load and built the attack simulation platform featured at Black Hat. "),
+      t("Deployed Kafka (AWS MSK) as a buffer when the database was saturating under production traffic. Built ThreatX Labs, a serverless attack simulation platform (Lambda, Step Functions) used in the Black Hat keynote demo.")
+    ]),
+  ],
+  recruiter: [
     bulletRich([
       tb("Created the professional services function. "),
       t("Recognized the company had no way to deliver custom integrations. Proposed the service model, organized delivery, and personally ran 4 enterprise engagements: Microsoft-ecosystem integrations, a VMware appliance for a customer who wouldn't run Linux containers, and pre-sales technical translation that opened new market segments.")
@@ -299,27 +339,22 @@ const threatxBullets = {
     ]),
   ],
   "aws-security": [
-    // AWS cost reduction
     bulletRich([
       tb("Cut AWS spend ~50% (~$60K/mo) by redesigning the VPC architecture. "),
       t("Inherited a model where every customer sensor had its own VPC with dedicated NAT gateways, EIPs, load balancers, and auto-scaling groups. Consolidated into shared Fargate infrastructure with VPC Peering and PrivateLink for tenant isolation. Replaced CPU-based scaling with connection-based policies. Eliminated orphaned EBS volumes, leaked EIPs, and recurring service quota issues.")
     ]),
-    // Self-service onboarding
     bulletRich([
       tb("Built self-service sensor management platform for the 24/7 SOC team. "),
       t("Replaced scattered scripts and manual deployment steps with a unified CLI and plugin architecture. Diagnostics reduced troubleshooting from hours to minutes. Mentored SOC analysts into SRE practitioners who took over the platform entirely.")
     ]),
-    // Pro services / cross-team
     bulletRich([
       tb("Created the professional services function and delivered 4 enterprise engagements. "),
       t("Microsoft-ecosystem integrations, a VMware appliance for a customer who wouldn't run Linux containers, and pre-sales technical translation bridging security requirements with product capabilities.")
     ]),
-    // Linux kernel / network security
     bulletRich([
       tb("Diagnosed a network-layer production failure at 150K RPS. "),
       t("Built a distributed load testing framework, identified Linux conntrack table exhaustion at the kernel level, built dynamic conntrack sizing as a systemd service. Saved a $1M contract.")
     ]),
-    // Kafka / infrastructure
     bulletRich([
       tb("Deployed Kafka (AWS MSK) to protect the production database under load. "),
       t("Event-sourcing pipeline processing millions of security events daily. Built ThreatX Labs, a serverless platform (Lambda, Step Functions) for attack simulation and customer demos.")
@@ -330,6 +365,28 @@ const threatxBullets = {
 // --- VISPERO BULLETS ---
 const visperoBullets = {
   base: [
+    bulletRich([
+      tb("First platform developer in a newly created role. "),
+      t("Built the internal developer platform from scratch: a task-based build DSL abstracting compilation across 6 targets (Windows, macOS, iOS, Android, Linux, Embedded Linux), self-bootstrapping from a clean machine. Shipped $50M/year in software on this framework. Recognized with quarterly award (1 of 450+ employees).")
+    ]),
+    bulletRich([
+      tb("Unified 4 acquired companies into one engineering organization. "),
+      t("Each acquisition brought different architectures, toolchains, and target platforms. This is what drove building the cross-platform framework. Contributed to 3 new product lines.")
+    ]),
+    bulletRich([
+      tb("Gave developers back a full day per week by automating release engineering. "),
+      t("Replaced the release engineering team as a gatekeeper across 600+ pipelines. Gave developers sandbox environments with template guardrails, automated the release candidate process, and built diagnostic tools including a static analyzer with 100% accuracy on compiler error diagnosis.")
+    ]),
+    bulletRich([
+      tb("Eliminated a 3-day turnaround and a single point of failure on $2M+ in government licenses. "),
+      t("Reverse-engineered license generation logic out of an ancient C++ application backed by XML flat files that only one person understood. Rebuilt as a database-driven platform, reducing license turnaround from days to immediate.")
+    ]),
+    bulletRich([
+      tb("Isolated engineering from a ransomware attack. "),
+      t("Designed hybrid CI/CD architecture (AWS control plane, on-prem ephemeral VMware agents). Had already migrated all dev services to AWS before ransomware incapacitated the rest of the organization.")
+    ]),
+  ],
+  recruiter: [
     bulletRich([
       tb("First platform developer in a newly created role. "),
       t("Built the internal developer platform from scratch: a task-based build DSL abstracting compilation across 6 targets (Windows, macOS, iOS, Android, Linux, Embedded Linux), self-bootstrapping from a clean machine. Shipped $50M/year in software on this framework. Recognized with quarterly award (1 of 450+ employees).")
@@ -374,27 +431,22 @@ const visperoBullets = {
     ]),
   ],
   "aws-security": [
-    // Hybrid CI/CD with AWS
     bulletRich([
       tb("Designed hybrid CI/CD architecture with AWS control plane and on-prem ephemeral agents. "),
       t("AWS orchestration scheduling jobs, VMware spinning up ephemeral build agents on SSD arrays, Ansible provisioning via Kerberos for credential-free WinRM auth. Every build got a clean, isolated environment. Migrated all dev services to AWS, isolating engineering from a ransomware attack that incapacitated the rest of the organization.")
     ]),
-    // Self-service pipelines
     bulletRich([
       tb("Built self-service pipeline platform with template guardrails across 600+ pipelines. "),
       t("Developers got sandbox environments with policy-compliant defaults. Automated the release candidate process with built-in security checks. Cut routine engineering support requests by 50%.")
     ]),
-    // First platform hire
     bulletRich([
       tb("First platform developer in a newly created role. "),
       t("Built the internal developer platform from scratch: a build DSL abstracting compilation across 6 targets (Windows, macOS, iOS, Android, Linux, Embedded Linux). Shipped $50M/year in software on this framework.")
     ]),
-    // License management / compliance
     bulletRich([
       tb("Rebuilt license management for $2M+ in government contracts. "),
       t("Reverse-engineered an ancient C++ application backed by XML flat files into a database-driven platform with audit trails and compliance reporting. Reduced turnaround from 3+ days to immediate.")
     ]),
-    // Post-acquisition unification
     bulletRich([
       tb("Unified 4 acquired companies into one engineering organization. "),
       t("Each acquisition brought different architectures, toolchains, and security postures. Built the cross-platform framework and standardized build and release processes across all targets.")
@@ -402,9 +454,60 @@ const visperoBullets = {
   ],
 };
 
+// --- PROJECTS (variant-specific) ---
+const projectsBullets = {
+  base: [
+    bulletRich([
+      tb("Inferno Lab: "), t("Security testing, simulation, and education platform. Three integrated tools: Apparatus (58+ feature security simulation lab), Chimera (450+ endpoint training platform across 22 verticals), and Crucible (enterprise attack validation with MITRE ATT&CK mapping and compliance reporting).")
+    ]),
+    bulletRich([
+      tb("Cortex: "), t("AI development framework. Context orchestration for Claude Code, Codex, and Gemini. 90+ skills, intelligent recommendation engine that watches project directories and activates relevant agents, memory vault, and a Python CLI/TUI.")
+    ]),
+    bulletRich([
+      tb("Facet: "), t("Vector-based job search platform. Targeted resume generation with Typst WASM rendering, pipeline tracking, AI-powered interview prep and cover letters, and a feedback loop that learns what works. React 19, TypeScript, Zustand, TanStack Router.")
+    ]),
+  ],
+  recruiter: [
+    bulletRich([
+      tb("Inferno Lab: "), t("Security testing, simulation, and education platform. Three integrated tools: Apparatus (58+ feature security simulation lab), Chimera (450+ endpoint training platform across 22 verticals), and Crucible (enterprise attack validation with MITRE ATT&CK mapping and compliance reporting).")
+    ]),
+    bulletRich([
+      tb("Cortex: "), t("AI development framework. Context orchestration for Claude Code, Codex, and Gemini. 90+ skills, intelligent recommendation engine that watches project directories and activates relevant agents, memory vault, and a Python CLI/TUI.")
+    ]),
+    bulletRich([
+      tb("Facet: "), t("Vector-based job search platform. Targeted resume generation with Typst WASM rendering, pipeline tracking, AI-powered interview prep and cover letters, and a feedback loop that learns what works. React 19, TypeScript, Zustand, TanStack Router.")
+    ]),
+  ],
+  founding: [
+    bulletRich([
+      tb("Inferno Lab: "), t("Security testing, simulation, and education platform. Three integrated tools: Apparatus (simulation lab), Chimera (training platform, 450+ endpoints, 22 verticals), and Crucible (enterprise attack validation with compliance reporting).")
+    ]),
+    bulletRich([
+      tb("Cortex: "), t("AI development framework. Context orchestration for Claude Code, Codex, and Gemini. 90+ skills, intelligent recommendation engine, memory vault, Python CLI/TUI.")
+    ]),
+    bulletRich([
+      tb("Facet: "), t("Vector-based job search platform. Targeted resume generation, pipeline tracking, AI-powered interview prep and cover letters. React 19, TypeScript, Zustand, TanStack Router.")
+    ]),
+  ],
+  "aws-security": [
+    bulletRich([
+      tb("Inferno Lab: "), t("Security testing, simulation, and education platform. Apparatus (58+ feature security simulation lab with AI red team autopilot), Chimera (450+ endpoint training platform), Crucible (enterprise validation with MITRE ATT&CK mapping, NIST/CIS/PCI/HIPAA compliance).")
+    ]),
+    bulletRich([
+      tb("Cortex: "), t("AI development framework. Context orchestration for Claude Code, Codex, and Gemini. 90+ skills, intelligent recommendation engine, memory vault, Python CLI/TUI.")
+    ]),
+    bulletRich([
+      tb("Facet: "), t("Vector-based job search platform. Targeted resume generation with Typst WASM, pipeline tracking, AI-powered interview prep. React 19, TypeScript, Zustand.")
+    ]),
+  ],
+};
+
 // ============================================================
 // DOCUMENT ASSEMBLY
 // ============================================================
+
+// Determine whether to include proof points
+const includeProofPoints = proofPoints[variant] && proofPoints[variant].length > 0;
 
 const doc = new Document({
   numbering: {
@@ -457,7 +560,7 @@ const doc = new Document({
       // PROFILE
       sectionHeading("Profile"),
       new Paragraph({ spacing: spacer(0, 20), children: profiles[variant] }),
-      ...proofPoints[variant],
+      ...(includeProofPoints ? proofPoints[variant] : []),
 
       // SKILLS
       sectionHeading("Skills"),
@@ -495,15 +598,7 @@ const doc = new Document({
           link("nickcrew.github.io/resume", "https://nickcrew.github.io/resume"),
         ]
       }),
-      bulletRich([
-        tb("Apparatus: "), t("AI-augmented security validation platform. Automates red/blue team exercises with scenario-driven traffic generation, LLM-powered honeypots, and chaos engineering.")
-      ]),
-      bulletRich([
-        tb("Crucible: "), t("Attack simulation engine. 119 scenarios covering OWASP Top 10, APT kill chains, HIPAA/PCI compliance. Used to regression-test the Synapse edge sensor.")
-      ]),
-      bulletRich([
-        tb("Chimera: "), t("Vulnerable application platform. 22 verticals, 450 endpoints, 13 industry-specific web apps with an OWASP LLM teaching environment.")
-      ]),
+      ...projectsBullets[variant],
 
       // EDUCATION
       sectionHeading("Education"),
@@ -520,6 +615,7 @@ const doc = new Document({
 // --- OUTPUT ---
 const filenames = {
   base: "NicholasFerguson_Resume",
+  recruiter: "NicholasFerguson_Resume_Recruiter",
   founding: "NicholasFerguson_Resume_Founding",
   "aws-security": "NicholasFerguson_Resume_AWS_Security",
 };
@@ -527,5 +623,5 @@ const outName = filenames[variant];
 
 Packer.toBuffer(doc).then(buffer => {
   fs.writeFileSync(`${outName}.docx`, buffer);
-  console.log(`${variant} → ${outName}.docx`);
+  console.log(`${variant} \u2192 ${outName}.docx`);
 });
